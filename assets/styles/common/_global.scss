@@ -1,0 +1,94 @@
+/**
+ * Global styles, typography and layout classes
+ */
+
+body {
+    margin: 0;
+}
+
+html {
+    background:  $color-body;
+    color:       $color-text;
+    font-weight: normal;
+    font-size:   $font-size-base;
+    font-family: $font-family-base;
+    line-height: $line-height-base;
+    box-sizing:  border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+h1, .f1 { font-size: $f1; }
+h2, .f2 { font-size: $f2; }
+h3, .f3 { font-size: $f3; }
+h4, .f4 { font-size: $f4; }
+h5, .f5 { font-size: $f5; }
+h6, .f6 { font-size: $f6; }
+
+h1, h2, h3, h4, h5, h6 {
+    color: $color-heading;
+    line-height: $line-height-headings;
+}
+
+h1, h2 {
+    font-family: $font-family-serif;
+}
+
+a {
+    color: $color-link;
+    text-decoration: none;
+
+    &:hover {
+        color: $color-link-hover;
+    }
+}
+
+textarea, input, button {
+    font-size: $font-size-base;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+//
+// Typography
+//
+
+.site-title {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 4.5rem;
+    font-weight: 400;
+}
+
+.tagline {
+    margin-top: 0;
+    font-size: $f4;
+}
+
+.page-title {
+    margin-top: 50px;
+    margin-bottom: 30px
+}
+
+.post-title {
+    margin-top: 50px;
+    margin-bottom: 15px;
+}
+
+//
+// Layout
+//
+
+.container {
+    @include container;
+    padding-right: 20px;
+    padding-left: 20px;
+
+    @include breakpoint($xl) {
+        padding: 0;
+    }
+}

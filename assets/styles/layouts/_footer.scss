@@ -1,0 +1,33 @@
+/**
+ * Footer
+ */
+
+.site-footer {
+    margin-top: 30px;
+    text-align: center;
+
+    @include breakpoint($md) {
+        text-align: left;
+    }
+}
+
+.footer-widgets {
+    @include container;
+    border-top: 1px solid $color-border;
+
+    .widget {
+        @include breakpoint($md) {
+            @include span(4);
+
+            &:last-child {
+                @include last;
+            }
+        }
+    }
+}
+
+.site-info {
+    margin: 20px 0;
+    padding-top: 20px;
+    border-top: 1px solid $color-border;
+}

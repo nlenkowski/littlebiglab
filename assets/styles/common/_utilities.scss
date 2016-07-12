@@ -1,0 +1,12 @@
+/**
+ * Utilities
+ */
+
+// Micro clearfix
+@mixin clearfix {
+    &::after {
+        clear: both;
+        content: "";
+        display: table;
+    }
+}
