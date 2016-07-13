@@ -9,7 +9,8 @@
     },
     "rules": {
         "no-console": 1,
-        "no-unused-vars": [1, {"vars": "local", "args": "none"}]
+        "no-unused-vars": [1, {"vars": "local", "args": "none"}],
+        "no-undef": 0
     },
     "globals": {
         "wp": true
