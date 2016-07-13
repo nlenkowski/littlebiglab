@@ -17,20 +17,21 @@ var imageminPng  = require('imagemin-pngquant');
 var notify       = require('gulp-notify');
 var plumber      = require('gulp-plumber');
 var rename       = require('gulp-rename');
+var rsync        = require('gulp-rsync');
 var runSequence  = require('run-sequence');
 var sass         = require('gulp-sass');
 var sourcemaps   = require('gulp-sourcemaps');
 var uglify       = require('gulp-uglify');
 
 // Get project config
-var config       = require('./assets/config.json'),
+var config       = require('./config.json'),
     path         = config.path,
-    dependencies = config.dependencies;
+    dependencies = config.dependencies,
+    deploy       = config.deploy;
 
-// Command line options
+// CLI options
 var enabled = {
-
-    // Enable production build argument
+    staging: argv.staging,
     production: argv.production
 };
 
@@ -170,4 +171,36 @@ gulp.task('watch', function() {
     gulp.watch([path.assets + 'scripts/**/*'], ['scripts']);
     gulp.watch([path.assets + 'fonts/**/*'], ['fonts']);
     gulp.watch([path.assets + 'images/**/*'], ['images']);
+});
+
+// ## Deploy
+// 'gulp watch' - Monitors theme files and assets for changes and live reloads
+gulp.task('deploy', function() {
+
+    // Rsync configuration
+    var rsyncConf = {
+        exclude: deploy.excludePaths,
+        clean: true,
+        compress: true,
+        emptyDirectories: true,
+        incremental: true,
+        recursive: true,
+        relative: true
+    };
+
+    // Get environment config
+    if (argv.staging) {
+        rsyncConf.hostname = deploy.staging.hostname;
+        rsyncConf.username = deploy.staging.username;
+        rsyncConf.destination = deploy.staging.destination;
+    } else if (argv.production) {
+        rsyncConf.hostname = deploy.production.hostname;
+        rsyncConf.username = deploy.production.username;
+        rsyncConf.destination = deploy.production.destination;
+    }
+
+    // Deploy files
+    return gulp.src(deploy.includePaths)
+        .pipe(rsync(rsyncConf));
+
 });
