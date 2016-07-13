@@ -6,6 +6,7 @@
     "dependencies": {
         "scripts": [
             "node_modules/picturefill/dist/picturefill.js",
+            "node_modules/snapsvg/dist/snap.svg.js",
             "assets/scripts/main.js"
         ],
         "styles": [
