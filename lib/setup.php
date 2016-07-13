@@ -21,9 +21,6 @@ function blujay_setup() {
     // Enable plugins to manage the document title
     add_theme_support( 'title-tag' );
 
-    // Enable support for Post Formats
-    add_theme_support( 'post-formats', array( 'aside', 'image', 'video', 'quote', 'link', 'gallery', 'status', 'audio', 'chat' ) );
-
     // Enable support for HTML5 markup
     add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption' ) );
 }
@@ -66,7 +63,6 @@ define( 'DISTDIR', THEMEDIR . '/dist' );
 function blujay_register_assets() {
     wp_enqueue_script( 'main-scripts', DISTDIR . '/scripts/main.min.js', array('jquery'), '', true );
     wp_enqueue_style( 'main-styles', DISTDIR . '/styles/main.min.css', false );
-    wp_enqueue_style( 'google-fonts', 'https://fonts.googleapis.com/css?family=Roboto+Slab:400,300,700', false );
 }
 add_action( 'wp_enqueue_scripts', 'blujay_register_assets' );
 
@@ -81,7 +77,6 @@ register_nav_menus(array(
  * Register custom image sizes
  */
 function blujay_add_image_sizes() {
-    add_image_size( 'featured', '350', '200', true );
 }
 add_action( 'init', 'blujay_add_image_sizes' );
 
@@ -89,26 +84,6 @@ add_action( 'init', 'blujay_add_image_sizes' );
  * Register sidebar and widget areas
  */
 function blujay_widgets_init() {
-
-    register_sidebar(array(
-        'name'          => __( 'Primary Sidebar', 'blujay' ),
-        'id'            => 'primary-sidebar',
-        'description'   => 'Widgets displayed in the blog sidebar.',
-        'before_widget' => '<section class="widget %1$s %2$s">',
-        'after_widget'  => '</section>',
-        'before_title'  => '<h3>',
-        'after_title'   => '</h3>',
-    ));
-
-    register_sidebar( array(
-        'name'          => __( 'Footer Widgets', 'blujay' ),
-        'id'            => 'footer-widgets',
-        'description'   => 'Select up to three widgets for display in the footer.',
-        'before_widget' => '<section class="widget %1$s %2$s">',
-        'after_widget'  => '</section>',
-        'before_title'  => '<h3>',
-        'after_title'   => '</h3>',
-    ));
 }
 add_action( 'widgets_init', 'blujay_widgets_init' );
 ?>
