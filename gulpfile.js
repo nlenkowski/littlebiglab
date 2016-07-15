@@ -68,7 +68,7 @@ gulp.task('styles', function() {
         .pipe(autoprefixer({
             browsers: ['last 2 versions']
         }))
-        .pipe(cssnano())
+        .pipe(gulpif(enabled.production, cssnano()))
         .pipe(gulpif(!enabled.production, sourcemaps.write()))
         .pipe(gulp.dest(path.dist + 'styles'))
         .pipe(browsersync.stream());
@@ -91,6 +91,7 @@ gulp.task('scripts', ['lint'], function() {
 
         .pipe(concat('main.js'))
         .pipe(rename({suffix: '.min'}))
+        .pipe(gulpif(enabled.production, uglify()))
         .pipe(gulpif(!enabled.production, sourcemaps.write()))
         .pipe(gulp.dest(path.dist + 'scripts'))
         .pipe(browsersync.stream());
