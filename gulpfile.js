@@ -8,6 +8,7 @@ var concat       = require('gulp-concat');
 var cssnano      = require('gulp-cssnano');
 var del          = require('del');
 var eslint       = require('gulp-eslint');
+var filter       = require('gulp-filter');
 var flatten      = require('gulp-flatten');
 var gulp         = require('gulp');
 var gulpif       = require('gulp-if');
@@ -77,15 +78,19 @@ gulp.task('styles', function() {
 // 'gulp scripts' - Lints, transpiles ES6, combines, minifies and generates
 // source maps for scripts
 gulp.task('scripts', ['lint'], function() {
+
+    // Filter for project scripts
+    var f = filter(['*', path.assets + '/scripts/**/*.js'], {restore: true});
+
     return gulp.src(dependencies.scripts)
         .pipe(plumber(plumberOptions))
         .pipe(gulpif(!enabled.production, sourcemaps.init()))
+
+        // Run Babel on project scripts only
+        .pipe(f).pipe(babel({ presets: ['es2015'] })).pipe(f.restore)
+
         .pipe(concat('main.js'))
         .pipe(rename({suffix: '.min'}))
-        .pipe(babel({
-			presets: ['es2015']
-		}))
-        .pipe(uglify())
         .pipe(gulpif(!enabled.production, sourcemaps.write()))
         .pipe(gulp.dest(path.dist + 'scripts'))
         .pipe(browsersync.stream());
