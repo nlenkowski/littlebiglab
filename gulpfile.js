@@ -2,7 +2,7 @@
 var argv         = require('minimist')(process.argv.slice(2));
 var autoprefixer = require('gulp-autoprefixer');
 var babel        = require('gulp-babel');
-var browsersync  = require('browser-sync');
+var browserSync  = require('browser-sync');
 var changed      = require('gulp-changed');
 var concat       = require('gulp-concat');
 var cssnano      = require('gulp-cssnano');
@@ -71,7 +71,7 @@ gulp.task('styles', function() {
         .pipe(gulpif(enabled.production, cssnano()))
         .pipe(gulpif(!enabled.production, sourcemaps.write()))
         .pipe(gulp.dest(path.dist + 'styles'))
-        .pipe(browsersync.stream());
+        .pipe(browserSync.stream());
 });
 
 // ## Scripts
@@ -94,7 +94,7 @@ gulp.task('scripts', ['lint'], function() {
         .pipe(gulpif(enabled.production, uglify()))
         .pipe(gulpif(!enabled.production, sourcemaps.write()))
         .pipe(gulp.dest(path.dist + 'scripts'))
-        .pipe(browsersync.stream());
+        .pipe(browserSync.stream());
 });
 
 // ## Images
@@ -107,7 +107,7 @@ gulp.task('images', function() {
             {verbose: true}
         ))
         .pipe(gulp.dest(path.dist + 'images'))
-        .pipe(browsersync.stream());
+        .pipe(browserSync.stream());
 });
 
 // ## Fonts
@@ -122,7 +122,7 @@ gulp.task('fonts', function() {
         ])
         .pipe(flatten())
         .pipe(gulp.dest(path.dist + 'fonts'))
-        .pipe(browsersync.stream());
+        .pipe(browserSync.stream());
 });
 
 // ## Lint
@@ -142,7 +142,7 @@ gulp.task('clean', del.bind(null, [path.dist]));
 // ## Reload
 // 'gulp reload' - Forces a manual browser reload
 gulp.task('reload', function() {
-    browsersync.reload();
+    browserSync.reload();
 });
 
 // ## Build
@@ -165,8 +165,8 @@ gulp.task('default', function() {
 // with Browsersync. You must update your devUrl in config.json to reflect your
 // local development hostname.
 gulp.task('watch', function() {
-    browsersync.init({
-        proxy: config.devUrl,
+    browserSync.init({
+        proxy: config.browserSync.devUrl,
         snippetOptions: {
             whitelist: ['/wp-admin/admin-ajax.php'],
             blacklist: ['/wp-admin/**']

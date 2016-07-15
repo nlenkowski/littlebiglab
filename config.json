@@ -5,15 +5,15 @@
     },
     "dependencies": {
         "scripts": [
-            "node_modules/picturefill/dist/picturefill.js",
-            "node_modules/snapsvg/dist/snap.svg.js",
+            "node_modules/picturefill/dist/picturefill.min.js",
+            "node_modules/snapsvg/dist/snap.svg-min.js",
             "assets/scripts/main.js"
         ],
         "styles": [
             "assets/styles/main.scss"
         ]
     },
-    "deploy": {
+    "deployment": {
         "staging": {
             "hostname": "littlebiglab.com",
             "username": "nathan",
@@ -24,8 +24,19 @@
             "username": "nathan",
             "destination": "/var/www/new/htdocs/wp-content/themes/littlebiglab/"
         },
-        "includePaths": ["./"],
-        "excludePaths": ["assets", "node_modules", ".git", ".editorconfig", ".eslintrc.json", ".gitignore"]
+        "includePaths": [
+            "./"
+        ],
+        "excludePaths": [
+            "assets",
+            "node_modules",
+            ".git",
+            ".editorconfig",
+            ".eslintrc.json",
+            ".gitignore"
+        ]
     },
-    "devUrl": "http://littlebiglab.dev"
+    "browserSync": {
+        "devUrl": "http://littlebiglab.dev"
+    }
 }
