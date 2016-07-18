@@ -9,21 +9,26 @@
 // Base colors
 $color-body:        #ffffff;
 $color-text:        #444444;
-$color-heading:     #444444;
-$color-link:        #0099dd;
-$color-link-hover:  darken($color-link, 10%);
+$color-heading:     #000000;
+$color-link:        #000000;
+$color-link-hover:  lighten($color-link, 20%);
+
+// Custom colors
 $color-success:     #5cb85c;
 $color-info:        #5bc0de;
 $color-warning:     #f0ad4e;
 $color-danger:      #d9534f;
-
-// Custom colors
 $color-border:      #dddddd;
 
 // Font stack
-$font-family-sans:  'Helvetica Neue', Helvetica, Arial, sans-serif;
-$font-family-serif: 'Roboto Slab', Georgia, serif;
-$font-family-base:  $font-family-sans;
+@include fontface('Museo Sans', '../fonts/MuseoSans500');
+@include fontface('Museo Sans Lite', '../fonts/MuseoSans300');
+
+$font-family-museo:      'Museo Sans', sans-serif;
+$font-family-museo-lite: 'Museo Sans Lite', sans-serif;
+$font-family-helvetica:  'Helvetica Neue', Helvetica, Arial, sans-serif;
+$font-family-base:       $font-family-helvetica;
+$font-family-headings:   $font-family-museo;
 
 // Base typography
 $font-size-base:       1rem;
