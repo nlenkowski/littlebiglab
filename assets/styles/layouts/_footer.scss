@@ -3,31 +3,66 @@
  */
 
 .site-footer {
-    margin-top: 30px;
     text-align: center;
 
-    @include breakpoint($md) {
-        text-align: left;
+    .container {
+        position: relative;
+        z-index: 250;
     }
 }
 
-.footer-widgets {
-    @include container;
-    border-top: 1px solid $color-border;
+.footer-background {
+    position: absolute;
+    z-index: 200;
 
-    .widget {
-        @include breakpoint($md) {
-            @include span(4);
+    .footer-gradient {
+        position: absolute;
+        z-index: 220;
+        background: linear-gradient(180deg, rgba(255,255,255,1) 0, rgba(255,255,255,0) 100%);
+    }
 
-            &:last-child {
-                @include last;
-            }
-        }
+    .footer-image {
+        position: absolute;
+        z-index: 210;
+        background-repeat: no-repeat;
+        background-position: bottom center;
+        background-size: cover;
     }
 }
 
-.site-info {
-    margin: 20px 0;
-    padding-top: 20px;
-    border-top: 1px solid $color-border;
+.footer-background, .footer-gradient, .footer-image {
+    width: 100%;
+    height: 900px;
+}
+
+.footer-content {
+
+    .section-title {
+        display: inline-block;
+        margin-top: 75px;
+        margin-bottom: 0;
+        padding-top: 35px;
+        padding-left: 25px;
+        padding-right: 25px;
+        border-top: 1px solid $color-border;
+    }
+
+    h5 {
+        margin-top: 24px;
+    }
+}
+
+.built-with-blujay {
+    margin-top: 100px;
+
+    a {
+        display: block;
+        border-bottom: 0;
+    }
+
+    p {
+        margin-top: 5px;
+        font-family: $font-family-headings;
+        font-weight: bold;
+    }
 }

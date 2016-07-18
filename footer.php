@@ -8,15 +8,24 @@
     </section>
 
     <footer class="site-footer">
+
+        <div class="footer-background">
+            <div class="footer-gradient"></div>
+            <div class="footer-image" style="background-image: url('<?php echo DISTDIR; ?>/images/elfuerte-background.jpg');"></div>
+        </div>
+
         <div class="container">
 
-            <aside class="footer-widgets widget-area">
-                <?php dynamic_sidebar( 'footer-widgets' ); ?>
-            </aside>
+            <section class="footer-content">
+                <?php the_field('footer', 8); ?>
+            </section>
 
-            <div class="site-info">
-                <a href="<?php echo site_url(); ?>"><?php bloginfo( 'name' ); ?></a>, <?php bloginfo( 'description' )?>
-            </div>
+            <section class="built-with-blujay">
+                <a href="http://blujay.littlebiglab.com/">
+                    <img srcset="<?php echo DISTDIR; ?>/images/blujay.png 1x, <?php echo DISTDIR; ?>/images/blujay.png 2x" width="55" height="42" alt="Blujay">
+                    <p>Built with Blujay</p>
+                </a>
+            </section>
 
         </div>
     </footer>
