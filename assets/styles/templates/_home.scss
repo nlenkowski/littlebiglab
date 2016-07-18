@@ -1,6 +1,32 @@
 /**
- * Page with sidebar template styles
+ * Home page styles
  */
 
 .page-home {
+
+    .site-title, .section-title {
+        text-align: center;
+    }
+}
+
+.projects {
+
+    .section-title span {
+        font-size: 2rem;
+        font-family: $font-family-museo-lite;
+        line-height: 1em;
+    }
+}
+
+.toolbox, .build {
+    text-align: center;
+
+    .section-title {
+        display: inline-block;
+        margin-top: 75px;
+        padding-bottom: 25px;
+        padding-left: 25px;
+        padding-right: 25px;
+        border-bottom: 1px solid $color-border;
+    }
 }
