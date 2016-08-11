@@ -1,18 +1,22 @@
 /**
- * Logo
+ * Logo class
  * - Animate SVG pattern image with Snap.svg
- * - Toggle full bleed background image visibility
+ * - Toggle background image visibility
  */
 class Logo {
 
     /**
      * // Initialize logo
+     * @param {string} svgId - Logo svg id
      * @param {number} xPos - Destination x position
      * @param {number} yPos - Destination y position
      * @param {number} duration - Animation duration
      * @param {string} imageSrc - Full path to background image
      */
-    constructor(xPos, yPos, duration, imageSrc) {
+    constructor(svgId, xPos, yPos, duration, imageSrc) {
+
+        // Get parameters
+        this.svgId    = '#' + svgId;
         this.xPos     = xPos;
         this.yPos     = yPos;
         this.duration = duration;
@@ -28,35 +32,47 @@ class Logo {
      * Cache DOM elements and initialize pattern image Snap object
      */
     cacheDom() {
-        this.logo                 = document.querySelector('#logo');
-        this.backgroundImage      = document.querySelector('#logo-background-image');
-        this.patternImage         = Snap.select('#logo-pattern-image');
-        this.patternImageInitXPos = this.patternImage.attr('x');
-        this.patternImageInitYPos = this.patternImage.attr('y');
+        this.logo            = document.querySelector(this.svgId);
+        this.pattern         = Snap.select(this.svgId + ' .logo-pattern-image');
+        this.patternInitXPos = this.pattern.attr('x');
+        this.patternInitYPos = this.pattern.attr('y');
+        this.background      = document.querySelector('.logo-background-image');
     }
 
     /**
      * Bind event listeners for logo and background image
      */
     bindEvents() {
-        this.logo.addEventListener('click', e => this.showBackgroundImage(e));
-        this.backgroundImage.addEventListener('click', e => this.hideBackgroundImage(e));
+
+        // Click events
+        this.logo.addEventListener('click',
+            e => this.showBackground(e)
+        );
+
+        this.background.addEventListener('click',
+            e => this.hideBackground(e)
+        );
+
+        // Scroll events
+        window.addEventListener('scroll',
+            e => this.hideBackground(e)
+        );
     }
 
     /**
-     * Animate logo when background image is loaded
+     * Animate logo when pattern image is loaded
      */
     animateLogo() {
         const imageLoad  = new Image();
         imageLoad.src    = this.imageSrc;
-        imageLoad.onload = this.animatePatternImage();
+        imageLoad.onload = this.animatePattern();
     }
 
     /**
      * Animate pattern image
      */
-    animatePatternImage() {
-        this.patternImage.animate({
+    animatePattern() {
+        this.pattern.animate({
             x: this.xPos,
             y: this.yPos
         }, this.duration, mina.easeinout);
@@ -65,26 +81,26 @@ class Logo {
     /**
      * Reset pattern image
      */
-    resetPatternImage() {
-        this.patternImage.animate({
-            x: this.patternImageInitXPos,
-            y: this.patternImageInitYPos
+    resetPattern() {
+        this.pattern.animate({
+            x: this.patternInitXPos,
+            y: this.patternInitYPos
         }, 0);
     }
 
     /**
      * Show background image
      */
-    showBackgroundImage() {
-        this.backgroundImage.classList.add('visible');
+    showBackground() {
+        this.background.classList.add('visible');
         this.logo.classList.add('overlay');
     }
 
     /**
      * Hide background image
      */
-    hideBackgroundImage() {
-        this.backgroundImage.classList.remove('visible');
+    hideBackground() {
+        this.background.classList.remove('visible');
         this.logo.classList.remove('overlay');
     }
 }
