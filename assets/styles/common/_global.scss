@@ -53,12 +53,20 @@ img {
 //
 
 .site-title {
-    font-size: 2.7rem;
-    line-height: 1.3em;
+    font-size: 2rem;
+    line-height: 1.25em;
+
+    @include breakpoint($md) {
+        font-size: 2.7rem;
+        line-height: 1.3em;
+    }
 }
 
 .section-title {
-    font-size: 2.5rem;
+
+    @include breakpoint($md) {
+        font-size: 2.5rem;
+    }
 }
 
 .section-content {
@@ -70,6 +78,10 @@ img {
 //
 // Layout
 //
+
+.site-content {
+    padding-top: 10px;
+}
 
 .container {
     @include container;
