@@ -28,7 +28,7 @@ var uglify       = require('gulp-uglify');
 var config       = require('./config.json'),
     path         = config.path,
     dependencies = config.dependencies,
-    deploy       = config.deploy;
+    deployment   = config.deployment;
 
 // CLI options
 var enabled = {
@@ -185,7 +185,7 @@ gulp.task('deploy', function() {
 
     // Rsync configuration
     var rsyncConf = {
-        exclude: deploy.excludePaths,
+        exclude: deployment.excludePaths,
         clean: true,
         compress: true,
         emptyDirectories: true,
@@ -196,17 +196,17 @@ gulp.task('deploy', function() {
 
     // Get environment config
     if (argv.staging) {
-        rsyncConf.hostname = deploy.staging.hostname;
-        rsyncConf.username = deploy.staging.username;
-        rsyncConf.destination = deploy.staging.destination;
+        rsyncConf.hostname = deployment.staging.hostname;
+        rsyncConf.username = deployment.staging.username;
+        rsyncConf.destination = deployment.staging.destination;
     } else if (argv.production) {
-        rsyncConf.hostname = deploy.production.hostname;
-        rsyncConf.username = deploy.production.username;
-        rsyncConf.destination = deploy.production.destination;
+        rsyncConf.hostname = deployment.production.hostname;
+        rsyncConf.username = deployment.production.username;
+        rsyncConf.destination = deployment.production.destination;
     }
 
     // Deploy files
-    return gulp.src(deploy.includePaths)
+    return gulp.src(deployment.includePaths)
         .pipe(rsync(rsyncConf));
 
 });
