@@ -1,19 +1,20 @@
 /**
- * Logo class
+ * Logo
  * - Animate SVG pattern image with Snap.svg
  * - Toggle background image visibility
  */
 class Logo {
 
     /**
-     * // Initialize logo
+     * Parameters
      * @param {string} svgId - Logo svg id
      * @param {number} xPos - Destination x position
      * @param {number} yPos - Destination y position
      * @param {number} duration - Animation duration
      * @param {string} imageSrc - Full path to background image
+     * @param {string} page - Calling page
      */
-    constructor(svgId, xPos, yPos, duration, imageSrc) {
+    constructor(svgId, xPos, yPos, duration, imageSrc, page) {
 
         // Get parameters
         this.svgId    = '#' + svgId;
@@ -21,6 +22,7 @@ class Logo {
         this.yPos     = yPos;
         this.duration = duration;
         this.imageSrc = imageSrc;
+        this.page     = page;
 
         // Init
         this.cacheDom();
@@ -32,7 +34,7 @@ class Logo {
      * Cache DOM elements and initialize pattern image Snap object
      */
     cacheDom() {
-        this.logo            = document.querySelector(this.svgId);
+        this.logo            = document.querySelector(this.svgId + '-container');
         this.pattern         = Snap.select(this.svgId + ' .logo-pattern-image');
         this.patternInitXPos = this.pattern.attr('x');
         this.patternInitYPos = this.pattern.attr('y');
@@ -44,19 +46,28 @@ class Logo {
      */
     bindEvents() {
 
-        // Click events
-        this.logo.addEventListener('click',
-            e => this.showBackground(e)
-        );
+        // Events for the home page
+        if (this.page == 'home') {
 
-        this.background.addEventListener('click',
-            e => this.hideBackground(e)
-        );
+            this.logo.addEventListener('click',
+                e => this.showBackground(e)
+            );
 
-        // Scroll events
-        window.addEventListener('scroll',
-            e => this.hideBackground(e)
-        );
+            this.background.addEventListener('click',
+                e => this.hideBackground(e)
+            );
+
+            // Scroll events
+            window.addEventListener('scroll',
+                e => this.hideBackground(e)
+            );
+
+        } else { // Events for other pages
+
+            this.logo.addEventListener('click',
+                e => this.goHome(e)
+            );
+        }
     }
 
     /**
@@ -102,5 +113,12 @@ class Logo {
     hideBackground() {
         this.background.classList.remove('visible');
         this.logo.classList.remove('overlay');
+    }
+
+    /**
+     * Load home page
+     */
+    goHome() {
+        window.location = "/";
     }
 }
