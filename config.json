@@ -5,8 +5,6 @@
     },
     "dependencies": {
         "scripts": [
-            "node_modules/picturefill/dist/picturefill.min.js",
-            "node_modules/snapsvg/dist/snap.svg-min.js",
             "assets/scripts/logo.js",
             "assets/scripts/main.js"
         ],
