@@ -12,9 +12,7 @@ var filter       = require('gulp-filter');
 var flatten      = require('gulp-flatten');
 var gulp         = require('gulp');
 var gulpif       = require('gulp-if');
-var imagemin     = require('gulp-imagemin');
-var imageminJpg  = require('imagemin-jpeg-recompress');
-var imageminPng  = require('imagemin-pngquant');
+var image        = require('gulp-image');
 var notify       = require('gulp-notify');
 var plumber      = require('gulp-plumber');
 var rename       = require('gulp-rename');
@@ -102,10 +100,7 @@ gulp.task('scripts', ['lint'], function() {
 gulp.task('images', function() {
     return gulp.src(path.assets + 'images/**/*')
         .pipe(changed(path.dist + 'images'))
-        .pipe(imagemin(
-            [imageminPng(), imageminJpg()],
-            {verbose: true}
-        ))
+        .pipe(image())
         .pipe(gulp.dest(path.dist + 'images'))
         .pipe(browserSync.stream());
 });
@@ -167,6 +162,7 @@ gulp.task('default', function() {
 gulp.task('watch', function() {
     browserSync.init({
         proxy: config.browserSync.devUrl,
+        //tunnel: "littlebiglab",
         snippetOptions: {
             whitelist: ['/wp-admin/admin-ajax.php'],
             blacklist: ['/wp-admin/**']
