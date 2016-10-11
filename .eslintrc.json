@@ -8,7 +8,8 @@
         "node": true
     },
     "rules": {
-        "no-console": 0,
+        "no-console": 1,
+        "no-empty": 1,
         "no-unused-vars": 0,
         "no-undef": 0
     },
