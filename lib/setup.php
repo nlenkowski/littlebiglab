@@ -84,6 +84,8 @@ register_nav_menus(array(
  * Register custom image sizes
  */
 function blujay_add_image_sizes() {
+    add_image_size( 'project-logo', '', '95', true );
+    add_image_size( 'project-logo-retina', '', '190', true );
 }
 add_action( 'init', 'blujay_add_image_sizes' );
 
@@ -93,4 +95,32 @@ add_action( 'init', 'blujay_add_image_sizes' );
 function blujay_widgets_init() {
 }
 add_action( 'widgets_init', 'blujay_widgets_init' );
+
+/**
+ * Register custom post types
+ */
+function blujay_project_custom_post_type() {
+
+    $labels = array(
+        'name'               => 'Projects',
+        'singular_name'      => 'Project',
+        'add_new'            => 'Add Project',
+        'add_new_item'       => 'Add Project',
+        'edit_item'          => 'Edit Project'
+    );
+
+    $args = array(
+        'has_archive'     => false,
+        'hierarchical'    => false,
+        'labels'          => $labels,
+        'menu_icon'       => 'dashicons-portfolio',
+        'public'          => true,
+        'rewrite'         => array( 'slug' => 'project' ),
+        'taxonomies'      => array( 'category' ),
+    );
+
+    register_post_type( 'project', $args );
+}
+add_action( 'init', 'blujay_project_custom_post_type' );
+
 ?>
