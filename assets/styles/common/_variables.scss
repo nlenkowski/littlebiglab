@@ -21,8 +21,8 @@ $color-danger:      #d9534f;
 $color-border:      #dddddd;
 
 // Font stack
-@include fontface('Museo Sans', '../fonts/MuseoSans500');
-@include fontface('Museo Sans Lite', '../fonts/MuseoSans300');
+@include fontface('Museo Sans', '../fonts/MuseoSans-500');
+@include fontface('Museo Sans Lite', '../fonts/MuseoSans-300');
 
 $font-family-museo:      'Museo Sans', sans-serif;
 $font-family-museo-lite: 'Museo Sans Lite', sans-serif;
