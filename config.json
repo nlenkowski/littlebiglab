@@ -6,6 +6,7 @@
     "dependencies": {
         "scripts": [
             "assets/scripts/logo.js",
+            "assets/scripts/tabs.js",
             "assets/scripts/main.js"
         ],
         "styles": [
