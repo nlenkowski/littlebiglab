@@ -8,37 +8,95 @@ Template Name: Home
 
 <main class="main">
 
+    <h1 class="site-title container">
+        <?php the_field('main_heading', 8); ?>
+    </h1>
+
+    <section class="projects">
+
+        <h2 class="section-title">
+            <?php the_field('projects_heading'); ?>
+        </h2>
+
+        <div class="projects-grid">
+
+            <?php
+            $projects = get_field('projects');
+            if ( $projects ) : ?>
+
+                <?php
+                foreach ( $projects as $post ) :
+                    setup_postdata( $post ); ?>
+
+                    <div class="project">
+
+                        <?php
+                        $image = get_field('logo');
+                        if ( !empty($image) ): ?>
+                            <a href="<?php the_permalink(); ?>">
+                                <img src="<?php echo $image['sizes']['project-logo']; ?>" srcset="<?php echo $image['sizes']['project-logo']; ?>, <?php echo $image['sizes']['project-logo-retina']; ?> 2x" alt="<?php the_title(); ?>">
+                            </a>
+                        <?php endif; ?>
+
+                        <h3><?php the_title(); ?></h3>
+
+                        <?php
+                        $terms = get_field('categories');
+                        if ( $terms ) : ?>
+
+                            <div class="categories">
+
+                                <?php
+                                $terms_count = count( $terms );
+                                foreach ( $terms as $index => $term )  {
+                                    if ( $index < $terms_count - 1 ) {
+                                        echo $term->name . " / ";
+                                    } else {
+                                        echo $term->name;
+                                    }
+                                }
+                                ?>
+
+                            </div>
+                        <?php endif; ?>
+
+                        <a href="<?php the_permalink(); ?>">View Project</a>
+                    </div>
+
+                <?php
+                endforeach;
+                wp_reset_postdata();
+                ?>
+
+            <?php endif; ?>
+
+        </div>
+    </section>
+
     <?php while ( have_posts() ) : the_post(); ?>
 
-        <section class="projects">
+        <?php if ( have_rows('sections') ): ?>
 
-            <h2 class="section-title">
-                <?php the_field('projects_heading'); ?>
-            </h2>
+        	<?php while ( have_rows('sections') ): the_row();
+        		$name    = get_sub_field('name');
+        		$heading = get_sub_field('heading');
+        		$content = get_sub_field('content');
+        		?>
 
-            <?php if( have_rows('sections') ): ?>
+        		<section class="<?php echo strtolower($name); ?> container">
 
-            	<?php while( have_rows('sections') ): the_row();
-            		$name    = get_sub_field('name');
-            		$heading = get_sub_field('heading');
-            		$content = get_sub_field('content');
-            		?>
+                    <h2 class="section-title">
+                        <?php echo $heading; ?>
+                    </h2>
 
-            		<section class="<?php echo strtolower($name); ?>">
+                    <div class="section-content">
+                        <?php echo $content; ?>
+                    </div>
 
-                        <h2 class="section-title">
-                            <?php echo $heading; ?>
-                        </h2>
+        		</section>
 
-                        <div class="section-content">
-                            <?php echo $content; ?>
-                        </div>
-
-            		</section>
-
-            	<?php endwhile; ?>
-            <?php endif; ?>
-        </section>
+        	<?php endwhile; ?>
+        <?php endif; ?>
 
     <?php endwhile; // end of the loop ?>
 

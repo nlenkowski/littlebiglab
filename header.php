@@ -15,7 +15,8 @@
     <div class="logo-background-image" style="background-image: url('<?php echo DISTDIR; ?>/images/elfuerte-background.jpg');"></div>
 
     <header class="site-header">
-        <div class="container">
+
+        <div class="logo-container" id="logo-desktop-container">
 
             <svg id="logo-desktop" class="logo" width="100%" height="100%" viewBox="0 0 1140 186" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <defs>
@@ -27,6 +28,10 @@
                 </path>
             </svg>
 
+        </div>
+
+        <div class="logo-container" id="logo-mobile-container">
+
             <svg id="logo-mobile" class="logo" width="300" height="128" viewBox="0 0 300 128" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <defs>
                     <pattern id="logo-pattern-mobile" class="logo-pattern" patternUnits="userSpaceOnUse" width="2400" height="400">
@@ -37,12 +42,8 @@
                 </path>
             </svg>
 
-            <h1 class="site-title">
-                <?php the_field('main_heading', 8); ?>
-            </h1>
-
         </div>
+
     </header>
 
     <section class="site-content">
-        <div class="container">
