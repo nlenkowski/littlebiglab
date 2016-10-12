@@ -25,7 +25,6 @@ class Tabs {
         this.cacheDom();
         this.bindEvents();
         this.checkUrlHash();
-        this.toggleVisibility();
     }
 
     cacheDom() {
@@ -45,19 +44,6 @@ class Tabs {
             tab.addEventListener('click',
                 e => this.toggleTabs(e, tabAttribute)
             );
-        }
-    }
-
-    toggleVisibility() {
-
-        // Show tabs
-        for (let tab of this.tabs) {
-            tab.style.visibility = 'visible';
-        }
-
-        // Show contents
-        for (let content of this.contents) {
-            content.style.visibility = 'visible';
         }
     }
 

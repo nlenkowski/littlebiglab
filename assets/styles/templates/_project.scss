@@ -23,7 +23,6 @@
         }
 
         .tab {
-            visibility: hidden;
             margin-bottom: 5px;
         }
     }
@@ -32,10 +31,6 @@
         overflow-x: hidden;
         margin-top: 65px;
         text-align: center;
-
-        .content {
-            visibility: hidden;
-        }
     }
 
     .screenshots, .codesamples {
