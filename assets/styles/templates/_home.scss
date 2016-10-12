@@ -4,6 +4,10 @@
 
 .page-home {
 
+    .site-title {
+        margin-bottom: 50px;
+    }
+
     .site-title, .section-title {
         text-align: center;
     }
@@ -12,19 +16,20 @@
         text-align: center;
 
         .section-title {
-            margin: 0;
-            font-size: 1.75rem;
             display: inline-block;
-            padding-left: 35px;
+            margin: 0;
             padding-right: 35px;
             padding-bottom: 35px;
+            padding-left: 35px;
             border-bottom: 1px solid $color-border;
+            font-size: 1.75rem;
 
             @include breakpoint($md) {
                 font-size: 2.5rem;
             }
 
             span {
+                color: #555555;
                 font-size: 1.4rem;
                 font-family: $font-family-museo-lite;
 
@@ -32,31 +37,23 @@
                     font-size: 2rem;
                 }
             }
-
-            p {
-                margin: 0;
-                padding: 0;
-            }
         }
 
         .projects-grid {
-            max-width: 1250px;
             margin: 0 auto;
+            max-width: 1200px;
 
             @include clearfix;
         }
 
         .project {
-            text-align: center;
             margin-top: 85px;
-
-            a:first-child {
-                border: 0;
-            }
+            text-align: center;
 
             @include breakpoint($md) {
                 margin-top: 65px;
                 margin-bottom: 25px;
+
                 @include span(4);
 
 
@@ -64,23 +61,26 @@
                     @include last;
                 }
             }
+
+            a:first-child {
+                border: 0;
+            }
         }
 
-        h3 {
+        h4 {
             margin-top: 25px;
-            margin-bottom: 10px;
-            font-family: $font-family-helvetica;
+            margin-bottom: 5px;
         }
 
         a {
-            font-size: 18px;
             font-weight: bold;
+            font-size: 18px;
         }
 
         .categories {
-            font-size: 18px;
-            font-color: $color-text;
             margin-bottom: 15px;
+
+            font-color: $color-text;
         }
     }
 
@@ -90,9 +90,9 @@
         .section-title {
             display: inline-block;
             margin-top: 75px;
+            padding-right: 25px;
             padding-bottom: 25px;
             padding-left: 25px;
-            padding-right: 25px;
             border-bottom: 1px solid $color-border;
         }
     }

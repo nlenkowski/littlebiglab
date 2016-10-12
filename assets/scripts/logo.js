@@ -1,12 +1,12 @@
 /**
  * Logo
- * - Animate SVG pattern image with Snap.svg
- * - Toggle background image visibility
+ * - Animate SVG pattern image with snap.svg
+ * - Toggle background image
  */
 class Logo {
 
     /**
-     * Parameters
+     * Init
      * @param {string} svgId - Logo svg id
      * @param {number} xPos - Destination x position
      * @param {number} yPos - Destination y position
