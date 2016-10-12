@@ -1,81 +1,154 @@
 /**
  * Tabs
+ * - Toggle tab and content display
+ * - Detect url hash and load appropriate tab
  */
 class Tabs {
 
     /**
-     * Parameters
-     * @param {string} dataAttribute
+     * Init
+     * @param {string} tabClass
+     * @param {string} tabAttribute
+     * @param {string} contentClass
      */
-    constructor(dataAttribute = 'data-tab') {
+    constructor(tabClass = 'tab', tabAttribute = 'data-tab', contentClass = 'content') {
 
-        // Get parameters
-        this.dataAttribute = dataAttribute;
+        // Parameters
+        this.tabAttribute = tabAttribute;
+        this.tabClass     = tabClass;
+        this.contentClass = contentClass;
+
+        // State
+        this.activeTabAttribute = null;
 
         // Init
         this.cacheDom();
         this.bindEvents();
+        this.checkUrlHash();
+        this.toggleVisibility();
     }
 
     cacheDom() {
 
-        // Get nodelist of nav elements
-        this.navElements = document.querySelectorAll('[' + this.dataAttribute + ']');
+        // Get nodelists for tabs and content
+        this.tabs = document.querySelectorAll('.' + this.tabClass);
+        this.contents = document.querySelectorAll('.' + this.contentClass);
     }
 
     bindEvents() {
 
-        // Bind click events for each nav element
-        for (let navElement of this.navElements) {
+        // Bind tab element click events
+        for (let tab of this.tabs) {
 
-            let navAttribute = navElement.getAttribute(this.dataAttribute);
+            let tabAttribute = tab.getAttribute(this.tabAttribute);
 
-            navElement.addEventListener('click',
-                e => this.toggleNav(e, navElement, navAttribute)
+            tab.addEventListener('click',
+                e => this.toggleTabs(e, tabAttribute)
             );
         }
     }
 
-    toggleNav(e, navElement, navAttribute) {
-        e.preventDefault();
+    toggleVisibility() {
 
-        this.toggleNavElement(navElement, navAttribute);
-        this.toggleContent(navElement, navAttribute);
-        this.updateUrlHash(navElement, navAttribute);
-    }
-
-    toggleNavElement(navElement, navAttribute) {
-
-        // Reset all nav elements state
-        for (let navElement of this.navElements) {
-            navElement.classList.remove('active');
+        // Show tabs
+        for (let tab of this.tabs) {
+            tab.style.visibility = 'visible';
         }
 
-        // Set active nav element state
-        navElement.classList.add('active');
+        // Show contents
+        for (let content of this.contents) {
+            content.style.visibility = 'visible';
+        }
     }
 
-    toggleContent(navElement, navAttribute) {
+    /*
+     * Tab methods
+     */
 
-        // Hide all content
-        for (let navElement of this.navElements) {
-            let attribute = this.getNavAttribute(navElement);
-            let content   = document.querySelector('.' + attribute);
+    toggleTabs(e, tabAttribute) {
+
+        // Store active tab attribute state
+        this.activeTabAttribute = tabAttribute;
+
+        // Display tab element and content and set url hash
+        this.toggleTab();
+        this.toggleContent();
+        this.setUrlHash();
+
+        // Override default action if called from a click event
+        if (e) {
+            e.preventDefault();
+        }
+    }
+
+    /*
+     * Tab methods
+     */
+
+    toggleTab() {
+        this.resetAllTabs();
+        this.showTab();
+    }
+
+    resetAllTabs() {
+        for (let tab of this.tabs) {
+            tab.classList.remove('active');
+        }
+    }
+
+    showTab() {
+        let tab = document.querySelector('[' + this.tabAttribute + '=' + this.activeTabAttribute + ']');
+        tab.classList.add('active');
+    }
+
+    /*
+     * Content methods
+     */
+
+    toggleContent() {
+        this.hideAllContents();
+        this.showContent();
+    }
+
+    hideAllContents() {
+        for (let content of this.contents) {
             content.classList.remove('active');
         }
-
-        // Set active content
-        let activeContent = document.querySelector('.' + navAttribute);
-        activeContent.classList.add('active');
     }
 
-    updateUrlHash(navElement, navAttribute) {
-
-        // Add hash to url
-        window.location.hash = navAttribute;
+    showContent() {
+        let content = document.querySelector('.' + this.activeTabAttribute);
+        content.classList.add('active');
     }
 
-    getNavAttribute(navElement) {
-        return navElement.getAttribute(this.dataAttribute);
+    /*
+     * Url methods
+     */
+
+    checkUrlHash() {
+
+        // Get the url hash
+        let urlHash   = this.getUrlHash();
+        let validHash = null;
+
+        if (urlHash) {
+
+            // Make sure the hash exists as a data attribute in the dom
+            var node = document.querySelector('[' + this.tabAttribute + '=' + urlHash + ']');
+            let validHash = document.body.contains(node);
+
+            // Set tab if valid
+            if (validHash) {
+                this.toggleTabs(null, urlHash);
+            }
+        }
+    }
+
+    getUrlHash() {
+        return window.location.hash.substr(1);
+    }
+
+    setUrlHash() {
+        window.location.hash = this.activeTabAttribute;
     }
 }

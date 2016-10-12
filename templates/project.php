@@ -9,20 +9,20 @@ Template Name: Project
     <h1><?php the_title(); ?></h1>
     <p><?php the_field('description'); ?></p>
 
-    <div class="buttons">
+    <div class="tabs">
 
         <?php if ( have_rows('screenshots') ): ?>
-            <a href="#" class="button active" data-tab="screenshots"><i class="fa fa-picture-o"></i> Screenshots</a>
+            <a href="#" class="tab button active" data-tab="screenshots"><i class="fa fa-picture-o"></i> Screenshots</a>
         <?php endif; ?>
 
         <?php if ( have_rows('code_samples') ): ?>
-            <a href="#" class="button" data-tab="codesamples"><i class="fa fa-code"></i> Code Samples</a>
+            <a href="#" class="tab button" data-tab="codesamples"><i class="fa fa-code"></i> Code Samples</a>
         <?php endif; ?>
 
         <?php
         $url = get_field('url');
         if ( !empty( $url ) ): ?>
-            <a href="<?php echo $url; ?>" id="website-link" class="button"><i class="fa fa-external-link"></i> View Website</a>
+            <a href="<?php echo $url; ?>" class="tab button"><i class="fa fa-external-link"></i> View Website</a>
         <?php endif; ?>
     </div>
 
@@ -30,7 +30,7 @@ Template Name: Project
 
 <section class="project-content">
 
-    <div class="screenshots active">
+    <div class="content screenshots active">
 
         <?php if ( have_rows('screenshots') ):
 
@@ -53,7 +53,7 @@ Template Name: Project
 
     </div>
 
-    <div class="codesamples">
+    <div class="content codesamples">
 
         <?php if ( have_rows('code_samples') ):
 

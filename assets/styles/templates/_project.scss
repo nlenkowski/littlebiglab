@@ -18,15 +18,24 @@
             font-size: 1.125rem;
         }
 
-        .buttons {
+        .tabs {
             margin-top: 40px;
+        }
+
+        .tab {
+            visibility: hidden;
+            margin-bottom: 5px;
         }
     }
 
     .project-content {
         overflow-x: hidden;
-        margin-top: 60px;
+        margin-top: 65px;
         text-align: center;
+
+        .content {
+            visibility: hidden;
+        }
     }
 
     .screenshots, .codesamples {

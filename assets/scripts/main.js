@@ -21,7 +21,7 @@ const Main = (function(){
 
     // Initialize project navigation
     if ( document.querySelector('.single-project') ) {
-        let projectTabs = new Tabs('data-tab');
+        let projectTabs = new Tabs();
     }
 
     // Public
