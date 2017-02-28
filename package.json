@@ -24,7 +24,7 @@
     "gulp-notify": "^2.2.0",
     "gulp-plumber": "^1.1.0",
     "gulp-rename": "^1.2.2",
-    "gulp-rsync": "0.0.6",
+    "gulp-rsync": "0.0.7",
     "gulp-sass": "^2.3.2",
     "gulp-sourcemaps": "^2.0.0",
     "gulp-stats": "0.0.3",
@@ -34,7 +34,8 @@
   },
   "dependencies": {
     "breakpoint-sass": "^2.7.0",
-    "normalize-scss": "^5.0.3",
+    "node-sass": "^3.10.1",
+    "normalize-scss": "^6.0.0",
     "susy": "^2.2.12"
   }
 }
