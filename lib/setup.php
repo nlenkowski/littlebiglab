@@ -84,8 +84,8 @@ register_nav_menus(array(
  * Register custom image sizes
  */
 function blujay_add_image_sizes() {
-    add_image_size( 'project-logo', '', '95', true );
-    add_image_size( 'project-logo-retina', '', '190', true );
+    add_image_size( 'project-logo', '9999', '95', false );
+    add_image_size( 'project-logo-retina', '9999', '190', false );
 }
 add_action( 'init', 'blujay_add_image_sizes' );
 
@@ -99,28 +99,67 @@ add_action( 'widgets_init', 'blujay_widgets_init' );
 /**
  * Register custom post types
  */
-function blujay_project_custom_post_type() {
+function blujay_register_post_types() {
 
     $labels = array(
-        'name'               => 'Projects',
-        'singular_name'      => 'Project',
-        'add_new'            => 'Add Project',
-        'add_new_item'       => 'Add Project',
-        'edit_item'          => 'Edit Project'
+        'name'          => 'Projects',
+        'singular_name' => 'Project',
+        'add_new'       => 'Add Project',
+        'add_new_item'  => 'Add Project',
+        'edit_item'     => 'Edit Project'
     );
 
     $args = array(
-        'has_archive'     => false,
-        'hierarchical'    => false,
-        'labels'          => $labels,
-        'menu_icon'       => 'dashicons-portfolio',
-        'public'          => true,
-        'rewrite'         => array( 'slug' => 'project' ),
-        'taxonomies'      => array( 'category' ),
+        'has_archive'   => false,
+        'hierarchical'  => false,
+        'labels'        => $labels,
+        'menu_icon'     => 'dashicons-portfolio',
+        'public'        => true,
+        'rewrite'       => array( 'slug' => 'project' ),
+        'taxonomies'    => array( 'technology' ),
     );
 
     register_post_type( 'project', $args );
 }
-add_action( 'init', 'blujay_project_custom_post_type' );
+add_action( 'init', 'blujay_register_post_types' );
+
+/**
+ * Register custom taxonomies
+ */
+function blujay_register_taxonomies() {
+
+    $labels = array(
+        'name'              => 'Technologies',
+        'singular_name'     => 'Technology',
+        'add_new'           => 'Add Technology',
+        'add_new_item'      => 'Add Technology',
+        'edit_item'         => 'Edit Technology'
+    );
+
+    $args = array(
+        'hierarchical'      => false,
+        'labels'            => $labels,
+        'show_ui'           => true,
+        'show_admin_column' => true,
+        'query_var'         => true,
+        'rewrite'           => array( 'slug' => 'technology' )
+    );
+
+    register_taxonomy( 'technology', array( 'project' ), $args );
+}
+add_action( 'init', 'blujay_register_taxonomies' );
+
+/**
+ * Custom admin styles
+ */
+function custom_admin_styles() {
+    echo '
+    <style>
+        .cpac-column-value-image img {
+            margin: 0;
+        }
+    </style>';
+}
+add_action('admin_head', 'custom_admin_styles');
 
 ?>
