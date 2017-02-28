@@ -40,26 +40,6 @@ Template Name: Home
 
                         <h4><?php the_title(); ?></h4>
 
-                        <?php
-                        $terms = get_field('categories');
-                        if ( $terms ) : ?>
-
-                            <div class="categories">
-
-                                <?php
-                                $terms_count = count( $terms );
-                                foreach ( $terms as $index => $term )  {
-                                    if ( $index < $terms_count - 1 ) {
-                                        echo $term->name . " / ";
-                                    } else {
-                                        echo $term->name;
-                                    }
-                                }
-                                ?>
-
-                            </div>
-                        <?php endif; ?>
-
                         <a href="<?php the_permalink(); ?>">View Project</a>
                     </div>
 
