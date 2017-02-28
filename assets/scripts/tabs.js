@@ -11,7 +11,7 @@ class Tabs {
      * @param {string} tabAttribute
      * @param {string} contentClass
      */
-    constructor(tabClass = 'tab', tabAttribute = 'data-tab', contentClass = 'content') {
+    constructor(tabAttribute = 'data-tab', tabClass = 'tab', contentClass = 'content') {
 
         // Parameters
         this.tabAttribute = tabAttribute;
@@ -66,10 +66,6 @@ class Tabs {
             e.preventDefault();
         }
     }
-
-    /*
-     * Tab methods
-     */
 
     toggleTab() {
         this.resetAllTabs();
