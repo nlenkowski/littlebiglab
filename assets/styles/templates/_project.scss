@@ -14,29 +14,75 @@
             margin-bottom: 25px;
         }
 
+        h4 {
+            margin-bottom: 15px;
+        }
+
         p {
             font-size: 1.125rem;
         }
 
-        .tabs {
-            margin-top: 40px;
+        .responsibilities, .technologies {
+            display: inline-block;
+            vertical-align: top;
+
+            ul {
+                text-align: left;
+                padding-left: 20px;
+            }
         }
 
-        .tab {
-            margin-bottom: 5px;
+        @include breakpoint($lg) {
+            max-width: $xl;
+
+            .description {
+                @include span(6);
+                padding-right: 40px;
+                text-align: left;
+            }
+
+            .responsibilities, .technologies {
+                @include span(3);
+                display: block;
+                text-align: left;
+            }
+
+            .technologies {
+                @include last;
+            }
+        }
+    }
+
+    .menu {
+        @include clearfix;
+        margin-top: 50px;
+        margin-bottom: 20px;
+        text-align: center;
+
+        @include breakpoint($md) {
+            margin-bottom: 0;
+        }
+
+        .button {
+            margin-bottom: 10px;
+
+            @include breakpoint($md) {
+                margin-bottom: 0;
+                border-bottom-left-radius: 0;
+                border-bottom-right-radius: 0;
+            }
         }
     }
 
     .project-content {
         overflow-x: hidden;
-        margin-top: 65px;
         text-align: center;
+        background: #000000;
     }
 
     .screenshots, .codesamples {
         display: none;
         padding: 5px 20px 20px 20px;
-        background: #000000;
 
         h3 {
             color: #ffffff;
@@ -71,5 +117,38 @@
 
     .screenshot, .codesample {
         padding: 0;
+    }
+
+    .mobile-screenshots {
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    .mobile-screenshot {
+        margin-bottom: 20px;
+
+        &:last-child {
+            margin-right: 0;
+        }
+
+        img {
+            width: 320px;
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        @include breakpoint(1140px) {
+            display: inline-block;
+            vertical-align: top;
+            margin-left: 15px;
+            margin-right: 15px;
+        }
+
+        @include breakpoint(1300px) {
+
+            img {
+                width: auto;
+            }
+        }
     }
 }
