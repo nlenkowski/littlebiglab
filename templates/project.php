@@ -7,12 +7,48 @@ Template Name: Project
 <header class="project-header container">
 
     <h1><?php the_title(); ?></h1>
-    <p><?php the_field('description'); ?></p>
+
+    <div class="description">
+        <h4>Summary</h4>
+        <p><?php the_field('description'); ?></p>
+    </div>
+
+    <?php if ( have_rows('responsibilities') ) : ?>
+
+        <div class="responsibilities">
+            <h4>Responsibilities</h4>
+            <ul>
+                <?php while ( have_rows('responsibilities') ) : the_row(); ?>
+
+                    <?php
+                    $responsibility = get_sub_field('responsibility');
+                    if ( !empty($responsibility) ): ?>
+                        <li><?php echo $responsibility; ?></li>
+                    <?php endif; ?>
+
+                <?php endwhile; ?>
+            </ul>
+        </div>
+
+    <?php endif; ?>
+
+    <div class="technologies">
+        <h4>Technologies</h4>
+        <?php get_template_part('partials/project-technologies'); ?>
+    </div>
+
+</header>
+
+<nav class="menu">
 
     <div class="tabs">
 
-        <?php if ( have_rows('screenshots') ): ?>
-            <a href="#" class="tab button active" data-tab="screenshots"><i class="fa fa-picture-o"></i> Screenshots</a>
+        <?php if ( have_rows('desktop_screenshots') ): ?>
+            <a href="#" class="tab button active" data-tab="desktop-screenshots"><i class="fa fa-picture-o"></i> Desktop Screenshots</a>
+        <?php endif; ?>
+
+        <?php if ( have_rows('mobile_screenshots') ): ?>
+            <a href="#" class="tab button" data-tab="mobile-screenshots"><i class="fa fa-picture-o"></i> Mobile Screenshots</a>
         <?php endif; ?>
 
         <?php if ( have_rows('code_samples') ): ?>
@@ -24,24 +60,47 @@ Template Name: Project
         if ( !empty( $url ) ): ?>
             <a href="<?php echo $url; ?>" class="tab button"><i class="fa fa-external-link"></i> View Website</a>
         <?php endif; ?>
-    </div>
 
-</header>
+    </div>
+</nav>
 
 <section class="project-content">
 
-    <div class="content screenshots active">
+    <div class="content desktop-screenshots screenshots active">
 
-        <?php if ( have_rows('screenshots') ):
+        <?php if ( have_rows('desktop_screenshots') ):
 
-            while ( have_rows('screenshots') ) : the_row(); ?>
+            while ( have_rows('desktop_screenshots') ) : the_row(); ?>
 
                 <?php
                 $title = get_sub_field('title');
                 $image = get_sub_field('image');
 
                 if ( !empty($image) ): ?>
-                    <div class="screenshot">
+                    <div class="desktop-screenshot">
+                        <h3><?php echo $title; ?></h3>
+                        <img src="<?php echo $image['url']; ?>" alt="<?php echo $title; ?>">
+                    </div>
+                <?php endif; ?>
+
+            <?php endwhile; ?>
+
+        <?php endif; ?>
+
+    </div>
+
+    <div class="content mobile-screenshots screenshots">
+
+        <?php if ( have_rows('mobile_screenshots') ):
+
+            while ( have_rows('mobile_screenshots') ) : the_row(); ?>
+
+                <?php
+                $title = get_sub_field('title');
+                $image = get_sub_field('image');
+
+                if ( !empty($image) ): ?>
+                    <div class="mobile-screenshot">
                         <h3><?php echo $title; ?></h3>
                         <img src="<?php echo $image['url']; ?>" alt="<?php echo $title; ?>">
                     </div>
