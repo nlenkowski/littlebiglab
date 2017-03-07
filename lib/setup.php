@@ -75,6 +75,18 @@ function blujay_register_assets() {
 add_action( 'wp_enqueue_scripts', 'blujay_register_assets' );
 
 /**
+ * Defer loading of the these scripts
+ */
+function add_async_attribute($tag, $handle) {
+    if ( 'svgxuse' !== $handle ) {
+        return $tag;
+    } else {
+        return str_replace( ' src', ' defer src', $tag );
+    }
+}
+add_filter('script_loader_tag', 'add_async_attribute', 10, 2);
+
+/**
  * Register menus
  */
 register_nav_menus(array(
