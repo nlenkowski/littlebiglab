@@ -406,6 +406,7 @@
         "max-zoom",
         "min-zoom",
         "user-zoom",
-        "orientation"
+        "orientation",
+        "fill"
     ] ]
 }
