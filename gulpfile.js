@@ -105,11 +105,13 @@ gulp.task('vendorscripts', function() {
 });
 
 // ## Images
-// 'gulp images' - Optimizes images with imagemin
+// 'gulp images' - Optimizes images
 gulp.task('images', function() {
     return gulp.src(path.assets + 'images/**/*')
         .pipe(changed(path.dist + 'images'))
-        .pipe(image())
+        .pipe(image({
+            svgo: false
+        }))
         .pipe(gulp.dest(path.dist + 'images'))
         .pipe(browserSync.stream());
 });
