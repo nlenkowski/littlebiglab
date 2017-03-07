@@ -9,11 +9,11 @@ Template Name: Project
     <h1><?php the_title(); ?></h1>
 
     <div class="description">
-        <h4>Summary</h4>
-        <p><?php the_field('description'); ?></p>
+        <?php the_field('description'); ?>
+        <!-- <a href="#" class="project-extra-info-link">View responsibilities and technologies</a> -->
     </div>
 
-    <?php if ( have_rows('responsibilities') ) : ?>
+    <div class="extra-info">
 
         <div class="responsibilities">
             <h4>Responsibilities</h4>
@@ -30,13 +30,16 @@ Template Name: Project
             </ul>
         </div>
 
-    <?php endif; ?>
+        <div class="technologies">
+            <h4>Technologies</h4>
 
-    <div class="technologies">
-        <h4>Technologies</h4>
-        <?php get_template_part('partials/project-technologies'); ?>
+            <?php
+            set_query_var( 'terms', get_field('technologies') );
+            get_template_part('partials/project-terms');
+            ?>
+        </div>
+
     </div>
-
 </header>
 
 <nav class="menu">
