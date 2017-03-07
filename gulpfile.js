@@ -95,6 +95,15 @@ gulp.task('scripts', ['lint'], function() {
         .pipe(browserSync.stream());
 });
 
+// ## Vendor Scripts
+// 'gulp vendorscripts' - Copies vendor scripts to dist
+gulp.task('vendorscripts', function() {
+    return gulp.src(dependencies.vendor)
+        .pipe(plumber(plumberOptions))
+        .pipe(gulp.dest(path.dist + 'scripts/vendor'))
+        .pipe(browserSync.stream());
+});
+
 // ## Images
 // 'gulp images' - Optimizes images with imagemin
 gulp.task('images', function() {
@@ -145,7 +154,7 @@ gulp.task('reload', function() {
 //  should use the `gulp` task to ensure a proper build
 gulp.task('build', function() {
     require('gulp-stats')(gulp);
-    runSequence('styles', 'scripts', ['fonts', 'images']);
+    runSequence('styles', 'scripts', 'vendorscripts', ['fonts', 'images']);
 });
 
 // ## Gulp

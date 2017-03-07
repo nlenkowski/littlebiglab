@@ -63,10 +63,11 @@ define( 'DISTDIR', THEMEDIR . '/dist' );
 function blujay_register_assets() {
 
     // Scripts
-    wp_enqueue_script( 'babel-polyfill', 'https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.16.0/polyfill.min.js', array('jquery'), '', true );
-    wp_enqueue_script( 'snapsvg', 'https://cdnjs.cloudflare.com/ajax/libs/snap.svg/0.4.1/snap.svg-min.js', array('jquery'), '', true );
-    wp_enqueue_script( 'picturefill', 'https://cdnjs.cloudflare.com/ajax/libs/picturefill/3.0.2/picturefill.min.js', array('jquery'), '', true );
-    wp_enqueue_script( 'main-scripts', DISTDIR . '/scripts/main.min.js', array('jquery'), '', true );
+    wp_enqueue_script( 'babel-polyfill', DISTDIR . '/scripts/vendor/polyfill.min.js', '', '', true );
+    wp_enqueue_script( 'snapsvg', DISTDIR . '/scripts/vendor/snap.svg-min.js', '', '', true );
+    wp_enqueue_script( 'picturefill', DISTDIR . '/scripts/vendor/picturefill.min.js', '', '', true );
+    wp_enqueue_script( 'svgxuse', DISTDIR . '/scripts/vendor/svgxuse.min.js', '', '', true );
+    wp_enqueue_script( 'main-scripts', DISTDIR . '/scripts/main.min.js', '', '', true );
 
     // Styles
     wp_enqueue_style( 'main-styles', DISTDIR . '/styles/main.min.css', false );

@@ -9,6 +9,12 @@
             "assets/scripts/tabs.js",
             "assets/scripts/main.js"
         ],
+        "vendor": [
+            "node_modules/babel-polyfill/dist/polyfill.min.js",
+            "node_modules/snapsvg/dist/snap.svg-min.js",
+            "node_modules/picturefill/dist/picturefill.min.js",
+            "node_modules/svgxuse/svgxuse.min.js"
+        ],
         "styles": [
             "assets/styles/main.scss"
         ]
