@@ -20,6 +20,8 @@ var rsync        = require('gulp-rsync');
 var runSequence  = require('run-sequence');
 var sass         = require('gulp-sass');
 var sourcemaps   = require('gulp-sourcemaps');
+var svgstore     = require('gulp-svgstore');
+var svgmin       = require('gulp-svgmin');
 var uglify       = require('gulp-uglify');
 
 // Get project config
@@ -96,8 +98,8 @@ gulp.task('scripts', ['lint'], function() {
 });
 
 // ## Vendor Scripts
-// 'gulp vendorscripts' - Copies vendor scripts to dist
-gulp.task('vendorscripts', function() {
+// 'gulp vendor' - Copies vendor scripts to dist
+gulp.task('vendor', function() {
     return gulp.src(dependencies.vendor)
         .pipe(plumber(plumberOptions))
         .pipe(gulp.dest(path.dist + 'scripts/vendor'))
@@ -114,6 +116,17 @@ gulp.task('images', function() {
         }))
         .pipe(gulp.dest(path.dist + 'images'))
         .pipe(browserSync.stream());
+});
+
+// ## SVG sprite generation
+// 'gulp svg' - Generate SVG sprite from source SVG files
+gulp.task('svg', function () {
+    return gulp
+        .src(path.assets + 'svg/*.svg')
+        .pipe(rename({prefix: 'icon-'}))
+        .pipe(svgstore())
+        .pipe(rename({basename: 'symbols'}))
+        .pipe(gulp.dest(path.dist + 'svg'));
 });
 
 // ## Fonts
@@ -156,7 +169,7 @@ gulp.task('reload', function() {
 //  should use the `gulp` task to ensure a proper build
 gulp.task('build', function() {
     require('gulp-stats')(gulp);
-    runSequence('styles', 'scripts', 'vendorscripts', ['fonts', 'images']);
+    runSequence('styles', 'scripts', 'vendor', 'svg', ['fonts', 'images']);
 });
 
 // ## Gulp
@@ -184,6 +197,7 @@ gulp.task('watch', function() {
     gulp.watch([path.assets + 'scripts/**/*'], ['scripts']);
     gulp.watch([path.assets + 'fonts/**/*'], ['fonts']);
     gulp.watch([path.assets + 'images/**/*'], ['images']);
+    gulp.watch([path.assets + 'svg/**/*'], ['svg']);
 });
 
 // ## Deploy
