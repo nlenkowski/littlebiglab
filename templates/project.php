@@ -34,9 +34,17 @@ Template Name: Project
             <h4>Technologies</h4>
 
             <?php
-            set_query_var( 'terms', get_field('technologies') );
-            get_template_part('partials/project-terms');
-            ?>
+            $terms = get_field('technologies');
+            if ( $terms ) : ?>
+            <ul>
+                <?php
+                $terms_count = count( $terms );
+                foreach ( $terms as $index => $term )  {
+                    echo '<li>' . $term->name . '</li>';
+                }
+                ?>
+            </ul>
+            <?php endif; ?>
         </div>
 
     </div>
