@@ -55,21 +55,33 @@ Template Name: Project
     <div class="tabs">
 
         <?php if ( have_rows('desktop_screenshots') ): ?>
-            <a href="#" class="tab button active" data-tab="desktop-screenshots"><i class="fa fa-picture-o"></i> Desktop Screenshots</a>
+            <a href="#" class="tab button active" data-tab="desktop-screenshots">
+                <svg class="icon icon-image"><use xlink:href="<?php echo DISTDIR; ?>/svg/symbols.svg#icon-image"></use></svg>
+                <span>Desktop</span>
+            </a>
         <?php endif; ?>
 
         <?php if ( have_rows('mobile_screenshots') ): ?>
-            <a href="#" class="tab button" data-tab="mobile-screenshots"><i class="fa fa-picture-o"></i> Mobile Screenshots</a>
+            <a href="#" class="tab button" data-tab="mobile-screenshots">
+                <svg class="icon icon-image"><use xlink:href="<?php echo DISTDIR; ?>/svg/symbols.svg#icon-image"></use></svg>
+                <span>Mobile</span>
+            </a>
         <?php endif; ?>
 
         <?php if ( have_rows('code_samples') ): ?>
-            <a href="#" class="tab button" data-tab="codesamples"><i class="fa fa-code"></i> Code Samples</a>
+            <a href="#" class="tab button" data-tab="codesamples">
+                <svg class="icon icon-code"><use xlink:href="<?php echo DISTDIR; ?>/svg/symbols.svg#icon-code"></use></svg>
+                <span>Code</span>
+            </a>
         <?php endif; ?>
 
         <?php
         $url = get_field('url');
         if ( !empty( $url ) ): ?>
-            <a href="<?php echo $url; ?>" class="tab button"><i class="fa fa-external-link"></i> View Website</a>
+            <a href="<?php echo $url; ?>" class="tab button">
+                <svg class="icon icon-external-link"><use xlink:href="<?php echo DISTDIR; ?>/svg/symbols.svg#icon-external-link"></use></svg>
+                <span>Website</span>
+            </a>
         <?php endif; ?>
 
     </div>

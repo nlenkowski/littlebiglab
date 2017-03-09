@@ -75,11 +75,23 @@
         a {
             font-weight: bold;
             font-size: 18px;
+        .icon {
+            margin-right: 3px;
+            width: 18px;
+            height: 18px;
+            vertical-align: -3px;
+            transition-duration: 0.25s;
+            transform: rotate(0deg);
+            fill: $color-accent;
         }
 
-        .technologies {
-            margin-bottom: 15px;
-            font-color: $color-text;
+        &:hover {
+            border-color: $color-accent;
+
+            .icon {
+                transform: rotate(-90deg);
+                fill: $color-accent;
+            }
         }
     }
 

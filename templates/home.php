@@ -40,7 +40,10 @@ Template Name: Home
 
                         <h4><?php the_title(); ?></h4>
 
-                        <a href="<?php the_permalink(); ?>">View Project</a>
+                        <a class="project-button" href="<?php the_permalink(); ?>">
+                            <svg class="icon"><use xlink:href="<?php echo DISTDIR; ?>/svg/symbols.svg#icon-chevron-circle-right"></use></svg>
+                            <span>View Project</span>
+                        </a>
                     </div>
 
                 <?php
