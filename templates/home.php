@@ -12,13 +12,13 @@ Template Name: Home
         <?php the_field('main_heading', 8); ?>
     </h1>
 
-    <section class="projects">
+    <section class="projects container">
 
         <h2 class="section-title">
             <?php the_field('projects_heading'); ?>
         </h2>
 
-        <div class="projects-grid">
+        <div class="project-grid">
 
             <?php
             $projects = get_field('projects');
@@ -33,12 +33,16 @@ Template Name: Home
                         <?php
                         $image = get_field('logo');
                         if ( !empty($image) ): ?>
-                            <a href="<?php the_permalink(); ?>">
-                                <img src="<?php echo $image['sizes']['project-logo']; ?>" srcset="<?php echo $image['sizes']['project-logo']; ?>, <?php echo $image['sizes']['project-logo-retina']; ?> 2x" alt="<?php the_title(); ?>">
-                            </a>
+                                <img class="project-image" src="<?php echo $image['sizes']['project-logo']; ?>" srcset="<?php echo $image['sizes']['project-logo']; ?>, <?php echo $image['sizes']['project-logo-retina']; ?> 2x" alt="<?php the_title(); ?>">
                         <?php endif; ?>
 
-                        <h4><?php the_title(); ?></h4>
+                        <h4 class="project-title">
+                            <?php the_title(); ?>
+                        </h4>
+
+                        <h6 class="project-short-description">
+                            <?php the_field('short_description'); ?>
+                        </h6>
 
                         <a class="project-button" href="<?php the_permalink(); ?>">
                             <svg class="icon"><use xlink:href="<?php echo DISTDIR; ?>/svg/symbols.svg#icon-chevron-circle-right"></use></svg>
@@ -66,13 +70,13 @@ Template Name: Home
         		$content = get_sub_field('content');
         		?>
 
-        		<section class="<?php echo strtolower($name); ?> container">
+        		<section class="<?php echo strtolower($name); ?> section-content container">
 
                     <h2 class="section-title">
                         <?php echo $heading; ?>
                     </h2>
 
-                    <div class="section-content">
+                    <div class="section-body">
                         <?php echo $content; ?>
                     </div>
 

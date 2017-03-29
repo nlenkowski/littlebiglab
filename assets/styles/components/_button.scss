@@ -2,6 +2,8 @@
  * Button
  */
 
+// Light button
+
 .button {
     display: inline-block;
     margin-right: 3px;
@@ -15,10 +17,6 @@
     font-size: 20px;
     font-family: $font-family-museo-lite;
 
-    .fa {
-        margin-right: 5px;
-    }
-
     &:hover {
         border: 1px solid #cccccc;
     }
@@ -28,4 +26,58 @@
     border: 1px solid #000000;
     background: #000000;
     color: #ffffff;
+}
+
+// Dark button
+
+.button-dark {
+    @extend .button;
+    background: #000000;
+    border-color: #000000;
+    color: #ffffff;
+
+    .icon {
+        fill: #ffffff;
+    }
+
+    &:hover {
+        color: #ffffff;
+        border-color: lighten(#000000, 15%);
+    }
+}
+
+.button-dark.active {
+    background: #ffffff;
+
+    .icon {
+        fill: #000000;
+    }
+    span {
+        color: #000000;
+    }
+}
+
+.button-vertical {
+    padding-bottom: 8px;
+
+    .icon {
+        margin-right: 0;
+    }
+}
+
+// Small button
+
+.button-small {
+    @extend .button;
+    padding: 5px 8px;
+    border: 1px solid #cccccc;
+    font-size: $font-size-base;
+    font-family: $font-family-museo;
+}
+
+.icon {
+    display: inline-block;
+    width: 19px;
+    height: 19px;
+    vertical-align: -4px;
 }

@@ -4,82 +4,69 @@
 
 .page-home {
 
-    .site-title {
-        margin-bottom: 50px;
-    }
-
     .site-title, .section-title {
         text-align: center;
     }
 
+    .projects .section-title {
+        margin-bottom: 0;
+        padding-bottom: 25px;
+
+        span {
+            font-size: 1.2rem;
+            font-family: $font-family-museo-lite;
+
+            @include breakpoint($md) {
+                font-size: 1.75rem;
+            }
+        }
+    }
+
     .projects {
         text-align: center;
+    }
 
-        .section-title {
-            display: inline-block;
-            margin: 0;
-            padding-right: 35px;
-            padding-bottom: 35px;
-            padding-left: 35px;
-            border-bottom: 1px solid $color-border;
-            font-size: 1.75rem;
+    .project-grid {
+        @include clearfix;
+        margin: 0 auto;
+        max-width: 1200px;
+    }
 
-            @include breakpoint($md) {
-                font-size: 2.5rem;
-            }
+    .project {
+        margin-top: 65px;
+        text-align: center;
 
-            span {
-                color: #555555;
-                font-size: 1.4rem;
-                font-family: $font-family-museo-lite;
+        @include breakpoint($md) {
+            @include span(4);
+            margin-top: 65px;
+            margin-bottom: 25px;
 
-                @include breakpoint($md) {
-                    font-size: 2rem;
-                }
+            &:last-child {
+                @include last;
             }
         }
+    }
 
-        .projects-grid {
-            margin: 0 auto;
-            max-width: 1200px;
+    .project-title {
+        margin-top: 20px;
+        margin-bottom: 0;
+    }
 
-            @include clearfix;
-        }
+    .project-short-description {
+        margin-top: 10px;
+        color: #666666;
+        font-weight: 300;
+        font-family: $font-family-helvetica;
+    }
 
-        .project {
-            margin-top: 85px;
-            text-align: center;
+    .project-button {
+        @extend .button-small;
+        margin-top: 15px;
+        border-color: $color-border;
+        background: #fdfdfd;
+        transition-duration: 0.5s;
 
-            @include breakpoint($md) {
-                margin-top: 65px;
-                margin-bottom: 25px;
-
-                @include span(4);
-
-
-                &:last-child {
-                    @include last;
-                }
-            }
-
-            a:first-child {
-                border: 0;
-            }
-        }
-
-        h4 {
-            margin-top: 25px;
-            margin-bottom: 5px;
-        }
-
-        a {
-            font-weight: bold;
-            font-size: 18px;
         .icon {
-            margin-right: 3px;
-            width: 18px;
-            height: 18px;
-            vertical-align: -3px;
             transition-duration: 0.25s;
             transform: rotate(0deg);
             fill: $color-accent;
@@ -95,16 +82,11 @@
         }
     }
 
-    .toolbox, .build {
+    .section-content {
         text-align: center;
 
         .section-title {
-            display: inline-block;
-            margin-top: 75px;
-            padding-right: 25px;
-            padding-bottom: 25px;
-            padding-left: 25px;
-            border-bottom: 1px solid $color-border;
+            margin-top: 60px;
         }
     }
 }

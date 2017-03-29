@@ -27,6 +27,7 @@ h5, .f5 { font-size: $f5; }
 h6, .f6 { font-size: $f6; }
 
 h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 0.5rem;
     color: $color-heading;
     font-family: $font-family-headings;
     line-height: $line-height-headings;
@@ -36,7 +37,7 @@ h1, h2, h3, h4, h5, h6 {
 a {
     color: $color-link;
     text-decoration: none;
-    border-bottom: 1px solid lighten($color-link, 30%);
+    font-weight: bold;
 
     &:hover {
         color: $color-link-hover;
@@ -52,28 +53,74 @@ img {
 // Typography
 //
 
+.underline {
+    font-weight: bold;
+    border-bottom: 1px solid #666666;
+
+    &:hover {
+        color: $color-accent;
+        border-color: $color-accent;
+    }
+}
+
 .site-title {
-    font-size: 2rem;
-    line-height: 1.25em;
+    font-size: 1.625rem;
+    line-height: 1.3em;
 
     @include breakpoint($md) {
-        font-size: 2.7rem;
-        line-height: 1.3em;
-        margin-bottom: 60px;
+        font-size: 2.75rem;
+        line-height: 1.35em;
     }
 }
 
 .section-title {
+    display: inline-block;
+    margin-bottom: 15px;
+    padding-right: 35px;
+    padding-bottom: 20px;
+    padding-left: 35px;
+    border-bottom: 1px solid $color-border;
+    font-size: 1.625rem;
+    line-height: 1.2em;
 
     @include breakpoint($md) {
-        font-size: 2.5rem;
+        font-size: 2.2rem;
+        line-height: 1.1em;
     }
 }
 
-.section-content {
+.section-body {
     margin: 0 auto;
-    max-width: 940px;
+    max-width: 820px;
     text-align: left;
+
+    a {
+        @extend .underline;
+    }
+
+    ul {
+        list-style: none;
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    li {
+        padding-left: 1em;
+        text-indent: -1em;
+    }
+
+    li::before {
+      content: "•";
+      font-size: 30px;
+      vertical-align: -5px;
+      padding-right: 10px;
+      color: $color-accent;
+    }
+
+    @include breakpoint($lg) {
+        font-size: 1.125rem;
+        line-height: 1.6875em;
+    }
 }
 
 //

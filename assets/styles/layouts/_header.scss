@@ -10,10 +10,14 @@
 .logo {
     margin: 0 auto;
     max-width: 1140px;
-    width: 100%;
+    width: 85%;
 
-    @media(max-width: 1140px) {
+    @include breakpoint($md) {
         width: 95%;
+    }
+
+    @include breakpoint($xl) {
+        width: 100%;
     }
 }
 
@@ -53,7 +57,7 @@
 }
 
 #logo-mobile {
-    margin-top: 30px;
+    margin-top: 15px;
 }
 
 #logo-desktop {
