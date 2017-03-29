@@ -38,6 +38,7 @@
   "dependencies": {
     "babel-polyfill": "^6.23.0",
     "breakpoint-sass": "^2.7.0",
+    "gsap": "^1.19.1",
     "normalize-scss": "^6.0.0",
     "picturefill": "^3.0.2",
     "snapsvg": "^0.5.1",
