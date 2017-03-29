@@ -26,13 +26,13 @@ class Tabs {
         // Init
         this.cacheDom();
         this.bindEvents();
-        //this.checkUrlHash();
+        this.checkUrlHash();
     }
 
     cacheDom() {
 
         // Get nodelists for tabs and content
-        this.tabs = document.querySelectorAll('.' + this.tabsClass);
+        this.tabs     = document.querySelectorAll('.' + this.tabsClass);
         this.contents = document.querySelectorAll('.' + this.contentClass);
     }
 
@@ -109,13 +109,17 @@ class Tabs {
 
     scrollToContent() {
 
+        // Get current tab
+        let tabsContainer    = document.querySelector('.' + this.tabsContainer);
+        let contentContainer = document.querySelector('.' + this.contentContainer);
+
         // Calculate new scroll position
-        let menuHeight   = parseInt( window.getComputedStyle(this.tabsContainer).getPropertyValue('height') );
-        let contentYPos  = this.tabsContainer.getBoundingClientRect().top;
+        let menuHeight   = parseInt( window.getComputedStyle(tabsContainer).getPropertyValue('height') );
+        let contentYPos  = contentContainer.getBoundingClientRect().top;
         let newScrollPos = contentYPos + window.pageYOffset - menuHeight;
 
         // Scroll content if menu is fixed
-        if ( window.getComputedStyle(this.tabsContainer).getPropertyValue('position') === 'fixed' ) {
+        if ( window.getComputedStyle(tabsContainer).getPropertyValue('position') === 'fixed' ) {
             document.documentElement.scrollTop = document.body.scrollTop = newScrollPos;
         }
     }
@@ -143,8 +147,8 @@ class Tabs {
 
         } else { // Show first tab
 
-            //let firstTab = this.tabs[0].getAttribute(this.tabsAttribute);
-            //this.toggleTabs(null, firstTab);
+            let firstTab = this.tabs[0].getAttribute(this.tabsAttribute);
+            this.toggleTabs(null, firstTab);
         }
     }
 

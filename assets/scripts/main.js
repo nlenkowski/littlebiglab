@@ -25,6 +25,17 @@ const Main = (function(){
     }
 
     /**
+     * Project more info button
+     */
+
+    let projectMoreLink = document.querySelector('.project-more-link');
+    let projectMoreInfo = document.querySelector('.project-more-info');
+
+    projectMoreLink.addEventListener("click", function() {
+        projectMoreInfo.classList.add('visible');
+    }, false);
+
+    /**
      * Scroll event handling
      */
 

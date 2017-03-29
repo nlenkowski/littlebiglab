@@ -4,69 +4,73 @@ Template Name: Project
 */
 ?>
 
-<h1 class="project-heading">
-    Project
-</h1>
+<h1 class="project-heading">Project</h1>
 
 <section class="project-info container">
 
-    <?php
-    $image = get_field('logo');
-    if ( !empty($image) ): ?>
-        <img class="project-logo" src="<?php echo $image['sizes']['project-logo']; ?>" srcset="<?php echo $image['sizes']['project-logo']; ?>, <?php echo $image['sizes']['project-logo-retina']; ?> 2x" alt="<?php the_title(); ?>">
-    <?php endif; ?>
+    <div class="project-info-column">
 
-    <h2 class="project-title">
-        <?php the_title(); ?>
-    </h2>
+        <?php
+        $image = get_field('logo');
+        if ( !empty($image) ): ?>
+        <div class="project-logo">
+            <img src="<?php echo $image['sizes']['project-logo']; ?>" srcset="<?php echo $image['sizes']['project-logo']; ?>, <?php echo $image['sizes']['project-logo-retina']; ?> 2x" alt="<?php the_title(); ?>">
+        </div>
+        <?php endif; ?>
 
-    <h5 class="project-short-description">
-        <?php the_field('short_description'); ?>
-    </h5>
+        <h2 class="project-title"><?php the_title(); ?></h2>
 
-    <div class="project-description">
-        <p><?php the_field('description'); ?></p>
-
-        <a href="#" class="project-more-link button-small">
-            <svg class="icon"><use xlink:href="<?php echo DISTDIR; ?>/svg/symbols.svg#icon-chevron-circle-right"></use></svg>
-            <span>More Details</span>
-        </a>
+        <h5 class="project-short-description"><?php the_field('short_description'); ?></h5>
     </div>
 
-    <section class="project-more-info">
 
-        <section class="project-responsibilities">
-            <h4>Responsibilities</h4>
-            <ul>
-                <?php while ( have_rows('responsibilities') ) : the_row(); ?>
+    <div class="project-info-column">
 
-                    <?php
-                    $responsibility = get_sub_field('responsibility');
-                    if ( !empty($responsibility) ): ?>
-                        <li><?php echo $responsibility; ?></li>
-                    <?php endif; ?>
+        <div class="project-description">
+            <p><?php the_field('description'); ?></p>
 
-                <?php endwhile; ?>
-            </ul>
-        </section>
+            <a href="#" class="project-more-link button-small">
+                <svg class="icon"><use xlink:href="<?php echo DISTDIR; ?>/svg/symbols.svg#icon-chevron-circle-right"></use></svg>
+                <span>Learn More</span>
+            </a>
+        </div>
 
-        <section class="project-technologies">
-            <h4>Technologies</h4>
-            <?php
-            $terms = get_field('technologies');
-            if ( $terms ) : ?>
-            <ul>
+        <section class="project-more-info">
+
+            <section class="project-responsibilities">
+                <h4>Responsibilities</h4>
+                <ul>
+                    <?php while ( have_rows('responsibilities') ) : the_row(); ?>
+
+                        <?php
+                        $responsibility = get_sub_field('responsibility');
+                        if ( !empty($responsibility) ): ?>
+                            <li><?php echo $responsibility; ?></li>
+                        <?php endif; ?>
+
+                    <?php endwhile; ?>
+                </ul>
+            </section>
+
+            <section class="project-technologies">
+                <h4>Technologies</h4>
                 <?php
-                $terms_count = count( $terms );
-                foreach ( $terms as $index => $term )  {
-                    echo '<li>' . $term->name . '</li>';
-                }
-                ?>
-            </ul>
-            <?php endif; ?>
+                $terms = get_field('technologies');
+                if ( $terms ) : ?>
+                <ul>
+                    <?php
+                    $terms_count = count( $terms );
+                    foreach ( $terms as $index => $term )  {
+                        echo '<li>' . $term->name . '</li>';
+                    }
+                    ?>
+                </ul>
+                <?php endif; ?>
+            </section>
+
         </section>
 
-    </section>
+    </div>
 </section>
 
 <!-- <h4 class="project-details-title">
@@ -74,10 +78,10 @@ Template Name: Project
 </h4> -->
 
 <div class="project-details-menu-wrapper">
-    <nav class="project-details-menu tabs">
+    <nav class="project-details-menu tabs-container tabs">
 
         <?php if ( have_rows('desktop_screenshots') ): ?>
-            <a href="#" class="tab button-dark button-vertical active" data-tab="desktop-screenshots">
+            <a href="#" class="tab button-dark button-vertical" data-tab="desktop-screenshots">
                 <svg class="icon icon-image"><use xlink:href="<?php echo DISTDIR; ?>/svg/symbols.svg#icon-desktop"></use></svg>
                 <span>Desktop</span>
             </a>
