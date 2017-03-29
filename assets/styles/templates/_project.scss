@@ -3,107 +3,146 @@
  */
 
 .single-project {
-    min-height: 300px;
 
-    .project-header {
-        max-width: 960px;
+    .project-heading {
+        margin-top: 5px;
         text-align: center;
+        text-transform: uppercase;
+        font-weight: normal;
+        font-size: 28px;
+        font-family: $font-family-museo-lite;
 
-        h1 {
-            @extend .site-title;
-            margin-bottom: 25px;
-        }
-
-        h4 {
-            margin-bottom: 15px;
-        }
-
-        p {
-            font-size: 1.125rem;
-        }
-
-        .responsibilities, .technologies {
-            display: inline-block;
-            vertical-align: top;
-
-            ul {
-                text-align: left;
-                padding-left: 20px;
-            }
-        }
-
-        @include breakpoint($lg) {
-            max-width: $xl;
-
-            .description {
-                @include span(6);
-                padding-right: 40px;
-                text-align: left;
-            }
-
-            .responsibilities, .technologies {
-                @include span(3);
-                display: block;
-                text-align: left;
-            }
-
-            .technologies {
-                @include last;
-            }
+        @include breakpoint($md) {
+            font-size: $f1;
         }
     }
 
-    .menu {
-        @include clearfix;
-        margin-top: 50px;
-        margin-bottom: 20px;
-        text-align: center;
+    // Project info
 
-        @include breakpoint($md) {
-            margin-bottom: 0;
+    .project-info {
+        margin-top: 25px;
+        margin-bottom: 50px;
+        border-top: 1px solid $color-border;
+        text-align: center;
+    }
+
+    .project-logo {
+        margin-top: 50px;
+    }
+
+    .project-title {
+        margin-top: 15px;
+    }
+
+    .project-short-description {
+        margin-top: 0;
+        color: #666666;
+        font-weight: 200;
+        font-size: $f5;
+        font-family: $font-family-helvetica;
+    }
+
+    .project-description {
+        margin-top: 35px;
+        font-size: $f6;
+
+        p {
+            text-align: left;
+        }
+    }
+
+    .project-more-info {
+        display: none;
+
+        ul {
+            padding-left: 20px;
+            list-style: circle;
+            text-align: left;
+        }
+    }
+
+    .project-more-link {
+        margin: 0 auto;
+
+        .icon {
+            fill: $color-accent;
+        }
+    }
+
+    .project-technologies {
+
+        ul {
+            margin-left: -15px;
+            column-count: 2;
+            column-gap: 50px;
         }
 
-        .button {
-            margin-bottom: 10px;
+        li {
+            margin-left: 1em;
+        }
+    }
 
-            @include breakpoint($md) {
-                margin-bottom: 0;
-                border-bottom-left-radius: 0;
-                border-bottom-right-radius: 0;
-            }
+    // Project details
+
+    .project-details-title {
+        text-align: center;
+        margin-top: 45px;
+        margin-bottom: 25px;
+    }
+
+    .project-details-menu {
+        position: static;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        background: #000000;
+        text-align: center;
+        border-bottom: 1px solid lighten(#000000, 15%);
+
+
+        @include clearfix;
+
         .icon {
             width: 22px;
             height: 22px;
-            vertical-align: -3px;
-            margin-right: 3px;
-        }
-    }
-
-    .project-content {
-        overflow-x: hidden;
-        text-align: center;
-        background: #000000;
-    }
-
-    .screenshots, .codesamples {
-        display: none;
-        padding: 5px 20px 20px 20px;
-
-        h3 {
             color: #ffffff;
-            font-weight: 300;
-            font-family: $font-family-museo-lite;
+
+            @include breakpoint($md) {
+                margin-right: 3px;
+                vertical-align: -3px;
+            }
         }
 
-        img {
-            padding: 10px 30px 30px 30px;
-            border-radius: 5px;
-            background: #ffffff;
-        }
+        span {
+            margin-top: 5px;
+            display: block;
+            font-size: 12px;
+            line-height: 1.3em;
 
-        .gist, .gist-file {
-            border-radius: 5px !important;
+            @include breakpoint($sm) {
+                font-size: 14px;
+            }
         }
+    }
+
+    .project-details-menu.fixed {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+    }
+
+    .project-details {
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-bottom: 25px;
+        background: lighten(#000000, 7%);
+        text-align: center;
+    }
+
+    // Project details content
+
+    .desktop-screenshots, .mobile-screenshots, .code-samples {
+        display: none;
 
         &.active {
             display: block;
@@ -120,40 +159,65 @@
         }
     }
 
-    .screenshot, .codesample {
-        padding: 0;
+    .mobile-screenshots {
+        margin: 0 auto;
+        text-align: center;
     }
 
-    .mobile-screenshots {
-        text-align: center;
-        margin: 0 auto;
+    .desktop-screenshot, .mobile-screenshot, .code-sample {
+        padding-top: 35px;
+
+        h5 {
+            margin-top: 0;
+            margin-bottom: 15px;
+            color: #ffffff;
+            font-family: $font-family-museo-lite;
+        }
+
+        img {
+            padding: 5px;
+            background: #ffffff;
+            border-radius: 5px;
+
+            @include breakpoint($md) {
+                padding: 10px 30px 30px 30px;
+            }
+        }
+    }
+
+    .desktop-screenshot {
+
+        @include breakpoint($sm) {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
     }
 
     .mobile-screenshot {
         margin-bottom: 20px;
+
+        @include breakpoint($md) {
+            display: inline-block;
+            margin-right: 15px;
+            margin-left: 15px;
+            vertical-align: top;
+        }
 
         &:last-child {
             margin-right: 0;
         }
 
         img {
-            width: 320px;
-            padding-left: 0;
             padding-right: 0;
+            padding-left: 0;
+            width: 320px;
         }
+    }
 
-        @include breakpoint(1140px) {
-            display: inline-block;
-            vertical-align: top;
-            margin-left: 15px;
-            margin-right: 15px;
-        }
+    .code-samples {
 
-        @include breakpoint(1300px) {
-
-            img {
-                width: auto;
-            }
+        .gist, .gist-file {
+            border-radius: 5px !important;
         }
     }
 }

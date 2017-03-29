@@ -7,16 +7,18 @@ class Tabs {
 
     /**
      * Init
-     * @param {string} tabClass
-     * @param {string} tabAttribute
+     * @param {string} tabsClass
+     * @param {string} tabsAttribute
      * @param {string} contentClass
      */
-    constructor(tabAttribute = 'data-tab', tabClass = 'tab', contentClass = 'content') {
+    constructor(tabsAttribute = 'data-tab', tabsClass = 'tab', tabsContainer = 'tabs-container', contentClass = 'content', contentContainer = 'content-container') {
 
         // Parameters
-        this.tabAttribute = tabAttribute;
-        this.tabClass     = tabClass;
-        this.contentClass = contentClass;
+        this.tabsAttribute    = tabsAttribute;
+        this.tabsClass        = tabsClass;
+        this.tabsContainer    = tabsContainer;
+        this.contentClass     = contentClass;
+        this.contentContainer = contentContainer;
 
         // State
         this.activeTabAttribute = null;
@@ -24,13 +26,13 @@ class Tabs {
         // Init
         this.cacheDom();
         this.bindEvents();
-        this.checkUrlHash();
+        //this.checkUrlHash();
     }
 
     cacheDom() {
 
         // Get nodelists for tabs and content
-        this.tabs = document.querySelectorAll('.' + this.tabClass);
+        this.tabs = document.querySelectorAll('.' + this.tabsClass);
         this.contents = document.querySelectorAll('.' + this.contentClass);
     }
 
@@ -39,10 +41,10 @@ class Tabs {
         // Bind tab element click events
         for (let tab of this.tabs) {
 
-            let tabAttribute = tab.getAttribute(this.tabAttribute);
+            let tabsAttribute = tab.getAttribute(this.tabsAttribute);
 
             tab.addEventListener('click',
-                e => this.toggleTabs(e, tabAttribute)
+                e => this.toggleTabs(e, tabsAttribute)
             );
         }
     }
@@ -51,10 +53,10 @@ class Tabs {
      * Tab methods
      */
 
-    toggleTabs(e, tabAttribute) {
+    toggleTabs(e, tabsAttribute) {
 
         // Store active tab attribute state
-        this.activeTabAttribute = tabAttribute;
+        this.activeTabAttribute = tabsAttribute;
 
         // Display tab element and content and set url hash
         this.toggleTab();
@@ -79,7 +81,7 @@ class Tabs {
     }
 
     showTab() {
-        let tab = document.querySelector('[' + this.tabAttribute + '=' + this.activeTabAttribute + ']');
+        let tab = document.querySelector('[' + this.tabsAttribute + '=' + this.activeTabAttribute + ']');
         tab.classList.add('active');
     }
 
@@ -101,6 +103,21 @@ class Tabs {
     showContent() {
         let content = document.querySelector('.' + this.activeTabAttribute);
         content.classList.add('active');
+
+        this.scrollToContent();
+    }
+
+    scrollToContent() {
+
+        // Calculate new scroll position
+        let menuHeight   = parseInt( window.getComputedStyle(this.tabsContainer).getPropertyValue('height') );
+        let contentYPos  = this.tabsContainer.getBoundingClientRect().top;
+        let newScrollPos = contentYPos + window.pageYOffset - menuHeight;
+
+        // Scroll content if menu is fixed
+        if ( window.getComputedStyle(this.tabsContainer).getPropertyValue('position') === 'fixed' ) {
+            document.documentElement.scrollTop = document.body.scrollTop = newScrollPos;
+        }
     }
 
     /*
@@ -116,13 +133,18 @@ class Tabs {
         if (urlHash) {
 
             // Make sure the hash exists as a data attribute in the dom
-            var node = document.querySelector('[' + this.tabAttribute + '=' + urlHash + ']');
+            var node = document.querySelector('[' + this.tabsAttribute + '=' + urlHash + ']');
             let validHash = document.body.contains(node);
 
             // Set tab if valid
             if (validHash) {
                 this.toggleTabs(null, urlHash);
             }
+
+        } else { // Show first tab
+
+            //let firstTab = this.tabs[0].getAttribute(this.tabsAttribute);
+            //this.toggleTabs(null, firstTab);
         }
     }
 

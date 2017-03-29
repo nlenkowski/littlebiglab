@@ -4,18 +4,38 @@ Template Name: Project
 */
 ?>
 
-<header class="project-header container">
+<h1 class="project-heading">
+    Project
+</h1>
 
-    <h1><?php the_title(); ?></h1>
+<section class="project-info container">
 
-    <div class="description">
-        <?php the_field('description'); ?>
-        <!-- <a href="#" class="project-extra-info-link">View responsibilities and technologies</a> -->
+    <?php
+    $image = get_field('logo');
+    if ( !empty($image) ): ?>
+        <img class="project-logo" src="<?php echo $image['sizes']['project-logo']; ?>" srcset="<?php echo $image['sizes']['project-logo']; ?>, <?php echo $image['sizes']['project-logo-retina']; ?> 2x" alt="<?php the_title(); ?>">
+    <?php endif; ?>
+
+    <h2 class="project-title">
+        <?php the_title(); ?>
+    </h2>
+
+    <h5 class="project-short-description">
+        <?php the_field('short_description'); ?>
+    </h5>
+
+    <div class="project-description">
+        <p><?php the_field('description'); ?></p>
+
+        <a href="#" class="project-more-link button-small">
+            <svg class="icon"><use xlink:href="<?php echo DISTDIR; ?>/svg/symbols.svg#icon-chevron-circle-right"></use></svg>
+            <span>More Details</span>
+        </a>
     </div>
 
-    <div class="extra-info">
+    <section class="project-more-info">
 
-        <div class="responsibilities">
+        <section class="project-responsibilities">
             <h4>Responsibilities</h4>
             <ul>
                 <?php while ( have_rows('responsibilities') ) : the_row(); ?>
@@ -28,11 +48,10 @@ Template Name: Project
 
                 <?php endwhile; ?>
             </ul>
-        </div>
+        </section>
 
-        <div class="technologies">
+        <section class="project-technologies">
             <h4>Technologies</h4>
-
             <?php
             $terms = get_field('technologies');
             if ( $terms ) : ?>
@@ -45,32 +64,35 @@ Template Name: Project
                 ?>
             </ul>
             <?php endif; ?>
-        </div>
+        </section>
 
-    </div>
-</header>
+    </section>
+</section>
 
-<nav class="menu">
+<!-- <h4 class="project-details-title">
+    Screenshots &amp; Code Samples
+</h4> -->
 
-    <div class="tabs">
+<div class="project-details-menu-wrapper">
+    <nav class="project-details-menu tabs">
 
         <?php if ( have_rows('desktop_screenshots') ): ?>
-            <a href="#" class="tab button active" data-tab="desktop-screenshots">
-                <svg class="icon icon-image"><use xlink:href="<?php echo DISTDIR; ?>/svg/symbols.svg#icon-image"></use></svg>
+            <a href="#" class="tab button-dark button-vertical active" data-tab="desktop-screenshots">
+                <svg class="icon icon-image"><use xlink:href="<?php echo DISTDIR; ?>/svg/symbols.svg#icon-desktop"></use></svg>
                 <span>Desktop</span>
             </a>
         <?php endif; ?>
 
         <?php if ( have_rows('mobile_screenshots') ): ?>
-            <a href="#" class="tab button" data-tab="mobile-screenshots">
-                <svg class="icon icon-image"><use xlink:href="<?php echo DISTDIR; ?>/svg/symbols.svg#icon-image"></use></svg>
+            <a href="#" class="tab button-dark button-vertical" data-tab="mobile-screenshots">
+                <svg class="icon icon-image"><use xlink:href="<?php echo DISTDIR; ?>/svg/symbols.svg#icon-mobile"></use></svg>
                 <span>Mobile</span>
             </a>
         <?php endif; ?>
 
         <?php if ( have_rows('code_samples') ): ?>
-            <a href="#" class="tab button" data-tab="codesamples">
-                <svg class="icon icon-code"><use xlink:href="<?php echo DISTDIR; ?>/svg/symbols.svg#icon-code"></use></svg>
+            <a href="#" class="tab button-dark button-vertical" data-tab="code-samples">
+                <svg class="icon icon-code"><use xlink:href="<?php echo DISTDIR; ?>/svg/symbols.svg#icon-embed"></use></svg>
                 <span>Code</span>
             </a>
         <?php endif; ?>
@@ -78,21 +100,21 @@ Template Name: Project
         <?php
         $url = get_field('url');
         if ( !empty( $url ) ): ?>
-            <a href="<?php echo $url; ?>" class="tab button">
-                <svg class="icon icon-external-link"><use xlink:href="<?php echo DISTDIR; ?>/svg/symbols.svg#icon-external-link"></use></svg>
+            <a href="<?php echo $url; ?>" class="tab button-dark button-vertical">
+                <svg class="icon icon-ext"><use xlink:href="<?php echo DISTDIR; ?>/svg/symbols.svg#icon-external-link"></use></svg>
                 <span>Website</span>
             </a>
         <?php endif; ?>
 
-    </div>
-</nav>
+    </nav>
+</div>
 
-<section class="project-content">
+<section class="project-details">
 
-    <div class="content desktop-screenshots screenshots active">
+    <section class="desktop-screenshots content active">
 
-        <?php if ( have_rows('desktop_screenshots') ):
-
+        <?php
+        if ( have_rows('desktop_screenshots') ):
             while ( have_rows('desktop_screenshots') ) : the_row(); ?>
 
                 <?php
@@ -101,21 +123,19 @@ Template Name: Project
 
                 if ( !empty($image) ): ?>
                     <div class="desktop-screenshot">
-                        <h3><?php echo $title; ?></h3>
+                        <h5><?php echo $title; ?></h5>
                         <img src="<?php echo $image['url']; ?>" alt="<?php echo $title; ?>">
                     </div>
                 <?php endif; ?>
 
             <?php endwhile; ?>
-
         <?php endif; ?>
+    </section>
 
-    </div>
+    <section class="mobile-screenshots content">
 
-    <div class="content mobile-screenshots screenshots">
-
-        <?php if ( have_rows('mobile_screenshots') ):
-
+        <?php
+        if ( have_rows('mobile_screenshots') ):
             while ( have_rows('mobile_screenshots') ) : the_row(); ?>
 
                 <?php
@@ -124,21 +144,19 @@ Template Name: Project
 
                 if ( !empty($image) ): ?>
                     <div class="mobile-screenshot">
-                        <h3><?php echo $title; ?></h3>
+                        <h5><?php echo $title; ?></h5>
                         <img src="<?php echo $image['url']; ?>" alt="<?php echo $title; ?>">
                     </div>
                 <?php endif; ?>
 
             <?php endwhile; ?>
-
         <?php endif; ?>
+    </section>
 
-    </div>
+    <section class="code-samples content">
 
-    <div class="content codesamples">
-
-        <?php if ( have_rows('code_samples') ):
-
+        <?php
+        if ( have_rows('code_samples') ):
             while ( have_rows('code_samples') ) : the_row(); ?>
 
                 <?php
@@ -147,16 +165,14 @@ Template Name: Project
                 $embed = $url . '.js';
 
                 if ( !empty($url) ): ?>
-                    <div class="codesample container">
-                        <h3><?php echo $title; ?></h3>
+                    <div class="code-sample container">
+                        <h5><?php echo $title; ?></h5>
                         <script src="<?php echo $embed; ?>"></script>
                     </div>
                 <?php endif; ?>
 
             <?php endwhile; ?>
-
         <?php endif; ?>
-
-    </div>
+    </section>
 
 </section>
