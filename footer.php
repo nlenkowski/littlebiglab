@@ -16,13 +16,13 @@
         <div class="container">
 
             <div class="footer-content">
-                <?php the_field('footer', 8); ?>
-            </div>
+                <h2 class="section-title">
+                    <?php the_field('footer', 8); ?>
+                </h2>
 
-            <div class="built-with-blujay">
-                <a href="http://blujay.littlebiglab.com/">
-                    <img src="<?php echo DISTDIR; ?>/images/blujay.png" srcset="<?php echo DISTDIR; ?>/images/blujay.png, <?php echo DISTDIR; ?>/images/blujay.png 2x" width="55" height="42" alt="Blujay">
-                    <p>Built with Blujay</p>
+                <a class="button-small" href="mailto:nathan@littlebiglab.com">
+                    <svg class="icon"><use xlink:href="<?php echo DISTDIR; ?>/svg/symbols.svg#icon-paper-plane"></use></svg>
+                    <span>Get in touch!</span>
                 </a>
             </div>
 
