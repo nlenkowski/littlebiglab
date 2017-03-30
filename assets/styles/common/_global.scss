@@ -49,6 +49,13 @@ img {
     height: auto;
 }
 
+p, li {
+    @include breakpoint($md) {
+        font-size: 1.125rem;
+        line-height: 1.6875em;
+    }
+}
+
 //
 // Typography
 //
@@ -115,11 +122,6 @@ img {
       vertical-align: -5px;
       padding-right: 10px;
       color: $color-accent;
-    }
-
-    @include breakpoint($lg) {
-        font-size: 1.125rem;
-        line-height: 1.6875em;
     }
 }
 

@@ -5,15 +5,16 @@
 .single-project {
 
     .project-heading {
-        margin-top: 5px;
+        margin-top: 10px;
         text-align: center;
         text-transform: uppercase;
         font-weight: normal;
-        font-size: 28px;
+        font-size: $f4;
         font-family: $font-family-museo-lite;
 
         @include breakpoint($md) {
-            font-size: $f1;
+            margin-top: 0;
+            font-size: $f3;
         }
     }
 
@@ -24,6 +25,10 @@
         margin-bottom: 50px;
         border-top: 1px solid $color-border;
         text-align: center;
+
+        @include breakpoint($md) {
+            border-top: 0;
+        }
     }
 
     .project-logo {
@@ -98,6 +103,51 @@
         }
     }
 
+    // Project info columns
+
+    @include breakpoint($md) {
+
+        .project-info {
+            margin-top: 45px;
+            margin-bottom: 55px;
+        }
+
+        .project-info-column:first-child {
+            @include span(5);
+            @include pull(15px);
+            display: flex;
+            flex-flow: column;
+            padding-right: 30px;
+            border-right: 1px solid $color-border;
+            text-align: right;
+
+            .project-title {
+                order: 1;
+            }
+
+            .project-short-description {
+                order: 2;
+            }
+
+            .project-logo {
+                order: 3;
+                margin-top: 20px;
+                padding-bottom: 15px;
+            }
+        }
+
+        .project-info-column:last-child {
+            @include span(7);
+            @include suffix(10%);
+            @include last;
+            text-align: left;
+
+            .project-description {
+                margin-top: 0;
+            }
+        }
+    }
+
     // Project details
 
     .project-details-title {
@@ -107,6 +157,7 @@
     }
 
     .project-details-menu {
+        @include clearfix;
         position: static;
         padding-top: 15px;
         padding-bottom: 15px;
@@ -114,29 +165,10 @@
         text-align: center;
         border-bottom: 1px solid lighten(#000000, 15%);
 
-
-        @include clearfix;
-
         .icon {
             width: 22px;
             height: 22px;
             color: #ffffff;
-
-            @include breakpoint($md) {
-                margin-right: 3px;
-                vertical-align: -3px;
-            }
-        }
-
-        span {
-            margin-top: 5px;
-            display: block;
-            font-size: 12px;
-            line-height: 1.3em;
-
-            @include breakpoint($sm) {
-                font-size: 14px;
-            }
         }
     }
 
