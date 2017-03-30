@@ -52,7 +52,10 @@
     }
 
     .project-more-info {
-        display: none;
+        overflow: hidden;
+        opacity: 0;
+        height: 0;
+        transition: opacity .6s;
 
         ul {
             padding-left: 20px;
@@ -61,11 +64,24 @@
         }
     }
 
-    .project-more-link {
-        margin: 0 auto;
+    .project-more-info.visible {
+        opacity: 1;
+        height: auto;
+    }
+
+    .project-button {
+        margin-top: 10px;
+        margin-left: 0;
 
         .icon {
-            fill: $color-accent;
+            transform: rotate(0deg);
+        }
+    }
+
+    .project-button.active {
+
+        .icon {
+            transform: rotate(90deg);
         }
     }
 

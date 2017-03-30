@@ -2,7 +2,7 @@
  * Main scripts
  */
 
-const Main = (function(){
+const Main = (function() {
 
     // Picture element HTML5 shiv
     document.createElement('picture');
@@ -28,12 +28,32 @@ const Main = (function(){
      * Project more info button
      */
 
-    let projectMoreLink = document.querySelector('.project-more-link');
-    let projectMoreInfo = document.querySelector('.project-more-info');
+    let projectMoreButton = document.querySelector('.project-button');
+    let projectMoreInfo   = document.querySelector('.project-more-info');
+    let moreInfoVisible   = false;
 
-    projectMoreLink.addEventListener("click", function() {
-        projectMoreInfo.classList.add('visible');
+    projectMoreButton.addEventListener('click', function(event) {
+        event.preventDefault();
+
+        if (moreInfoVisible === false) {
+            showMoreInfo();
+            moreInfoVisible = true;
+        } else {
+            hideMoreInfo();
+            moreInfoVisible = false;
+        }
     }, false);
+
+    function showMoreInfo() {
+        projectMoreInfo.classList.add('visible');
+        projectMoreButton.classList.add('active');
+    }
+
+    function hideMoreInfo() {
+        projectMoreInfo.classList.remove('visible');
+        projectMoreButton.classList.remove('active');
+
+    }
 
     /**
      * Scroll event handling
