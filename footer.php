@@ -20,7 +20,7 @@
                     <?php the_field('footer', 8); ?>
                 </h2>
 
-                <a class="button-small" href="mailto:nathan@littlebiglab.com">
+                <a class="button" href="mailto:nathan@littlebiglab.com">
                     <svg class="icon"><use xlink:href="<?php echo DISTDIR; ?>/svg/symbols.svg#icon-paper-plane"></use></svg>
                     <span>Get in touch!</span>
                 </a>

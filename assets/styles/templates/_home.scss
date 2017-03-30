@@ -60,24 +60,16 @@
     }
 
     .project-button {
-        @extend .button-small;
         margin-top: 15px;
-        border-color: $color-border;
-        background: #fdfdfd;
-        transition-duration: 0.5s;
 
         .icon {
-            transition-duration: 0.25s;
-            transform: rotate(0deg);
-            fill: $color-accent;
+            transform: rotateZ(0deg);
         }
 
         &:hover {
-            border-color: $color-accent;
 
             .icon {
                 transform: rotate(-90deg);
-                fill: $color-accent;
             }
         }
     }

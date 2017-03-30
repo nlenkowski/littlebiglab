@@ -44,7 +44,7 @@ Template Name: Home
                             <?php the_field('short_description'); ?>
                         </h6>
 
-                        <a class="project-button" href="<?php the_permalink(); ?>">
+                        <a class="project-button button" href="<?php the_permalink(); ?>">
                             <svg class="icon"><use xlink:href="<?php echo DISTDIR; ?>/svg/symbols.svg#icon-chevron-circle-right"></use></svg>
                             <span>View Project</span>
                         </a>
