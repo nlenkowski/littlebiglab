@@ -26,26 +26,26 @@ Template Name: Project
 
     <div class="project-info-column">
 
-        <div class="project-description">
-            <p><?php the_field('description'); ?></p>
+        <section class="project-description">
+            <?php the_field('description'); ?>
 
-            <a href="#" class="project-more-link button-small">
+            <a href="#" class="project-button button">
                 <svg class="icon"><use xlink:href="<?php echo DISTDIR; ?>/svg/symbols.svg#icon-chevron-circle-right"></use></svg>
-                <span>Learn More</span>
+                <span>View Technical Details</span>
             </a>
-        </div>
+        </section>
 
         <section class="project-more-info">
 
-            <section class="project-responsibilities">
-                <h4>Responsibilities</h4>
+            <section class="project-features">
+                <h4>Features</h4>
                 <ul>
-                    <?php while ( have_rows('responsibilities') ) : the_row(); ?>
+                    <?php while ( have_rows('features') ) : the_row(); ?>
 
                         <?php
-                        $responsibility = get_sub_field('responsibility');
-                        if ( !empty($responsibility) ): ?>
-                            <li><?php echo $responsibility; ?></li>
+                        $feature = get_sub_field('feature');
+                        if ( !empty($feature) ): ?>
+                            <li><?php echo $feature; ?></li>
                         <?php endif; ?>
 
                     <?php endwhile; ?>
@@ -57,14 +57,14 @@ Template Name: Project
                 <?php
                 $terms = get_field('technologies');
                 if ( $terms ) : ?>
-                <ul>
-                    <?php
-                    $terms_count = count( $terms );
-                    foreach ( $terms as $index => $term )  {
-                        echo '<li>' . $term->name . '</li>';
-                    }
-                    ?>
-                </ul>
+                    <ul>
+                        <?php
+                        $terms_count = count( $terms );
+                        foreach ( $terms as $index => $term )  {
+                            echo '<li>' . $term->name . '</li>';
+                        }
+                        ?>
+                    </ul>
                 <?php endif; ?>
             </section>
 
@@ -72,10 +72,6 @@ Template Name: Project
 
     </div>
 </section>
-
-<!-- <h4 class="project-details-title">
-    Screenshots &amp; Code Samples
-</h4> -->
 
 <div class="project-details-menu-wrapper">
     <nav class="project-details-menu tabs-container tabs">
@@ -113,9 +109,9 @@ Template Name: Project
     </nav>
 </div>
 
-<section class="project-details">
+<section class="project-details content-container">
 
-    <section class="desktop-screenshots content active">
+    <section class="desktop-screenshots content">
 
         <?php
         if ( have_rows('desktop_screenshots') ):
