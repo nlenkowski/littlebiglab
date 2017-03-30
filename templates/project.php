@@ -37,36 +37,40 @@ Template Name: Project
 
         <section class="project-more-info">
 
-            <section class="project-features">
-                <h4>Features</h4>
-                <ul>
-                    <?php while ( have_rows('features') ) : the_row(); ?>
-
-                        <?php
-                        $feature = get_sub_field('feature');
-                        if ( !empty($feature) ): ?>
-                            <li><?php echo $feature; ?></li>
-                        <?php endif; ?>
-
-                    <?php endwhile; ?>
-                </ul>
-            </section>
-
-            <section class="project-technologies">
-                <h4>Technologies</h4>
-                <?php
-                $terms = get_field('technologies');
-                if ( $terms ) : ?>
+            <?php if ( have_rows('features') ) : ?>
+                <section class="project-features">
+                    <h4>Features</h4>
                     <ul>
-                        <?php
-                        $terms_count = count( $terms );
-                        foreach ( $terms as $index => $term )  {
-                            echo '<li>' . $term->name . '</li>';
-                        }
-                        ?>
+                        <?php while ( have_rows('features') ) : the_row(); ?>
+
+                            <?php
+                            $feature = get_sub_field('feature');
+                            if ( !empty($feature) ): ?>
+                                <li><?php echo $feature; ?></li>
+                            <?php endif; ?>
+
+                        <?php endwhile; ?>
                     </ul>
-                <?php endif; ?>
-            </section>
+                </section>
+            <?php endif; ?>
+
+            <?php if ( get_field('technologies') ) : ?>
+                <section class="project-technologies">
+                    <h4>Technology Usage</h4>
+                    <?php
+                    $terms = get_field('technologies');
+                    if ( $terms ) : ?>
+                        <ul>
+                            <?php
+                            $terms_count = count( $terms );
+                            foreach ( $terms as $index => $term )  {
+                                echo '<li>' . $term->name . '</li>';
+                            }
+                            ?>
+                        </ul>
+                    <?php endif; ?>
+                </section>
+            <?php endif; ?>
 
         </section>
 
