@@ -96,6 +96,18 @@
             margin-left: -15px;
             column-count: 2;
             column-gap: 50px;
+
+            @include breakpoint($sm) {
+                column-count: 3;
+            }
+
+            @include breakpoint($md) {
+                column-count: 2;
+            }
+
+            @include breakpoint($lg) {
+                column-count: 3;
+            }
         }
 
         li {
