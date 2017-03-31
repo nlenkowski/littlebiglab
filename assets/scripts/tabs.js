@@ -58,23 +58,25 @@ class Tabs {
         // Store active tab attribute state
         this.activeTabAttribute = tabsAttribute;
 
-        // Display tab element and content and set url hash
-        this.toggleTab();
-        this.toggleContent();
-        this.setUrlHash();
+        // Get tab
+        let tab = document.querySelector('[' + this.tabsAttribute + '=' + this.activeTabAttribute + ']');
 
-        // Override default action if called from a click event
-        if (e) {
-            e.preventDefault();
+        if (tab) {
+
+            // Display tab element and content and set url hash
+            this.resetTabs();
+            this.showTab();
+            this.toggleContent();
+            this.setUrlHash();
+
+            // Prevent default action if called from a click event
+            if (e) {
+                e.preventDefault();
+            }
         }
     }
 
-    toggleTab() {
-        this.resetAllTabs();
-        this.showTab();
-    }
-
-    resetAllTabs() {
+    resetTabs() {
         for (let tab of this.tabs) {
             tab.classList.remove('active');
         }
@@ -82,7 +84,9 @@ class Tabs {
 
     showTab() {
         let tab = document.querySelector('[' + this.tabsAttribute + '=' + this.activeTabAttribute + ']');
-        tab.classList.add('active');
+        if (tab) {
+            tab.classList.add('active');
+        }
     }
 
     /*
@@ -102,9 +106,10 @@ class Tabs {
 
     showContent() {
         let content = document.querySelector('.' + this.activeTabAttribute);
-        content.classList.add('active');
-
-        this.scrollToContent();
+        if (content) {
+            content.classList.add('active');
+            this.scrollToContent();
+        }
     }
 
     scrollToContent() {
@@ -144,11 +149,6 @@ class Tabs {
             if (validHash) {
                 this.toggleTabs(null, urlHash);
             }
-
-        } else { // Show first tab
-
-            let firstTab = this.tabs[0].getAttribute(this.tabsAttribute);
-            this.toggleTabs(null, firstTab);
         }
     }
 
