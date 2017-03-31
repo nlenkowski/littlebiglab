@@ -4,14 +4,18 @@
 
 const Main = (function() {
 
-    // Picture element HTML5 shiv
+    // Picture element HTML5 shiv for legacy browsers
     document.createElement('picture');
+
+    // Page detection
+    let isHome    = function() { if ( document.querySelector('.home') ) return true; };
+    let isProject = function() { if (document.querySelector('.single-project') ) return true };
 
     // Initialize logo animations
     let logoDesktop;
     let logoMobile;
 
-    if ( document.querySelector('.home') ) {
+    if ( isHome() ) {
         logoDesktop = new Logo('logo-desktop', -1100, -185, 3500, '/wp-content/themes/littlebiglab/dist/images/elfuerte-logo.jpg', 'home');
         logoMobile = new Logo('logo-mobile', -1425, -240, 3500, '/wp-content/themes/littlebiglab/dist/images/elfuerte-logo.jpg', 'home');
     } else {
@@ -19,48 +23,12 @@ const Main = (function() {
         logoMobile = new Logo('logo-mobile', -1425, -240, 0, '/wp-content/themes/littlebiglab/dist/images/elfuerte-logo.jpg', 'project');
     }
 
-    // Initialize project navigation
-    if ( document.querySelector('.single-project') ) {
-        let projectTabs = new Tabs();
-    }
-
     /**
-     * Project more info button
+     * Scroll handling
      */
 
-    let projectMoreButton = document.querySelector('.project-button');
-    let projectMoreInfo   = document.querySelector('.project-more-info');
-    let moreInfoVisible   = false;
-
-    projectMoreButton.addEventListener('click', function(event) {
-        event.preventDefault();
-
-        if (moreInfoVisible === false) {
-            showMoreInfo();
-            moreInfoVisible = true;
-        } else {
-            hideMoreInfo();
-            moreInfoVisible = false;
-        }
-    }, false);
-
-    function showMoreInfo() {
-        projectMoreInfo.classList.add('visible');
-        projectMoreButton.classList.add('active');
-    }
-
-    function hideMoreInfo() {
-        projectMoreInfo.classList.remove('visible');
-        projectMoreButton.classList.remove('active');
-
-    }
-
-    /**
-     * Scroll event handling
-     */
-
-    let lastScrollY = 0,
-        ticking = false;
+    let lastScrollY = 0
+    let ticking = false;
 
     // Scroll event callback - stores last known scroll position
     function onScroll() {
@@ -76,34 +44,106 @@ const Main = (function() {
         }
     }
 
-    // Listen for scroll events
-    window.addEventListener('scroll', onScroll, false);
-
     // Scroll position DOM updates
     function scrollUpdate() {
 
-        // Updates
-        projectMenuFixPos();
+        // Set project menu position
+        if ( isProject() ) {
+            projectMenuFixPos();
+        }
 
         // Allow other rAFs to be called
         ticking = false;
     }
 
+    // Add scroll event listener
+    window.addEventListener('scroll', onScroll, false);
+
     /**
-     * Fix position of project menu
+     * Windows resize handling
      */
 
-    // Cache DOM
-    let projectMenu        = document.querySelector(".project-details-menu");
-    let projectMenuOffset  = projectMenu.offsetTop;
-    let projectMenuWrapper = document.querySelector('.project-details-menu-wrapper');
+    function resizeUpdate() {
+
+        if ( isProject() ) {
+            setProjectMenuOffset();
+            setProjectMenuHeight();
+        }
+    }
+    window.onresize = resizeUpdate;
+
+    /**
+     * Project page scripts
+     */
+
+    let projectTabs        = null,
+        projectMenu        = null,
+        projectMenuOffset  = null,
+        projectMenuHeight  = null,
+        projectMenuWrapper = null,
+        projectMoreInfo    = null,
+        projectMoreButton  = null,
+        moreInfoVisible    = null;
+
+    if ( isProject() ) {
+
+        // Initialize menu tabs
+        projectTabs = new Tabs();
+
+        // Initialize menu height and offset
+        projectMenu = document.querySelector('.project-details-menu');
+        projectMenuWrapper = document.querySelector('.project-details-menu-wrapper');
+        setProjectMenuHeight();
+        setProjectMenuOffset();
+
+        // Initialize project more info button
+        projectMoreButton = document.querySelector('.project-button');
+        projectMoreInfo   = document.querySelector('.project-more-info');
+        moreInfoVisible   = false;
+
+        projectMoreButton.addEventListener('click', function(e) {
+            e.preventDefault();
+
+            if (moreInfoVisible === false) {
+                showMoreInfo();
+                moreInfoVisible = true;
+            } else {
+                hideMoreInfo();
+                moreInfoVisible = false;
+            }
+
+            // Update project menu top offset
+            setProjectMenuOffset();
+
+        }, false);
+
+    }
+
+    // Show more project info content
+    function showMoreInfo() {
+        projectMoreInfo.classList.add('visible');
+        projectMoreButton.classList.add('active');
+    }
+
+    // Hide more project info content
+    function hideMoreInfo() {
+        projectMoreInfo.classList.remove('visible');
+        projectMoreButton.classList.remove('active');
+    }
+
+    // Set the project menu top offset
+    function setProjectMenuOffset() {
+        projectMenuOffset = projectMenu.offsetTop;
+    }
 
     // Set menu wrapper height to match computed menu height
     // This avoids the scroll jump when the menu position is set to fixed
-    let projectMenuHeight = window.getComputedStyle(projectMenu).getPropertyValue('height');
-    projectMenuWrapper.style.height = projectMenuHeight;
+    function setProjectMenuHeight() {
+        let projectMenuHeight = window.getComputedStyle(projectMenu).getPropertyValue('height');
+        projectMenuWrapper.style.height = projectMenuHeight;
+    }
 
-    // Set menu to fixed position when user scrolls
+    // Fix position of project menu
     function projectMenuFixPos() {
 
         if (projectMenuOffset < lastScrollY) {
@@ -115,8 +155,7 @@ const Main = (function() {
 
     // Public
     return {
-        logoDesktop: logoDesktop,
-        logoMobile: logoMobile
+        lastScrollY: lastScrollY
     }
 
 })();
