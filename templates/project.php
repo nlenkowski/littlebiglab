@@ -81,7 +81,7 @@ Template Name: Project
     <nav class="project-details-menu tabs-container tabs">
 
         <?php if ( have_rows('desktop_screenshots') ): ?>
-            <a href="#" class="tab button-dark button-vertical" data-tab="desktop-screenshots">
+            <a href="#" class="tab button-dark button-vertical active" data-tab="desktop-screenshots">
                 <svg class="icon icon-image"><use xlink:href="<?php echo DISTDIR; ?>/svg/symbols.svg#icon-desktop"></use></svg>
                 <span>Desktop</span>
             </a>
@@ -115,7 +115,7 @@ Template Name: Project
 
 <section class="project-details content-container">
 
-    <section class="desktop-screenshots content">
+    <section class="desktop-screenshots content active">
 
         <?php
         if ( have_rows('desktop_screenshots') ):
