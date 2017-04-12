@@ -64,7 +64,6 @@
 
         ul {
             padding-left: 20px;
-            list-style: circle;
             text-align: left;
         }
     }
@@ -74,7 +73,15 @@
         height: auto;
     }
 
-    .project-button {
+    .project-visit-button {
+
+        .icon {
+            margin-right: 3px;
+            vertical-align: -4px;
+        }
+    }
+
+    .project-more-button {
         margin-top: 10px;
         margin-left: 0;
 
@@ -83,7 +90,7 @@
         }
     }
 
-    .project-button.active {
+    .project-more-button.active {
 
         .icon {
             transform: rotate(90deg);
@@ -189,6 +196,10 @@
         top: 0;
         width: 100%;
         z-index: 1000;
+
+        span {
+            display: none;
+        }
     }
 
     .project-details {
@@ -228,6 +239,7 @@
         padding-top: 35px;
 
         h5 {
+            display: none;
             margin-top: 0;
             margin-bottom: 15px;
             color: #ffffff;
@@ -238,10 +250,6 @@
             padding: 5px;
             background: #ffffff;
             border-radius: 5px;
-
-            @include breakpoint($md) {
-                padding: 10px 30px 30px 30px;
-            }
         }
     }
 
@@ -256,21 +264,19 @@
     .mobile-screenshot {
         margin-bottom: 20px;
 
-        @include breakpoint($md) {
-            display: inline-block;
-            margin-right: 15px;
-            margin-left: 15px;
-            vertical-align: top;
-        }
-
         &:last-child {
             margin-right: 0;
         }
 
         img {
-            padding-right: 0;
-            padding-left: 0;
-            width: 320px;
+            padding: 0;
+        }
+
+        @include breakpoint($md) {
+            display: inline-block;
+            margin-right: 15px;
+            margin-left: 15px;
+            vertical-align: top;
         }
     }
 

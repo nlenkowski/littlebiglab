@@ -24,7 +24,7 @@ const Main = (function() {
     }
 
     /**
-     * Scroll handling
+     * Window scroll handling
      */
 
     let lastScrollY = 0
@@ -44,10 +44,10 @@ const Main = (function() {
         }
     }
 
-    // Scroll position DOM updates
+    // Scroll updates
     function scrollUpdate() {
 
-        // Set project menu position
+        // Project page
         if ( isProject() ) {
             projectMenuFixPos();
         }
@@ -91,31 +91,34 @@ const Main = (function() {
         projectTabs = new Tabs();
 
         // Initialize menu height and offset
-        projectMenu = document.querySelector('.project-details-menu');
+        projectMenu        = document.querySelector('.project-details-menu');
         projectMenuWrapper = document.querySelector('.project-details-menu-wrapper');
         setProjectMenuHeight();
         setProjectMenuOffset();
 
         // Initialize project more info button
-        projectMoreButton = document.querySelector('.project-button');
+        projectMoreButton = document.querySelector('.project-more-button');
         projectMoreInfo   = document.querySelector('.project-more-info');
         moreInfoVisible   = false;
 
-        projectMoreButton.addEventListener('click', function(e) {
-            e.preventDefault();
+        if (projectMoreButton) {
 
-            if (moreInfoVisible === false) {
-                showMoreInfo();
-                moreInfoVisible = true;
-            } else {
-                hideMoreInfo();
-                moreInfoVisible = false;
-            }
+            projectMoreButton.addEventListener('click', function(e) {
+                e.preventDefault();
 
-            // Update project menu top offset
-            setProjectMenuOffset();
+                if (moreInfoVisible === false) {
+                    showMoreInfo();
+                    moreInfoVisible = true;
+                } else {
+                    hideMoreInfo();
+                    moreInfoVisible = false;
+                }
 
-        }, false);
+                // Update project menu top offset
+                setProjectMenuOffset();
+
+            }, false);
+        }
 
     }
 

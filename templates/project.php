@@ -19,7 +19,6 @@ Template Name: Project
         <?php endif; ?>
 
         <h2 class="project-title"><?php the_title(); ?></h2>
-
         <h5 class="project-short-description"><?php the_field('short_description'); ?></h5>
     </div>
 
@@ -27,13 +26,24 @@ Template Name: Project
     <div class="project-info-column">
 
         <section class="project-description">
-            <?php the_field('description'); ?>
-
-            <a href="#" class="project-button button">
-                <svg class="icon"><use xlink:href="<?php echo DISTDIR; ?>/svg/symbols.svg#icon-chevron-circle-right"></use></svg>
-                <span>View Technical Details</span>
-            </a>
+            <p><?php the_field('description'); ?> <?php the_field('responsibilities'); ?></p>
         </section>
+
+        <?php if ( have_rows('features') || get_field('technologies') ) : ?>
+            <a href="#" class="project-more-button button">
+                <svg class="icon"><use xlink:href="<?php echo DISTDIR; ?>/svg/symbols.svg#icon-chevron-circle-right"></use></svg>
+                <span>Project Details</span>
+            </a>
+        <?php endif; ?>
+
+        <?php
+        $url = get_field('url');
+        if ( !empty( $url ) ): ?>
+            <a href="<?php echo $url; ?>" class="project-visit-button button">
+                <svg class="icon"><use xlink:href="<?php echo DISTDIR; ?>/svg/symbols.svg#icon-external-link"></use></svg>
+                <span>Visit Website</span>
+            </a>
+        <?php endif; ?>
 
         <section class="project-more-info">
 
@@ -56,7 +66,7 @@ Template Name: Project
 
             <?php if ( get_field('technologies') ) : ?>
                 <section class="project-technologies">
-                    <h4>Technology Usage</h4>
+                    <h4>Technologies</h4>
                     <?php
                     $terms = get_field('technologies');
                     if ( $terms ) : ?>
@@ -101,15 +111,6 @@ Template Name: Project
             </a>
         <?php endif; ?>
 
-        <?php
-        $url = get_field('url');
-        if ( !empty( $url ) ): ?>
-            <a href="<?php echo $url; ?>" class="tab button-dark button-vertical">
-                <svg class="icon icon-ext"><use xlink:href="<?php echo DISTDIR; ?>/svg/symbols.svg#icon-external-link"></use></svg>
-                <span>Website</span>
-            </a>
-        <?php endif; ?>
-
     </nav>
 </div>
 
@@ -122,13 +123,14 @@ Template Name: Project
             while ( have_rows('desktop_screenshots') ) : the_row(); ?>
 
                 <?php
-                $title = get_sub_field('title');
-                $image = get_sub_field('image');
+                $title   = get_sub_field('title');
+                $image   = get_sub_field('image');
+                $padding = get_field('desktop_screenshot_padding');
 
                 if ( !empty($image) ): ?>
                     <div class="desktop-screenshot">
                         <h5><?php echo $title; ?></h5>
-                        <img src="<?php echo $image['url']; ?>" alt="<?php echo $title; ?>">
+                        <img src="<?php echo $image['url']; ?>" alt="<?php echo $title; ?>" <?php if ($padding) : ?> style="padding: <?php echo $padding; ?>;"<?php endif; ?>>
                     </div>
                 <?php endif; ?>
 
@@ -145,11 +147,12 @@ Template Name: Project
                 <?php
                 $title = get_sub_field('title');
                 $image = get_sub_field('image');
+                $padding = get_field('mobile_screenshot_padding');
 
                 if ( !empty($image) ): ?>
                     <div class="mobile-screenshot">
                         <h5><?php echo $title; ?></h5>
-                        <img src="<?php echo $image['url']; ?>" alt="<?php echo $title; ?>">
+                        <img src="<?php echo $image['url']; ?>" alt="<?php echo $title; ?>" <?php if ($padding) : ?> style="padding: <?php echo $padding; ?>;"<?php endif; ?>>
                     </div>
                 <?php endif; ?>
 
