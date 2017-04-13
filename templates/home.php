@@ -65,15 +65,22 @@ Template Name: Home
         <?php if ( have_rows('sections') ): ?>
 
         	<?php while ( have_rows('sections') ): the_row();
-        		$name    = get_sub_field('name');
-        		$heading = get_sub_field('heading');
-        		$content = get_sub_field('content');
+                $name       = get_sub_field('name');
+                $heading    = get_sub_field('heading');
+                $subheading = get_sub_field('subheading');
+                $content    = get_sub_field('content');
         		?>
 
         		<section class="<?php echo strtolower($name); ?> section-content container">
 
                     <h2 class="section-title">
                         <?php echo $heading; ?>
+
+                        <?php if ($subheading) : ?>
+                            <span class="section-subtitle">
+                                <?php echo $subheading; ?>
+                            </span>
+                        <?php endif; ?>
                     </h2>
 
                     <div class="section-body">

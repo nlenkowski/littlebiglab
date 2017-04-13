@@ -12,6 +12,10 @@
         margin-bottom: 0;
         padding-bottom: 25px;
 
+        @include breakpoint($md) {
+            margin-top: 40px;
+        }
+
         span {
             font-size: 1.2rem;
             font-family: $font-family-museo-lite;
