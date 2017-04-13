@@ -28,7 +28,7 @@
         "production": {
             "hostname": "littlebiglab.com",
             "username": "nathan",
-            "destination": "/var/www/new/htdocs/wp-content/themes/littlebiglab/"
+            "destination": "/var/www/littlebiglab/htdocs/wp-content/themes/littlebiglab/"
         },
         "includePaths": [
             "./"
