@@ -36,17 +36,16 @@ Template Name: Home
                                 <img class="project-image" src="<?php echo $image['sizes']['project-logo']; ?>" srcset="<?php echo $image['sizes']['project-logo']; ?>, <?php echo $image['sizes']['project-logo-retina']; ?> 2x" alt="<?php the_title(); ?>">
                         <?php endif; ?>
 
-                        <h4 class="project-title">
+                        <h3 class="project-title">
                             <?php the_title(); ?>
-                        </h4>
+                        </h3>
 
-                        <h6 class="project-short-description">
+                        <h5 class="project-short-description">
                             <?php the_field('short_description'); ?>
-                        </h6>
+                        </h5>
 
                         <a class="project-button button" href="<?php the_permalink(); ?>">
-                            <svg class="icon"><use xlink:href="<?php echo DISTDIR; ?>/svg/symbols.svg#icon-chevron-circle-right"></use></svg>
-                            <span>View Project</span>
+                            <svg class="icon"><use xlink:href="<?php echo DISTDIR; ?>/svg/symbols.svg#icon-chevron-circle-right"></use></svg><span>View Project</span>
                         </a>
                     </div>
 

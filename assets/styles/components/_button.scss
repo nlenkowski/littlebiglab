@@ -6,26 +6,29 @@
 
 .button {
     display: inline-block;
+    margin-bottom: 5px;
     margin-right: 3px;
     margin-left: 3px;
-    padding: 6px 10px;
+    padding: 8px 12px;
     border: 1px solid #cccccc;
     border-radius: 5px;
     background: #fdfdfd;
-    color: #000000;
-    font-weight: 400;
-    font-size: 17px;
-    font-family: $font-family-museo;
     transition: border-color 0.25s;
 
     .icon {
         display: inline-block;
-        margin: 0;
-        width: 19px;
-        height: 19px;
-        vertical-align: text-bottom;
+        width: 20px;
+        height: 20px;
+        vertical-align: -4px;
         fill: $color-accent;
         transition: transform 0.25s;
+    }
+
+    span {
+        margin-left: 5px;
+        color: #000000;
+        font-size: $f6;
+        font-family: $font-family-museo;
     }
 
     &:hover {

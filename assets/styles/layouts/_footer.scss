@@ -50,13 +50,15 @@
     .button {
         display: table;
         margin: 25px auto 0 auto;
-    }
 
-    .icon {
-        margin-right: 4px;
-        width: 18px;
-        height: 18px;
-        fill: $color-accent;
+        .icon {
+            width: 22px;
+            height: 22px;
+        }
+
+        span {
+            margin-left: 7px;
+        }
     }
 }
 

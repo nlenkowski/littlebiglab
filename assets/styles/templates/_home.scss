@@ -13,7 +13,7 @@
         padding-bottom: 25px;
 
         @include breakpoint($md) {
-            margin-top: 40px;
+            margin-top: 30px;
         }
 
         span {
@@ -21,7 +21,8 @@
             font-family: $font-family-museo-lite;
 
             @include breakpoint($md) {
-                font-size: 1.75rem;
+                font-size: 1.65rem;
+                line-height: 1.65em;
             }
         }
     }
@@ -34,6 +35,10 @@
         @include clearfix;
         margin: 0 auto;
         max-width: 1200px;
+
+        @include breakpoint($md) {
+            margin-top: -10px;
+        }
     }
 
     .project {

@@ -31,8 +31,7 @@ Template Name: Project
 
         <?php if ( have_rows('features') || get_field('technologies') ) : ?>
             <a href="#" class="project-more-button button">
-                <svg class="icon"><use xlink:href="<?php echo DISTDIR; ?>/svg/symbols.svg#icon-chevron-circle-right"></use></svg>
-                <span>Project Details</span>
+                <svg class="icon"><use xlink:href="<?php echo DISTDIR; ?>/svg/symbols.svg#icon-chevron-circle-right"></use></svg><span>Project Details</span>
             </a>
         <?php endif; ?>
 
@@ -40,8 +39,7 @@ Template Name: Project
         $url = get_field('url');
         if ( !empty( $url ) ): ?>
             <a href="<?php echo $url; ?>" class="project-visit-button button">
-                <svg class="icon"><use xlink:href="<?php echo DISTDIR; ?>/svg/symbols.svg#icon-external-link"></use></svg>
-                <span>Visit Website</span>
+                <svg class="icon"><use xlink:href="<?php echo DISTDIR; ?>/svg/symbols.svg#icon-external-link"></use></svg><span>Visit Website</span>
             </a>
         <?php endif; ?>
 
