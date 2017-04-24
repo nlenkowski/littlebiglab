@@ -79,20 +79,6 @@ li {
     }
 }
 
-.site-title {
-    font-size: 1.625rem;
-    line-height: 1.3em;
-
-    @include breakpoint($md) {
-        font-size: 2.75rem;
-        line-height: 1.35em;
-    }
-}
-
-.section-subtitle, .section-body {
-    max-width: 540px;
-}
-
 .section-title {
     display: inline-block;
     margin-bottom: 20px;
