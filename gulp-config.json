@@ -39,7 +39,11 @@
             ".git",
             ".editorconfig",
             ".eslintrc.json",
-            ".gitignore"
+            ".gitignore",
+            "yarn.lock",
+            "gulp-config.json",
+            "gulpfile.js",
+            "package.json"
         ]
     },
     "browserSync": {

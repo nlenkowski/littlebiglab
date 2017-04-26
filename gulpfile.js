@@ -25,7 +25,7 @@ var svgmin       = require('gulp-svgmin');
 var uglify       = require('gulp-uglify');
 
 // Get project config
-var config       = require('./config.json'),
+var config       = require('./gulp-config.json'),
     path         = config.path,
     dependencies = config.dependencies,
     deployment   = config.deployment;
