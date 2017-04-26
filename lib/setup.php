@@ -4,9 +4,9 @@
  * Enables theme features and utilities and register assets, menus, image sizes, sidebars, etc.
  */
 
- /**
-  * Theme setup
-  */
+/**
+ * Theme setup
+ */
 function blujay_setup() {
 
     // Make theme available for translation
@@ -161,18 +161,5 @@ function blujay_register_taxonomies() {
     register_taxonomy( 'technology', array( 'project' ), $args );
 }
 add_action( 'init', 'blujay_register_taxonomies' );
-
-/**
- * Custom admin styles
- */
-function custom_admin_styles() {
-    echo '
-    <style>
-        .cpac-column-value-image img {
-            margin: 0;
-        }
-    </style>';
-}
-add_action('admin_head', 'custom_admin_styles');
 
 ?>

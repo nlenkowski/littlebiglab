@@ -14,6 +14,7 @@ $blujay_includes = array(
     '/lib/setup.php',      // Configure theme and register assets, menus, sidebars, etc
     '/lib/shortcodes.php', // Register shortcodes
     '/lib/helpers.php',    // Helper and utility functions
+    '/lib/custom.php'      // Custom functions specific to this theme
 );
 
 // Load library
