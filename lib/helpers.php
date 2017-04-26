@@ -1,6 +1,6 @@
 <?php
 /**
- * Utilities
+ * Helpers and utility function
  */
 
 /**
