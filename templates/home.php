@@ -12,10 +12,13 @@ Template Name: Home
         <?php the_field('main_heading', 8); ?>
     </h1>
 
-    <section class="projects container">
+    <section class="projects">
 
         <h2 class="section-title">
             <?php the_field('projects_heading'); ?>
+            <span class="section-subtitle">
+                <?php the_field('projects_subheading'); ?>
+            </span>
         </h2>
 
         <div class="project-grid">
@@ -36,13 +39,13 @@ Template Name: Home
                                 <img class="project-image" src="<?php echo $image['sizes']['project-logo']; ?>" srcset="<?php echo $image['sizes']['project-logo']; ?>, <?php echo $image['sizes']['project-logo-retina']; ?> 2x" alt="<?php the_title(); ?>">
                         <?php endif; ?>
 
-                        <h3 class="project-title">
+                        <h4 class="project-title">
                             <?php the_title(); ?>
-                        </h3>
+                        </h4>
 
-                        <h5 class="project-short-description">
+                        <h6 class="project-short-description">
                             <?php the_field('short_description'); ?>
-                        </h5>
+                        </h6>
 
                         <a class="project-button button" href="<?php the_permalink(); ?>">
                             <svg class="icon"><use xlink:href="<?php echo DISTDIR; ?>/svg/symbols.svg#icon-chevron-circle-right"></use></svg><span>View Project</span>
