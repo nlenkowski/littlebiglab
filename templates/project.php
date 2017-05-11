@@ -18,8 +18,13 @@ Template Name: Project
         </div>
         <?php endif; ?>
 
-        <h2 class="project-title"><?php the_title(); ?></h2>
-        <h5 class="project-short-description"><?php the_field('short_description'); ?></h5>
+        <h2 class="project-title">
+            <?php the_title(); ?>
+        </h2>
+
+        <h5 class="project-short-description">
+            <?php the_field('short_description'); ?>
+        </h5>
     </div>
 
 
@@ -85,25 +90,33 @@ Template Name: Project
     </div>
 </section>
 
+<?php
+// Determine which section to display initially
+$default_tab = get_field('default_tab');
+if (!$default_tab) {
+    $default_tab = 'desktop';
+}
+?>
+
 <div class="project-details-menu-wrapper">
     <nav class="project-details-menu tabs-container tabs">
 
         <?php if ( have_rows('desktop_screenshots') ): ?>
-            <a href="#" class="tab button-dark button-vertical active" data-tab="desktop-screenshots">
+            <a href="#" class="tab button-dark button-vertical <?php if ($default_tab == 'desktop') : echo 'active'; endif; ?>" data-tab="desktop-screenshots">
                 <svg class="icon icon-image"><use xlink:href="<?php echo DISTDIR; ?>/svg/symbols.svg#icon-desktop"></use></svg>
                 <span>Desktop</span>
             </a>
         <?php endif; ?>
 
         <?php if ( have_rows('mobile_screenshots') ): ?>
-            <a href="#" class="tab button-dark button-vertical" data-tab="mobile-screenshots">
+            <a href="#" class="tab button-dark button-vertical <?php if ($default_tab == 'mobile') : echo 'active'; endif; ?>" data-tab="mobile-screenshots">
                 <svg class="icon icon-image"><use xlink:href="<?php echo DISTDIR; ?>/svg/symbols.svg#icon-mobile"></use></svg>
                 <span>Mobile</span>
             </a>
         <?php endif; ?>
 
         <?php if ( have_rows('code_samples') ): ?>
-            <a href="#" class="tab button-dark button-vertical" data-tab="code-samples">
+            <a href="#" class="tab button-dark button-vertical <?php if ($default_tab == 'code') : echo 'active'; endif; ?>" data-tab="code-samples">
                 <svg class="icon icon-code"><use xlink:href="<?php echo DISTDIR; ?>/svg/symbols.svg#icon-embed"></use></svg>
                 <span>Code</span>
             </a>
@@ -114,7 +127,7 @@ Template Name: Project
 
 <section class="project-details content-container">
 
-    <section class="desktop-screenshots content active">
+    <section class="desktop-screenshots content <?php if ($default_tab == 'desktop') : echo 'active'; endif; ?>">
 
         <?php
         if ( have_rows('desktop_screenshots') ):
@@ -136,7 +149,7 @@ Template Name: Project
         <?php endif; ?>
     </section>
 
-    <section class="mobile-screenshots content">
+    <section class="mobile-screenshots content <?php if ($default_tab == 'mobile') : echo 'active'; endif; ?>">
 
         <?php
         if ( have_rows('mobile_screenshots') ):
@@ -158,7 +171,7 @@ Template Name: Project
         <?php endif; ?>
     </section>
 
-    <section class="code-samples content">
+    <section class="code-samples content <?php if ($default_tab == 'code') : echo 'active'; endif; ?>">
 
         <?php
         if ( have_rows('code_samples') ):
