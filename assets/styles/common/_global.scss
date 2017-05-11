@@ -81,7 +81,7 @@ li {
 
 .section-title {
     display: inline-block;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     padding-right: 30px;
     padding-bottom: 20px;
     padding-left: 30px;
@@ -90,17 +90,17 @@ li {
     line-height: 1.2em;
 
     @include breakpoint($md) {
-        font-size: 2.2rem;
+        font-size: 2.375rem;
         line-height: 1.1em;
     }
 }
 
 .section-subtitle {
     display: block;
-    margin-top: 15px;
-    font-size: $f5;
+    margin-top: 10px;
     font-family: $font-family-museo-lite;
-    line-height: 1.65em;
+    font-size: 1.5rem;
+    line-height: 1.65rem;
 }
 
 .section-body {

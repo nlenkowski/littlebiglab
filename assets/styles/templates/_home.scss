@@ -13,28 +13,19 @@
         line-height: 1.4em;
 
         @include breakpoint($md) {
-            font-size: 2.75rem;
-            line-height: 1.35em;
+            font-size: 2.9rem;
+            font-weight: 600;
+            line-height: 1.375em;
         }
     }
 
     .projects .section-title {
-        margin-bottom: 0;
-        padding-bottom: 25px;
+        margin-top: 35px;
+        margin-bottom: 40px;
 
         @include breakpoint($md) {
-            margin-top: 30px;
-        }
-
-        span {
-            font-size: 1.3rem;
-            line-height: 1.85em;
-            font-family: $font-family-museo-lite;
-
-            @include breakpoint($md) {
-                font-size: 1.65rem;
-                line-height: 1.65em;
-            }
+            margin-top: 50px;
+            margin-bottom: 40px;
         }
     }
 
@@ -43,27 +34,31 @@
     }
 
     .project-grid {
-        @include clearfix;
-        margin: 0 auto;
-        max-width: 1200px;
+        display: flex;
+        align-items: flex-start;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: flex-end;
+        justify-content: space-around;
 
         @include breakpoint($md) {
-            margin-top: -10px;
+            max-width: $xl;
+            margin: 0 auto;
         }
     }
 
     .project {
-        margin-top: 65px;
-        text-align: center;
+        margin-bottom: 50px;
+        padding-left: 15px;
+        padding-right: 15px;
+        flex-basis: 100%;
+
+        @include breakpoint($sm) {
+            flex-basis: 50%;
+        }
 
         @include breakpoint($md) {
-            @include span(4);
-            margin-top: 65px;
-            margin-bottom: 25px;
-
-            &:last-child {
-                @include last;
-            }
+            flex-basis: 30%;
         }
     }
 
@@ -83,13 +78,13 @@
         margin-top: 15px;
 
         .icon {
-            transform: rotateZ(0deg);
+            transform: rotateZ(-90deg);
         }
 
         &:hover {
 
             .icon {
-                transform: rotate(-90deg);
+                transform: rotate(0deg);
             }
         }
     }
