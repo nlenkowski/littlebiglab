@@ -47,7 +47,7 @@ class Logo {
     bindEvents() {
 
         // Events for the home page
-        if (this.page == 'home') {
+        if (this.page === 'home') {
 
             this.logo.addEventListener('click',
                 e => this.showBackground(e)
@@ -119,6 +119,6 @@ class Logo {
      * Load home page
      */
     goHome() {
-        window.location = "/";
+        window.location = '/';
     }
 }

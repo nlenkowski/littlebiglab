@@ -2,18 +2,31 @@
  * Main scripts
  */
 
-const Main = (function() {
+// Create namespace
+const Lbl = {};
+
+// Create namespace
+Lbl.Main = (function() {
 
     // Picture element HTML5 shiv for legacy browsers
     document.createElement('picture');
 
     // Page detection
-    let isHome    = function() { if ( document.querySelector('.home') ) return true; };
-    let isProject = function() { if (document.querySelector('.single-project') ) return true };
+    const isHome = function() {
+        if ( document.querySelector('.home') ) {
+            return true;
+        }
+    };
+
+    const isProject = function() {
+        if (document.querySelector('.single-project') ) {
+            return true;
+        }
+    };
 
     // Initialize logo animations
-    let logoDesktop;
-    let logoMobile;
+    let logoDesktop = null;
+    let logoMobile = null;
 
     if ( isHome() ) {
         logoDesktop = new Logo('logo-desktop', -1100, -185, 3500, '/wp-content/themes/littlebiglab/dist/images/elfuerte-logo.jpg', 'home');
@@ -27,7 +40,7 @@ const Main = (function() {
      * Window scroll handling
      */
 
-    let lastScrollY = 0
+    let lastScrollY = 0;
     let ticking = false;
 
     // Scroll event callback - stores last known scroll position
@@ -159,6 +172,6 @@ const Main = (function() {
     // Public
     return {
         lastScrollY: lastScrollY
-    }
+    };
 
 })();
