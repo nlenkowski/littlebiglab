@@ -87,7 +87,7 @@ gulp.task('scripts', ['lint'], function() {
         .pipe(gulpif(!enabled.production, sourcemaps.init()))
 
         // Run Babel on project scripts only
-        .pipe(f).pipe(babel({ presets: ['es2015'] })).pipe(f.restore)
+        .pipe(f).pipe(babel({ presets: ['env'] })).pipe(f.restore)
 
         .pipe(concat('main.js'))
         .pipe(rename({suffix: '.min'}))
