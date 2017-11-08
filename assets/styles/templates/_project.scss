@@ -182,7 +182,7 @@
         padding-bottom: 15px;
         background: #000000;
         text-align: center;
-        border-bottom: 1px solid lighten(#000000, 15%);
+        border-bottom: 1px solid #333;
 
         .icon {
             width: 22px;
@@ -248,7 +248,7 @@
 
         img {
             padding: 5px;
-            background: #ffffff;
+            background-color: #ffffff;
             border-radius: 5px;
         }
     }
