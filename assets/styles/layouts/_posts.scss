@@ -28,7 +28,7 @@
 .archive, .search-results {
 
     .post {
-        @include container;
+        @extend .container;
     }
 
     .post-featured-image {

@@ -42,7 +42,7 @@
         justify-content: space-around;
 
         @include md {
-            max-width: $xl;
+            max-width: 1200px;
             margin: 0 auto;
         }
     }

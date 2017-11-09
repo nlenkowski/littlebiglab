@@ -3,7 +3,7 @@
  */
 
 .columns {
-    @include container;
+    @extend .container;
     @include md {
 
         .one-fourth {
