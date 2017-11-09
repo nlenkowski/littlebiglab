@@ -12,11 +12,11 @@
     max-width: 1140px;
     width: 85%;
 
-    @include breakpoint($md) {
+    @include md {
         width: 95%;
     }
 
-    @include breakpoint($xl) {
+    @include xl {
         width: 100%;
     }
 }
@@ -65,7 +65,7 @@
     margin-top: 60px;
 }
 
-@include breakpoint($md) {
+@include md {
     #logo-mobile {
         display: none;
     }

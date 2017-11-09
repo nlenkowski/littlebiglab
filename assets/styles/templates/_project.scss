@@ -12,7 +12,7 @@
         font-size: $f4;
         font-family: $font-family-museo-lite;
 
-        @include breakpoint($md) {
+        @include md {
             margin-top: 0;
             font-size: $f3;
         }
@@ -26,7 +26,7 @@
         border-top: 1px solid $color-border;
         text-align: center;
 
-        @include breakpoint($md) {
+        @include md {
             border-top: 0;
         }
     }
@@ -104,15 +104,15 @@
             column-count: 2;
             column-gap: 50px;
 
-            @include breakpoint($sm) {
+            @include sm {
                 column-count: 3;
             }
 
-            @include breakpoint($md) {
+            @include md {
                 column-count: 2;
             }
 
-            @include breakpoint($lg) {
+            @include lg {
                 column-count: 3;
             }
         }
@@ -124,7 +124,7 @@
 
     // Project info columns
 
-    @include breakpoint($md) {
+    @include md {
 
         .project-info {
             margin-top: 45px;
@@ -255,7 +255,7 @@
 
     .desktop-screenshot {
 
-        @include breakpoint($sm) {
+        @include sm {
             padding-left: 20px;
             padding-right: 20px;
         }
@@ -272,7 +272,7 @@
             padding: 0;
         }
 
-        @include breakpoint($md) {
+        @include md {
             display: inline-block;
             margin-right: 15px;
             margin-left: 15px;

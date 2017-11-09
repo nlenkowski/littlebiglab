@@ -1,9 +1,9 @@
 // Vendor
-@import "../../node_modules/breakpoint-sass/stylesheets/_breakpoint.scss";
 @import "../../node_modules/normalize-scss/sass/_normalize.scss";
 
 // Common
 @import "common/utilities";
+@import "common/breakpoints";
 @import "common/variables";
 @import "common/global";
 @import "common/shortcodes";

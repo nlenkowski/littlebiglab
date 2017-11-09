@@ -4,7 +4,7 @@
 
 .columns {
     @include container;
-    @include breakpoint($md) {
+    @include md {
 
         .one-fourth {
             @include span(3);

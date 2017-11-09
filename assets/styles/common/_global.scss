@@ -50,7 +50,7 @@ img {
 }
 
 p, li {
-    @include breakpoint($md) {
+    @include md {
         font-size: 1.125rem;
         line-height: 1.6875em;
     }
@@ -89,7 +89,7 @@ li {
     font-size: 1.625rem;
     line-height: 1.2em;
 
-    @include breakpoint($md) {
+    @include md {
         font-size: 2.375rem;
         line-height: 1.1em;
     }
@@ -122,7 +122,7 @@ li {
     padding-right: 20px;
     padding-left: 20px;
 
-    @include breakpoint($xl) {
+    @include xl {
         padding: 0;
     }
 }

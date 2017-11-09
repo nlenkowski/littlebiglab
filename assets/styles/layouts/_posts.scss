@@ -32,14 +32,14 @@
     }
 
     .post-featured-image {
-        @include breakpoint($md) {
+        @include md {
             @include span(2);
         }
     }
 
     .post-content {
         margin-bottom: 30px;
-        @include breakpoint($md) {
+        @include md {
             @include span(10 last);
             padding-left: 20px;
         }
@@ -47,7 +47,7 @@
 
     .post-title {
         margin-top: 15px;
-        @include breakpoint($md) {
+        @include md {
             margin-top: 0px;
         }
     }
