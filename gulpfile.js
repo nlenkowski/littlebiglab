@@ -12,16 +12,16 @@ var filter       = require('gulp-filter');
 var flatten      = require('gulp-flatten');
 var gulp         = require('gulp');
 var gulpif       = require('gulp-if');
+var gutil        = require("gulp-util");
 var image        = require('gulp-image');
-var notify       = require('gulp-notify');
 var plumber      = require('gulp-plumber');
 var rename       = require('gulp-rename');
 var rsync        = require('gulp-rsync');
 var runSequence  = require('run-sequence');
 var sass         = require('gulp-sass');
 var sourcemaps   = require('gulp-sourcemaps');
-var svgstore     = require('gulp-svgstore');
 var svgmin       = require('gulp-svgmin');
+var svgstore     = require('gulp-svgstore');
 var uglify       = require('gulp-uglify');
 
 // Get project config
@@ -36,12 +36,9 @@ var enabled = {
     production: argv.production
 };
 
-// Custom error handler to send native system notifications
-var onError = function(err) {
-    notify.onError({
-        title: "Gulp",
-        message: "<%= error.message %>"
-    })(err);
+// Error handling
+var onError = function(error) {
+    gutil.log(gutil.colors.red("Error (" + error.plugin + "): " + error.message));
     this.emit('end');
 };
 
