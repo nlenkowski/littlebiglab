@@ -8,7 +8,7 @@ Template Name: Project
 
 <section class="project-info container">
 
-    <div class="project-info-column">
+    <div class="project-info-column-name">
 
         <?php
         $image = get_field('logo');
@@ -27,7 +27,7 @@ Template Name: Project
         </h5>
     </div>
 
-    <div class="project-info-column">
+    <div class="project-info-column-summary">
 
         <section class="project-description">
             <p><?php the_field('description'); ?> <?php the_field('responsibilities'); ?></p>

@@ -4,6 +4,10 @@
 
 .single-project {
 
+    //
+    // Project heading
+    //
+
     .project-heading {
         margin-top: 10px;
         text-align: center;
@@ -18,16 +22,65 @@
         }
     }
 
+    //
     // Project info
+    //
 
     .project-info {
+        max-width: 768px;
+        text-align: center;
         margin-top: 25px;
         margin-bottom: 50px;
         border-top: 1px solid $color-border;
-        text-align: center;
+        display: flex;
+        flex-direction: column;
 
         @include md {
+            max-width: 1000px;
+            margin-top: 45px;
+            margin-bottom: 55px;
             border-top: 0;
+            align-items: flex-start;
+            flex-direction: row;
+        }
+    }
+
+    .project-info-column-name {
+
+        @include md {
+            border-right: 1px solid #ccc;
+            padding-right: 35px;
+            text-align: right;
+            display: flex;
+            flex-direction: column;
+            flex-basis: 40%;
+
+            .project-title {
+                order: 1;
+            }
+
+            .project-short-description {
+                order: 2;
+            }
+
+            .project-logo {
+                margin-top: 20px;
+                padding-bottom: 15px;
+                order: 3;
+            }
+        }
+    }
+
+    .project-info-column-summary {
+
+        @include md {
+            text-align: left;
+            padding-left: 35px;
+            flex-basis: 60%;
+        }
+
+        .project-description {
+            margin-top: 0;
         }
     }
 
@@ -83,7 +136,12 @@
 
     .project-more-button {
         margin-top: 10px;
+        margin-bottom: 15px;
         margin-left: 0;
+
+        @include sm {
+            margin-bottom: 0;
+        }
 
         .icon {
             transform: rotate(0deg);
@@ -122,52 +180,9 @@
         }
     }
 
-    // Project info columns
-
-    @include md {
-
-        .project-info {
-            margin-top: 45px;
-            margin-bottom: 55px;
-        }
-
-        .project-info-column:first-child {
-            @include span(5);
-            @include pull(15px);
-            display: flex;
-            flex-flow: column;
-            padding-right: 30px;
-            border-right: 1px solid $color-border;
-            text-align: right;
-
-            .project-title {
-                order: 1;
-            }
-
-            .project-short-description {
-                order: 2;
-            }
-
-            .project-logo {
-                order: 3;
-                margin-top: 20px;
-                padding-bottom: 15px;
-            }
-        }
-
-        .project-info-column:last-child {
-            @include span(7);
-            @include suffix(10%);
-            @include last;
-            text-align: left;
-
-            .project-description {
-                margin-top: 0;
-            }
-        }
-    }
-
+    //
     // Project details
+    //
 
     .project-details-title {
         text-align: center;
@@ -210,7 +225,9 @@
         text-align: center;
     }
 
-    // Project details content
+    //
+    // Project content
+    //
 
     .desktop-screenshots, .mobile-screenshots, .code-samples {
         display: none;
