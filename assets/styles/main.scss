@@ -3,25 +3,16 @@
 
 // Common
 @import "common/utilities";
-@import "common/breakpoints";
 @import "common/variables";
+@import "common/breakpoints";
 @import "common/global";
-@import "common/shortcodes";
-@import "common/wp";
 
 // Components
 @import "components/button";
-@import "components/comments";
-@import "components/grid";
-@import "components/pager";
-@import "components/widgets";
 
 // Layouts
 @import "layouts/footer";
 @import "layouts/header";
-@import "layouts/pages";
-@import "layouts/posts";
-@import "layouts/sidebar";
 
 // Templates
 @import "templates/home";
