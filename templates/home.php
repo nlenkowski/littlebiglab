@@ -21,7 +21,7 @@ Template Name: Home
             </span>
         </h2>
 
-        <div class="project-grid">
+        <div class="projects-grid">
 
             <?php
             $projects = get_field('projects');

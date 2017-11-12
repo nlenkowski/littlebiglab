@@ -2,304 +2,297 @@
  * Single project styles
  */
 
-.single-project {
+.project-heading {
+    margin-top: 10px;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: normal;
+    font-size: $f4;
+    font-family: $font-family-museo-lite;
 
-    //
-    // Project heading
-    //
-
-    .project-heading {
-        margin-top: 10px;
-        text-align: center;
-        text-transform: uppercase;
-        font-weight: normal;
-        font-size: $f4;
-        font-family: $font-family-museo-lite;
-
-        @include md {
-            margin-top: 0;
-            font-size: $f3;
-        }
+    @include md {
+        margin-top: 0;
+        font-size: $f3;
     }
+}
 
-    //
-    // Project info
-    //
+//
+// Project info
+//
 
-    .project-info {
-        max-width: 768px;
-        text-align: center;
-        margin-top: 25px;
-        margin-bottom: 50px;
-        border-top: 1px solid $color-border;
+.project-info {
+    max-width: 768px;
+    text-align: center;
+    margin-top: 25px;
+    margin-bottom: 50px;
+    border-top: 1px solid $color-border;
+    display: flex;
+    flex-direction: column;
+
+    @include md {
+        max-width: 1000px;
+        margin-top: 45px;
+        margin-bottom: 55px;
+        border-top: 0;
+        align-items: flex-start;
+        flex-direction: row;
+    }
+}
+
+.project-info-column-name {
+
+    @include md {
+        border-right: 1px solid #ccc;
+        padding-right: 35px;
+        text-align: right;
         display: flex;
         flex-direction: column;
+        flex-basis: 40%;
 
-        @include md {
-            max-width: 1000px;
-            margin-top: 45px;
-            margin-bottom: 55px;
-            border-top: 0;
-            align-items: flex-start;
-            flex-direction: row;
-        }
-    }
-
-    .project-info-column-name {
-
-        @include md {
-            border-right: 1px solid #ccc;
-            padding-right: 35px;
-            text-align: right;
-            display: flex;
-            flex-direction: column;
-            flex-basis: 40%;
-
-            .project-title {
-                order: 1;
-            }
-
-            .project-short-description {
-                order: 2;
-            }
-
-            .project-logo {
-                margin-top: 20px;
-                padding-bottom: 15px;
-                order: 3;
-            }
-        }
-    }
-
-    .project-info-column-summary {
-
-        @include md {
-            text-align: left;
-            padding-left: 35px;
-            flex-basis: 60%;
+        .project-title {
+            order: 1;
         }
 
-        .project-description {
-            margin-top: 0;
+        .project-short-description {
+            order: 2;
+        }
+
+        .project-logo {
+            margin-top: 20px;
+            padding-bottom: 15px;
+            order: 3;
         }
     }
+}
 
-    .project-logo {
-        margin-top: 50px;
-    }
+.project-info-column-summary {
 
-    .project-title {
-        margin-top: 15px;
-    }
-
-    .project-short-description {
-        margin-top: 0;
-        color: #666666;
-        font-weight: 200;
-        font-size: $f5;
-        font-family: $font-family-helvetica;
+    @include md {
+        text-align: left;
+        padding-left: 35px;
+        flex-basis: 60%;
     }
 
     .project-description {
-        margin-top: 35px;
-        font-size: $f6;
+        margin-top: 0;
+    }
+}
 
-        p {
-            text-align: left;
-        }
+.project-logo {
+    margin-top: 50px;
+}
+
+.project-title {
+    margin-top: 15px;
+}
+
+.project-short-description {
+    margin-top: 0;
+    color: #666666;
+    font-weight: 200;
+    font-size: $f5;
+    font-family: $font-family-helvetica;
+}
+
+.project-description {
+    margin-top: 35px;
+    font-size: $f6;
+
+    p {
+        text-align: left;
+    }
+}
+
+.project-more-info {
+    overflow: hidden;
+    opacity: 0;
+    height: 0;
+    transition: opacity .6s;
+
+    ul {
+        padding-left: 20px;
+        text-align: left;
+    }
+}
+
+.project-more-info.visible {
+    opacity: 1;
+    height: auto;
+}
+
+.project-visit-button {
+
+    .icon {
+        margin-right: 3px;
+        vertical-align: -4px;
+    }
+}
+
+.project-more-button {
+    margin-top: 10px;
+    margin-bottom: 15px;
+    margin-left: 0;
+
+    @include sm {
+        margin-bottom: 0;
     }
 
-    .project-more-info {
-        overflow: hidden;
-        opacity: 0;
-        height: 0;
-        transition: opacity .6s;
-
-        ul {
-            padding-left: 20px;
-            text-align: left;
-        }
+    .icon {
+        transform: rotate(0deg);
     }
+}
 
-    .project-more-info.visible {
-        opacity: 1;
-        height: auto;
+.project-more-button.active {
+
+    .icon {
+        transform: rotate(90deg);
     }
+}
 
-    .project-visit-button {
+.project-technologies {
 
-        .icon {
-            margin-right: 3px;
-            vertical-align: -4px;
-        }
-    }
-
-    .project-more-button {
-        margin-top: 10px;
-        margin-bottom: 15px;
-        margin-left: 0;
+    ul {
+        margin-left: -15px;
+        column-count: 2;
+        column-gap: 50px;
 
         @include sm {
-            margin-bottom: 0;
-        }
-
-        .icon {
-            transform: rotate(0deg);
-        }
-    }
-
-    .project-more-button.active {
-
-        .icon {
-            transform: rotate(90deg);
-        }
-    }
-
-    .project-technologies {
-
-        ul {
-            margin-left: -15px;
-            column-count: 2;
-            column-gap: 50px;
-
-            @include sm {
-                column-count: 3;
-            }
-
-            @include md {
-                column-count: 2;
-            }
-
-            @include lg {
-                column-count: 3;
-            }
-        }
-
-        li {
-            margin-left: 1em;
-        }
-    }
-
-    //
-    // Project details
-    //
-
-    .project-details-title {
-        text-align: center;
-        margin-top: 45px;
-        margin-bottom: 25px;
-    }
-
-    .project-details-menu {
-        position: static;
-        padding-top: 15px;
-        padding-bottom: 15px;
-        background: #000000;
-        text-align: center;
-        border-bottom: 1px solid #333;
-
-        .icon {
-            width: 22px;
-            height: 22px;
-            color: #ffffff;
-        }
-    }
-
-    .project-details-menu.fixed {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        z-index: 1000;
-
-        span {
-            display: none;
-        }
-    }
-
-    .project-details {
-        padding-left: 10px;
-        padding-right: 10px;
-        padding-bottom: 25px;
-        background: lighten(#000000, 7%);
-        text-align: center;
-    }
-
-    //
-    // Project content
-    //
-
-    .desktop-screenshots, .mobile-screenshots, .code-samples {
-        display: none;
-
-        &.active {
-            display: block;
-            animation: fadeIn 1s;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-    }
-
-    .mobile-screenshots {
-        margin: 0 auto;
-        text-align: center;
-    }
-
-    .desktop-screenshot, .mobile-screenshot, .code-sample {
-        padding-top: 35px;
-
-        h5 {
-            display: none;
-            margin-top: 0;
-            margin-bottom: 15px;
-            color: #ffffff;
-            font-family: $font-family-museo-lite;
-        }
-
-        img {
-            padding: 5px;
-            background-color: #ffffff;
-            border-radius: 5px;
-        }
-    }
-
-    .desktop-screenshot {
-
-        @include sm {
-            padding-left: 20px;
-            padding-right: 20px;
-        }
-    }
-
-    .mobile-screenshot {
-        margin-bottom: 20px;
-
-        &:last-child {
-            margin-right: 0;
-        }
-
-        img {
-            padding: 0;
+            column-count: 3;
         }
 
         @include md {
-            display: inline-block;
-            margin-right: 15px;
-            margin-left: 15px;
-            vertical-align: top;
+            column-count: 2;
+        }
+
+        @include lg {
+            column-count: 3;
         }
     }
 
-    .code-samples {
+    li {
+        margin-left: 1em;
+    }
+}
 
-        .gist, .gist-file {
-            border-radius: 5px !important;
+//
+// Project details
+//
+
+.project-details-title {
+    text-align: center;
+    margin-top: 45px;
+    margin-bottom: 25px;
+}
+
+.project-details-menu {
+    position: static;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background: #000000;
+    text-align: center;
+    border-bottom: 1px solid #333;
+
+    .icon {
+        width: 22px;
+        height: 22px;
+        color: #ffffff;
+    }
+}
+
+.project-details-menu.fixed {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+
+    span {
+        display: none;
+    }
+}
+
+.project-details {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 25px;
+    background: lighten(#000000, 7%);
+    text-align: center;
+}
+
+//
+// Project content
+//
+
+.desktop-screenshots, .mobile-screenshots, .code-samples {
+    display: none;
+
+    &.active {
+        display: block;
+        animation: fadeIn 1s;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
         }
+        to {
+            opacity: 1;
+        }
+    }
+}
+
+.mobile-screenshots {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.desktop-screenshot, .mobile-screenshot, .code-sample {
+    padding-top: 35px;
+
+    h5 {
+        display: none;
+        margin-top: 0;
+        margin-bottom: 15px;
+        color: #ffffff;
+        font-family: $font-family-museo-lite;
+    }
+
+    img {
+        padding: 5px;
+        background-color: #ffffff;
+        border-radius: 5px;
+    }
+}
+
+.desktop-screenshot {
+
+    @include sm {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+.mobile-screenshot {
+    margin-bottom: 20px;
+
+    &:last-child {
+        margin-right: 0;
+    }
+
+    img {
+        padding: 0;
+    }
+
+    @include md {
+        display: inline-block;
+        margin-right: 15px;
+        margin-left: 15px;
+        vertical-align: top;
+    }
+}
+
+.code-samples {
+
+    .gist, .gist-file {
+        border-radius: 5px !important;
     }
 }
