@@ -2,15 +2,6 @@
  * Utilities
  */
 
-// Micro clearfix
-@mixin clearfix {
-    &::after {
-        clear: both;
-        content: "";
-        display: table;
-    }
-}
-
 // Fontface
 @mixin fontface($family, $src, $style: normal, $weight: normal) {
     @font-face {
