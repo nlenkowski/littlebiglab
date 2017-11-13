@@ -58,19 +58,17 @@
 
 #logo-mobile {
     margin-top: 15px;
+
+    @include md {
+        display: none;
+    }
 }
 
 #logo-desktop {
     display: none;
     margin-top: 60px;
-}
 
-@include md {
-    #logo-mobile {
-        display: none;
-    }
-
-    #logo-desktop {
+    @include md {
         display: block;
     }
 }

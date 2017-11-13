@@ -1,5 +1,5 @@
 /**
- * Home page styles
+ * Home
  */
 
 .page-home .site-title,
@@ -18,9 +18,7 @@
     }
 }
 
-//
-// Projects
-//
+/* Projects */
 
 .projects .section-title {
     margin-top: 35px;
@@ -39,9 +37,7 @@
 .projects-grid {
     display: flex;
     align-items: flex-start;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: flex-end;
+    flex-flow: row wrap;
     justify-content: space-around;
 
     @include md {
@@ -72,7 +68,7 @@
 
 .projects-grid .project-short-description {
     margin-top: 10px;
-    color: #666666;
+    color: #666;
     font-weight: 300;
     font-family: $font-family-helvetica;
 }
@@ -85,16 +81,13 @@
     }
 
     &:hover {
-
         .icon {
             transform: rotate(0deg);
         }
     }
 }
 
-//
-// Sections
-//
+/* Sections */
 
 .section-content {
     text-align: center;
