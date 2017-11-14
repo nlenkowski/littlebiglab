@@ -3,72 +3,72 @@
  */
 
 .site-header {
-    margin-top: 15px;
-    text-align: center;
+  margin-top: 15px;
+  text-align: center;
 }
 
 .logo {
-    margin: 0 auto;
-    max-width: 1140px;
-    width: 85%;
+  margin: 0 auto;
+  max-width: 1140px;
+  width: 85%;
 
-    @include md {
-        width: 95%;
-    }
+  @include md {
+    width: 95%;
+  }
 
-    @include xl {
-        width: 100%;
-    }
+  @include xl {
+    width: 100%;
+  }
 }
 
 .logo-container {
-    position: relative;
-    z-index: 100;
-    cursor: zoom-in;
+  position: relative;
+  z-index: 100;
+  cursor: zoom-in;
 
-    &.overlay {
-        cursor: zoom-out;
-        pointer-events: none;
-    }
+  &.overlay {
+    cursor: zoom-out;
+    pointer-events: none;
+  }
 }
 
 .single-project .logo-container {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .logo-background-image {
-    position: fixed;
-    top: 0;
-    z-index: 50;
-    width: 100%;
-    height: 100%;
-    background-position: right center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    opacity: 0;
-    cursor: zoom-out;
-    transition: opacity 0.5s ease-in-out;
-    pointer-events: none;
+  position: fixed;
+  top: 0;
+  z-index: 50;
+  width: 100%;
+  height: 100%;
+  background-position: right center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0;
+  cursor: zoom-out;
+  transition: opacity 0.5s ease-in-out;
+  pointer-events: none;
 
-    &.visible {
-        opacity: 1;
-        pointer-events: all;
-    }
+  &.visible {
+    opacity: 1;
+    pointer-events: all;
+  }
 }
 
 #logo-mobile {
-    margin-top: 15px;
+  margin-top: 15px;
 
-    @include md {
-        display: none;
-    }
+  @include md {
+    display: none;
+  }
 }
 
 #logo-desktop {
-    display: none;
-    margin-top: 60px;
+  display: none;
+  margin-top: 60px;
 
-    @include md {
-        display: block;
-    }
+  @include md {
+    display: block;
+  }
 }

@@ -5,158 +5,158 @@
  */
 class Tabs {
 
-    /**
-     * Init
-     * @param {string} tabsClass
-     * @param {string} tabsAttribute
-     * @param {string} contentClass
-     */
-    constructor(tabsAttribute = 'data-tab', tabsClass = 'tab', tabsContainer = 'tabs-container', contentClass = 'content', contentContainer = 'content-container') {
+  /**
+   * Init
+   * @param {string} tabsClass
+   * @param {string} tabsAttribute
+   * @param {string} contentClass
+   */
+  constructor(tabsAttribute = 'data-tab', tabsClass = 'tab', tabsContainer = 'tabs-container', contentClass = 'content', contentContainer = 'content-container') {
 
-        // Parameters
-        this.tabsAttribute    = tabsAttribute;
-        this.tabsClass        = tabsClass;
-        this.tabsContainer    = tabsContainer;
-        this.contentClass     = contentClass;
-        this.contentContainer = contentContainer;
+    // Parameters
+    this.tabsAttribute = tabsAttribute;
+    this.tabsClass = tabsClass;
+    this.tabsContainer = tabsContainer;
+    this.contentClass = contentClass;
+    this.contentContainer = contentContainer;
 
-        // State
-        this.activeTabAttribute = null;
+    // State
+    this.activeTabAttribute = null;
 
-        // Init
-        this.cacheDom();
-        this.bindEvents();
-        this.checkUrlHash();
+    // Init
+    this.cacheDom();
+    this.bindEvents();
+    this.checkUrlHash();
+  }
+
+  cacheDom() {
+
+    // Get nodelists for tabs and content
+    this.tabs = document.querySelectorAll('.' + this.tabsClass);
+    this.contents = document.querySelectorAll('.' + this.contentClass);
+  }
+
+  bindEvents() {
+
+    // Bind tab element click events
+    for (let tab of this.tabs) {
+
+      let tabsAttribute = tab.getAttribute(this.tabsAttribute);
+
+      tab.addEventListener('click',
+        e => this.toggleTabs(e, tabsAttribute)
+      );
     }
+  }
 
-    cacheDom() {
+  /*
+   * Tab methods
+   */
 
-        // Get nodelists for tabs and content
-        this.tabs     = document.querySelectorAll('.' + this.tabsClass);
-        this.contents = document.querySelectorAll('.' + this.contentClass);
+  toggleTabs(e, tabsAttribute) {
+
+    // Store active tab attribute state
+    this.activeTabAttribute = tabsAttribute;
+
+    // Get tab
+    let tab = document.querySelector('[' + this.tabsAttribute + '=' + this.activeTabAttribute + ']');
+
+    if (tab) {
+
+      // Display tab element and content and set url hash
+      this.resetTabs();
+      this.showTab();
+      this.toggleContent();
+      this.setUrlHash();
+
+      // Prevent default action if called from a click event
+      if (e) {
+        e.preventDefault();
+      }
     }
+  }
 
-    bindEvents() {
-
-        // Bind tab element click events
-        for (let tab of this.tabs) {
-
-            let tabsAttribute = tab.getAttribute(this.tabsAttribute);
-
-            tab.addEventListener('click',
-                e => this.toggleTabs(e, tabsAttribute)
-            );
-        }
+  resetTabs() {
+    for (let tab of this.tabs) {
+      tab.classList.remove('active');
     }
+  }
 
-    /*
-     * Tab methods
-     */
-
-    toggleTabs(e, tabsAttribute) {
-
-        // Store active tab attribute state
-        this.activeTabAttribute = tabsAttribute;
-
-        // Get tab
-        let tab = document.querySelector('[' + this.tabsAttribute + '=' + this.activeTabAttribute + ']');
-
-        if (tab) {
-
-            // Display tab element and content and set url hash
-            this.resetTabs();
-            this.showTab();
-            this.toggleContent();
-            this.setUrlHash();
-
-            // Prevent default action if called from a click event
-            if (e) {
-                e.preventDefault();
-            }
-        }
+  showTab() {
+    let tab = document.querySelector('[' + this.tabsAttribute + '=' + this.activeTabAttribute + ']');
+    if (tab) {
+      tab.classList.add('active');
     }
+  }
 
-    resetTabs() {
-        for (let tab of this.tabs) {
-            tab.classList.remove('active');
-        }
+  /*
+   * Content methods
+   */
+
+  toggleContent() {
+    this.hideAllContents();
+    this.showContent();
+  }
+
+  hideAllContents() {
+    for (let content of this.contents) {
+      content.classList.remove('active');
     }
+  }
 
-    showTab() {
-        let tab = document.querySelector('[' + this.tabsAttribute + '=' + this.activeTabAttribute + ']');
-        if (tab) {
-            tab.classList.add('active');
-        }
+  showContent() {
+    let content = document.querySelector('.' + this.activeTabAttribute);
+    if (content) {
+      content.classList.add('active');
+      this.scrollToContent();
     }
+  }
 
-    /*
-     * Content methods
-     */
+  scrollToContent() {
 
-    toggleContent() {
-        this.hideAllContents();
-        this.showContent();
+    // Get current tab
+    let tabsContainer = document.querySelector('.' + this.tabsContainer);
+    let contentContainer = document.querySelector('.' + this.contentContainer);
+
+    // Calculate new scroll position
+    let menuHeight = parseInt(window.getComputedStyle(tabsContainer).getPropertyValue('height'));
+    let contentYPos = contentContainer.getBoundingClientRect().top;
+    let newScrollPos = contentYPos + window.pageYOffset - menuHeight;
+
+    // Scroll content if menu is fixed
+    if (window.getComputedStyle(tabsContainer).getPropertyValue('position') === 'fixed') {
+      document.documentElement.scrollTop = document.body.scrollTop = newScrollPos;
     }
+  }
 
-    hideAllContents() {
-        for (let content of this.contents) {
-            content.classList.remove('active');
-        }
+  /*
+   * Url methods
+   */
+
+  checkUrlHash() {
+
+    // Get the url hash
+    let urlHash = this.getUrlHash();
+    let validHash = null;
+
+    if (urlHash) {
+
+      // Make sure the hash exists as a data attribute in the dom
+      var node = document.querySelector('[' + this.tabsAttribute + '=' + urlHash + ']');
+      let validHash = document.body.contains(node);
+
+      // Set tab if valid
+      if (validHash) {
+        this.toggleTabs(null, urlHash);
+      }
     }
+  }
 
-    showContent() {
-        let content = document.querySelector('.' + this.activeTabAttribute);
-        if (content) {
-            content.classList.add('active');
-            this.scrollToContent();
-        }
-    }
+  getUrlHash() {
+    return window.location.hash.substr(1);
+  }
 
-    scrollToContent() {
-
-        // Get current tab
-        let tabsContainer    = document.querySelector('.' + this.tabsContainer);
-        let contentContainer = document.querySelector('.' + this.contentContainer);
-
-        // Calculate new scroll position
-        let menuHeight   = parseInt( window.getComputedStyle(tabsContainer).getPropertyValue('height') );
-        let contentYPos  = contentContainer.getBoundingClientRect().top;
-        let newScrollPos = contentYPos + window.pageYOffset - menuHeight;
-
-        // Scroll content if menu is fixed
-        if ( window.getComputedStyle(tabsContainer).getPropertyValue('position') === 'fixed' ) {
-            document.documentElement.scrollTop = document.body.scrollTop = newScrollPos;
-        }
-    }
-
-    /*
-     * Url methods
-     */
-
-    checkUrlHash() {
-
-        // Get the url hash
-        let urlHash   = this.getUrlHash();
-        let validHash = null;
-
-        if (urlHash) {
-
-            // Make sure the hash exists as a data attribute in the dom
-            var node = document.querySelector('[' + this.tabsAttribute + '=' + urlHash + ']');
-            let validHash = document.body.contains(node);
-
-            // Set tab if valid
-            if (validHash) {
-                this.toggleTabs(null, urlHash);
-            }
-        }
-    }
-
-    getUrlHash() {
-        return window.location.hash.substr(1);
-    }
-
-    setUrlHash() {
-        window.location.hash = this.activeTabAttribute;
-    }
+  setUrlHash() {
+    window.location.hash = this.activeTabAttribute;
+  }
 }

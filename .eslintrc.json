@@ -1,19 +1,19 @@
 {
-    "root": true,
-    "extends": "eslint:recommended",
-    "env": {
-        "browser": true,
-        "es6": true,
-        "jquery": true,
-        "node": true
-    },
-    "rules": {
-        "no-console": 1,
-        "no-empty": 1,
-        "no-unused-vars": 0,
-        "no-undef": 0
-    },
-    "globals": {
-        "wp": true
-    }
+  "root": true,
+  "extends": "eslint:recommended",
+  "env": {
+    "browser": true,
+    "es6": true,
+    "jquery": true,
+    "node": true
+  },
+  "rules": {
+    "no-console": 1,
+    "no-empty": 1,
+    "no-unused-vars": 0,
+    "no-undef": 0
+  },
+  "globals": {
+    "wp": true
+  }
 }

@@ -5,84 +5,84 @@
 // Light button
 
 .button {
+  display: inline-block;
+  margin-bottom: 5px;
+  margin-right: 3px;
+  margin-left: 3px;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background: #fdfdfd;
+  transition: border-color 0.25s;
+
+  .icon {
     display: inline-block;
-    margin-bottom: 5px;
-    margin-right: 3px;
-    margin-left: 3px;
-    padding: 8px 12px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background: #fdfdfd;
-    transition: border-color 0.25s;
+    width: 20px;
+    height: 20px;
+    vertical-align: -4px;
+    fill: $color-accent;
+    transition: transform 0.25s;
+  }
 
-    .icon {
-        display: inline-block;
-        width: 20px;
-        height: 20px;
-        vertical-align: -4px;
-        fill: $color-accent;
-        transition: transform 0.25s;
-    }
+  span {
+    margin-left: 5px;
+    color: #000;
+    font-size: $f6;
+    font-weight: 500;
+    font-family: $font-family-museo;
+  }
 
-    span {
-        margin-left: 5px;
-        color: #000;
-        font-size: $f6;
-        font-weight: 500;
-        font-family: $font-family-museo;
-    }
-
-    &:hover {
-        border-color: $color-accent;
-    }
+  &:hover {
+    border-color: $color-accent;
+  }
 }
 
 // Dark button
 
 .button-dark {
-    @extend .button;
+  @extend .button;
 
-    background: #000;
-    border-color: #000;
+  background: #000;
+  border-color: #000;
+  color: #fff;
+
+  .icon {
+    fill: #fff;
+  }
+
+  span {
     color: #fff;
+  }
 
-    .icon {
-        fill: #fff;
-    }
-
-    span {
-        color: #fff;
-    }
-
-    &:hover {
-        border-color: lighten(#000, 15%);
-        color: #fff;
-    }
+  &:hover {
+    border-color: lighten(#000, 15%);
+    color: #fff;
+  }
 }
 
 .button-dark.active {
-    background: #fff;
+  background: #fff;
 
-    .icon {
-        margin-top: 3px;
-        fill: #000;
-    }
+  .icon {
+    margin-top: 3px;
+    fill: #000;
+  }
 
-    span {
-        color: #000;
-    }
+  span {
+    color: #000;
+  }
 }
 
 .button-vertical {
-    span {
-        display: block;
-        margin-top: 5px;
-        font-size: 12px;
-        font-weight: 200;
-        line-height: 1.4em;
+  span {
+    display: block;
+    margin-top: 5px;
+    font-size: 12px;
+    font-weight: 200;
+    line-height: 1.4em;
 
-        @include sm {
-            font-size: 14px;
-        }
+    @include sm {
+      font-size: 14px;
     }
+  }
 }

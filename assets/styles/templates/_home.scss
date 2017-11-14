@@ -4,95 +4,95 @@
 
 .page-home .site-title,
 .page-home .section-title {
-    text-align: center;
+  text-align: center;
 }
 
 .page-home .site-title {
-    font-size: $f3;
-    line-height: 1.4em;
+  font-size: $f3;
+  line-height: 1.4em;
 
-    @include md {
-        font-size: 2.9rem;
-        font-weight: 600;
-        line-height: 1.375em;
-    }
+  @include md {
+    font-size: 2.9rem;
+    font-weight: 600;
+    line-height: 1.375em;
+  }
 }
 
 /* Projects */
 
 .projects .section-title {
-    margin-top: 35px;
-    margin-bottom: 40px;
+  margin-top: 35px;
+  margin-bottom: 40px;
 
-    @include md {
-        margin-top: 50px;
-        margin-bottom: 40px;
-    }
+  @include md {
+    margin-top: 50px;
+    margin-bottom: 40px;
+  }
 }
 
 .projects {
-    text-align: center;
+  text-align: center;
 }
 
 .projects-grid {
-    display: flex;
-    align-items: flex-start;
-    flex-flow: row wrap;
-    justify-content: space-around;
+  display: flex;
+  align-items: flex-start;
+  flex-flow: row wrap;
+  justify-content: space-around;
 
-    @include md {
-        max-width: 1200px;
-        margin: 0 auto;
-    }
+  @include md {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
 }
 
 .projects-grid .project {
-    margin-bottom: 50px;
-    padding-left: 15px;
-    padding-right: 15px;
-    flex-basis: 100%;
+  margin-bottom: 50px;
+  padding-left: 15px;
+  padding-right: 15px;
+  flex-basis: 100%;
 
-    @include sm {
-        flex-basis: 50%;
-    }
+  @include sm {
+    flex-basis: 50%;
+  }
 
-    @include md {
-        flex-basis: 30%;
-    }
+  @include md {
+    flex-basis: 30%;
+  }
 }
 
 .projects-grid .project-title {
-    margin-top: 20px;
-    margin-bottom: 0;
+  margin-top: 20px;
+  margin-bottom: 0;
 }
 
 .projects-grid .project-short-description {
-    margin-top: 10px;
-    color: #666;
-    font-weight: 300;
-    font-family: $font-family-helvetica;
+  margin-top: 10px;
+  color: #666;
+  font-weight: 300;
+  font-family: $font-family-helvetica;
 }
 
 .projects-grid .project-button {
-    margin-top: 15px;
+  margin-top: 15px;
 
+  .icon {
+    transform: rotateZ(-90deg);
+  }
+
+  &:hover {
     .icon {
-        transform: rotateZ(-90deg);
+      transform: rotate(0deg);
     }
-
-    &:hover {
-        .icon {
-            transform: rotate(0deg);
-        }
-    }
+  }
 }
 
 /* Sections */
 
 .section-content {
-    text-align: center;
+  text-align: center;
 
-    .section-title {
-        margin-top: 60px;
-    }
+  .section-title {
+    margin-top: 60px;
+  }
 }
