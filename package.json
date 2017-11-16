@@ -6,11 +6,18 @@
   ],
   "license": "MIT",
   "private": true,
+  "scripts": {
+    "dev": "rm -rf dist-webpack/* && webpack --progress",
+    "prod": "rm -rf dist-webpack/* && NODE_ENV=production && webpack --progress",
+    "watch": "rm -rf dist-webpack/* && webpack --progress --watch"
+  },
   "devDependencies": {
     "ajv": "^5.3.0",
     "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.1",
     "browser-sync": "^2.18.13",
+    "browser-sync-webpack-plugin": "^1.2.0",
     "del": "^3.0.0",
     "eslint": "^4.11.0",
     "eslint-config-airbnb-base": "^12.1.0",
@@ -46,8 +53,7 @@
   "dependencies": {
     "babel-polyfill": "^6.26.0",
     "normalize-scss": "^7.0.0",
-    "picturefill": "^3.0.2",
-    "snapsvg": "^0.5.1",
+    "snapsvg-cjs": "0.0.6",
     "svgxuse": "^1.2.6"
   }
 }

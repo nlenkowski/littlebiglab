@@ -3,7 +3,7 @@
  * - Toggle tab and content display
  * - Detect url hash and load appropriate tab
  */
-class Tabs {
+export default class Tabs {
 
   /**
    * Init

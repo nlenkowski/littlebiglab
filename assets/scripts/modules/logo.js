@@ -3,7 +3,7 @@
  * - Animate SVG pattern image with snap.svg
  * - Toggle background image
  */
-class Logo {
+export default class Logo {
 
   /**
    * Init

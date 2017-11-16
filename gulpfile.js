@@ -166,7 +166,7 @@ gulp.task('reload', function () {
 //  should use the `gulp` task to ensure a proper build
 gulp.task('build', function () {
   require('gulp-stats')(gulp);
-  runSequence('styles', 'scripts', 'vendor', 'svg', ['fonts', 'images']);
+  runSequence('styles', 'svg', ['fonts', 'images']);
 });
 
 // ## Gulp
@@ -191,7 +191,6 @@ gulp.task('watch', function () {
   });
   gulp.watch(['**/*.php'], ['reload']);
   gulp.watch([path.assets + 'styles/**/*'], ['styles']);
-  gulp.watch([path.assets + 'scripts/**/*'], ['scripts']);
   gulp.watch([path.assets + 'fonts/**/*'], ['fonts']);
   gulp.watch([path.assets + 'images/**/*'], ['images']);
   gulp.watch([path.assets + 'svg/**/*'], ['svg']);
