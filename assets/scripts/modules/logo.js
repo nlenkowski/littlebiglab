@@ -1,12 +1,13 @@
+import 'snapsvg-cjs';
+
 /**
  * Logo
- * - Animate SVG pattern image with snap.svg
- * - Toggle background image
+ * Animate SVG pattern image with snap.svg
+ * Toggle background image visibility
  */
 export default class Logo {
-
   /**
-   * Init
+   * Params
    * @param {string} svgId - Logo svg id
    * @param {number} xPos - Destination x position
    * @param {number} yPos - Destination y position
@@ -15,9 +16,7 @@ export default class Logo {
    * @param {string} page - Calling page
    */
   constructor(svgId, xPos, yPos, duration, imageSrc, page) {
-
-    // Get parameters
-    this.svgId = '#' + svgId;
+    this.svgId = `#${svgId}`;
     this.xPos = xPos;
     this.yPos = yPos;
     this.duration = duration;
@@ -34,8 +33,8 @@ export default class Logo {
    * Cache DOM elements and initialize pattern image Snap object
    */
   cacheDom() {
-    this.logo = document.querySelector(this.svgId + '-container');
-    this.pattern = Snap.select(this.svgId + ' .logo-pattern-image');
+    this.logo = document.querySelector(`${this.svgId}-container`);
+    this.pattern = Snap.select(`${this.svgId} .logo-pattern-image`);
     this.patternInitXPos = this.pattern.attr('x');
     this.patternInitYPos = this.pattern.attr('y');
     this.background = document.querySelector('.logo-background-image');
@@ -45,27 +44,27 @@ export default class Logo {
    * Bind event listeners for logo and background image
    */
   bindEvents() {
-
     // Events for the home page
     if (this.page === 'home') {
-
-      this.logo.addEventListener('click',
-        e => this.showBackground(e)
+      this.logo.addEventListener(
+        'click',
+        e => this.showBackground(e),
       );
 
-      this.background.addEventListener('click',
-        e => this.hideBackground(e)
+      this.background.addEventListener(
+        'click',
+        e => this.hideBackground(e),
       );
 
       // Scroll events
-      window.addEventListener('scroll',
-        e => this.hideBackground(e)
+      window.addEventListener(
+        'scroll',
+        e => this.hideBackground(e),
       );
-
     } else { // Events for other pages
-
-      this.logo.addEventListener('click',
-        e => this.goHome(e)
+      this.logo.addEventListener(
+        'click',
+        e => this.goHome(e),
       );
     }
   }
@@ -85,7 +84,7 @@ export default class Logo {
   animatePattern() {
     this.pattern.animate({
       x: this.xPos,
-      y: this.yPos
+      y: this.yPos,
     }, this.duration, mina.easeinout);
   }
 
@@ -95,7 +94,7 @@ export default class Logo {
   resetPattern() {
     this.pattern.animate({
       x: this.patternInitXPos,
-      y: this.patternInitYPos
+      y: this.patternInitYPos,
     }, 0);
   }
 
@@ -119,6 +118,7 @@ export default class Logo {
    * Load home page
    */
   goHome() {
-    window.location = '/';
+    this.homePath = '/';
+    window.location = this.homePath;
   }
 }

@@ -1,27 +1,25 @@
+import { getCssProp, setDocumentScrollTop } from './utilities';
+
 /**
  * Tabs
- * - Toggle tab and content display
- * - Detect url hash and load appropriate tab
+ * Toggle tab and content display
+ * Detect url hash and load appropriate tab
  */
 export default class Tabs {
-
   /**
-   * Init
-   * @param {string} tabsClass
-   * @param {string} tabsAttribute
-   * @param {string} contentClass
+   * Params
+   * @param {string} tabsAttribute - Tabs data attribute
+   * @param {string} tabsClass - Tabs class
+   * @param {string} tabsContainer - Tabs container
+   * @param {string} contentClass - Tabs content class
+   * @param {string} contentContainer - Tabs content container
    */
   constructor(tabsAttribute = 'data-tab', tabsClass = 'tab', tabsContainer = 'tabs-container', contentClass = 'content', contentContainer = 'content-container') {
-
-    // Parameters
     this.tabsAttribute = tabsAttribute;
     this.tabsClass = tabsClass;
     this.tabsContainer = tabsContainer;
     this.contentClass = contentClass;
     this.contentContainer = contentContainer;
-
-    // State
-    this.activeTabAttribute = null;
 
     // Init
     this.cacheDom();
@@ -30,39 +28,32 @@ export default class Tabs {
   }
 
   cacheDom() {
-
-    // Get nodelists for tabs and content
-    this.tabs = document.querySelectorAll('.' + this.tabsClass);
-    this.contents = document.querySelectorAll('.' + this.contentClass);
+    // Get tabs and content
+    this.tabs = document.querySelectorAll(`.${this.tabsClass}`);
+    this.contents = document.querySelectorAll(`.${this.contentClass}`);
   }
 
   bindEvents() {
-
-    // Bind tab element click events
-    for (let tab of this.tabs) {
-
-      let tabsAttribute = tab.getAttribute(this.tabsAttribute);
-
-      tab.addEventListener('click',
-        e => this.toggleTabs(e, tabsAttribute)
-      );
-    }
+    // Bind tab events
+    this.tabs.forEach((tab) => {
+      const tabsAttribute = tab.getAttribute(this.tabsAttribute);
+      tab.addEventListener('click', e =>
+        this.toggleTabs(e, tabsAttribute));
+    });
   }
 
-  /*
+  /**
    * Tab methods
    */
 
   toggleTabs(e, tabsAttribute) {
-
     // Store active tab attribute state
     this.activeTabAttribute = tabsAttribute;
 
     // Get tab
-    let tab = document.querySelector('[' + this.tabsAttribute + '=' + this.activeTabAttribute + ']');
+    const tab = document.querySelector(`[${this.tabsAttribute}=${this.activeTabAttribute}]`);
 
     if (tab) {
-
       // Display tab element and content and set url hash
       this.resetTabs();
       this.showTab();
@@ -77,19 +68,19 @@ export default class Tabs {
   }
 
   resetTabs() {
-    for (let tab of this.tabs) {
+    this.tabs.forEach((tab) => {
       tab.classList.remove('active');
-    }
+    });
   }
 
   showTab() {
-    let tab = document.querySelector('[' + this.tabsAttribute + '=' + this.activeTabAttribute + ']');
+    const tab = document.querySelector(`[${this.tabsAttribute}=${this.activeTabAttribute}]`);
     if (tab) {
       tab.classList.add('active');
     }
   }
 
-  /*
+  /**
    * Content methods
    */
 
@@ -99,13 +90,13 @@ export default class Tabs {
   }
 
   hideAllContents() {
-    for (let content of this.contents) {
+    this.contents.forEach((content) => {
       content.classList.remove('active');
-    }
+    });
   }
 
   showContent() {
-    let content = document.querySelector('.' + this.activeTabAttribute);
+    const content = document.querySelector(`.${this.activeTabAttribute}`);
     if (content) {
       content.classList.add('active');
       this.scrollToContent();
@@ -113,37 +104,33 @@ export default class Tabs {
   }
 
   scrollToContent() {
-
     // Get current tab
-    let tabsContainer = document.querySelector('.' + this.tabsContainer);
-    let contentContainer = document.querySelector('.' + this.contentContainer);
+    const tabsContainer = document.querySelector(`.${this.tabsContainer}`);
+    const contentContainer = document.querySelector(`.${this.contentContainer}`);
 
     // Calculate new scroll position
-    let menuHeight = parseInt(window.getComputedStyle(tabsContainer).getPropertyValue('height'));
-    let contentYPos = contentContainer.getBoundingClientRect().top;
-    let newScrollPos = contentYPos + window.pageYOffset - menuHeight;
+    const menuHeight = parseInt(window.getComputedStyle(tabsContainer).getPropertyValue('height'), 10);
+    const contentYPos = contentContainer.getBoundingClientRect().top;
+    const newScrollPos = (contentYPos + window.pageYOffset) - menuHeight;
 
-    // Scroll content if menu is fixed
-    if (window.getComputedStyle(tabsContainer).getPropertyValue('position') === 'fixed') {
-      document.documentElement.scrollTop = document.body.scrollTop = newScrollPos;
+    // Scroll project content area to top if menu is fixed
+    if (getCssProp(tabsContainer, 'position') === 'fixed') {
+      setDocumentScrollTop(newScrollPos);
     }
   }
 
-  /*
+  /**
    * Url methods
    */
 
   checkUrlHash() {
-
     // Get the url hash
-    let urlHash = this.getUrlHash();
-    let validHash = null;
+    const urlHash = this.getUrlHash();
 
     if (urlHash) {
-
       // Make sure the hash exists as a data attribute in the dom
-      var node = document.querySelector('[' + this.tabsAttribute + '=' + urlHash + ']');
-      let validHash = document.body.contains(node);
+      const node = document.querySelector(`[${this.tabsAttribute}=${urlHash}]`);
+      const validHash = document.body.contains(node);
 
       // Set tab if valid
       if (validHash) {
@@ -153,7 +140,8 @@ export default class Tabs {
   }
 
   getUrlHash() {
-    return window.location.hash.substr(1);
+    this.urlHash = window.location.hash.substr(1);
+    return this.urlHash;
   }
 
   setUrlHash() {

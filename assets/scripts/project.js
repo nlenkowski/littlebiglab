@@ -1,131 +1,102 @@
-import snapsvg from "snapsvg-cjs";
-import svgxuse from "svgxuse";
-import Logo from "./modules/logo";
-import Tabs from "./modules/tabs"
+import Logo from './modules/logo';
+import Tabs from './modules/tabs';
 
-// Initialize logo animation
-const logoDesktop = new Logo('logo-desktop', -1100, -185, 10, '/wp-content/themes/littlebiglab/dist/images/elfuerte-logo.jpg', 'project');
-const logoMobile = new Logo('logo-mobile', -1425, -240, 0, '/wp-content/themes/littlebiglab/dist/images/elfuerte-logo.jpg', 'project');
+/**
+ * Logo
+ * Initialize logo animations
+ */
+const desktopLogo = new Logo('logo-desktop', -1100, -185, 10, '/wp-content/themes/littlebiglab/dist/images/elfuerte-logo.jpg', 'project'); // eslint-disable-line no-unused-vars
+const mobileLogo = new Logo('logo-mobile', -1425, -240, 0, '/wp-content/themes/littlebiglab/dist/images/elfuerte-logo.jpg', 'project'); // eslint-disable-line no-unused-vars
 
-//
-// Window scroll handling
-//
+/**
+ * Menu bar and tabs
+ * Initialize the menu bar tabs and positioning
+ */
+const menuBar = document.querySelector('.project-details-menu');
+const menuBarWrapper = document.querySelector('.project-details-menu-wrapper');
+let menuBarHeight = 0;
+let menuBarOffsetTop = 0;
+let windowScrollY = 0;
 
-let lastScrollY = 0;
-let ticking = false;
+// Initialize menu bar tabs
+const menuBarTabs = new Tabs(); // eslint-disable-line no-unused-vars
 
-// Scroll event callback - stores last known scroll position
-function onScroll() {
-  lastScrollY = window.pageYOffset;
-  requestTick();
+// Set menu bar wrapper height to the menu bar computed height to avoid a scroll jump
+function setMenuBarWrapperHeight() {
+  menuBarHeight = window.getComputedStyle(menuBar).getPropertyValue('height');
+  menuBarWrapper.style.height = menuBarHeight;
 }
 
-// Calls rAF if it's not already been done already
-function requestTick() {
-  if (!ticking) {
-    requestAnimationFrame(scrollUpdate);
-    ticking = true;
+// Get the menu bar top offset
+function setMenuBarOffsetTop() {
+  menuBarOffsetTop = menuBar.offsetTop;
+}
+
+// Set the menu bar position to fixed if use has scrolled past the menu bar
+function menuBarFixPosition() {
+  if (menuBarOffsetTop < windowScrollY) {
+    menuBar.classList.add('fixed');
+  } else {
+    menuBar.classList.remove('fixed');
   }
 }
 
-// Scroll updates
-function scrollUpdate() {
-
-  // Fix position of project menu
-  projectMenuFixPos();
-
-  // Allow other rAFs to be called
-  ticking = false;
-}
-
-// Add scroll event listener
-window.addEventListener('scroll', onScroll, false);
-
-//
-// Window resize handling
-//
-
-function resizeUpdate() {
-  setProjectMenuOffset();
-  setProjectMenuHeight();
-}
-window.onresize = resizeUpdate;
+// Set initial menu bar height and offset values
+setMenuBarWrapperHeight();
+setMenuBarOffsetTop();
 
 /**
- * Project page scripts
+ * Project details
+ * Enable project details button and project details section visibility
  */
+const projectDetails = document.querySelector('.project-more-info');
+const projectDetailsButton = document.querySelector('.project-more-button');
+let projectDetailsVisible = false;
 
-let projectTabs = null,
-  projectMenu = null,
-  projectMenuOffset = null,
-  projectMenuHeight = null,
-  projectMenuWrapper = null,
-  projectMoreInfo = null,
-  projectMoreButton = null,
-  moreInfoVisible = null;
+// Show project details
+function showProjectDetailsButton() {
+  projectDetails.classList.add('visible');
+  projectDetailsButton.classList.add('active');
+}
 
-// Initialize menu tabs
-projectTabs = new Tabs();
+// Hide project details
+function hideProjectDetailsButton() {
+  projectDetails.classList.remove('visible');
+  projectDetailsButton.classList.remove('active');
+}
 
-// Initialize menu height and offset
-projectMenu = document.querySelector('.project-details-menu');
-projectMenuWrapper = document.querySelector('.project-details-menu-wrapper');
-setProjectMenuHeight();
-setProjectMenuOffset();
-
-// Initialize project more info button
-projectMoreButton = document.querySelector('.project-more-button');
-projectMoreInfo = document.querySelector('.project-more-info');
-moreInfoVisible = false;
-
-if (projectMoreButton) {
-
-  projectMoreButton.addEventListener('click', function (e) {
+// Enable project details button
+if (projectDetailsButton) {
+  projectDetailsButton.addEventListener('click', (e) => {
     e.preventDefault();
 
-    if (moreInfoVisible === false) {
-      showMoreInfo();
-      moreInfoVisible = true;
+    if (projectDetailsVisible === false) {
+      showProjectDetailsButton();
+      projectDetailsVisible = true;
     } else {
-      hideMoreInfo();
-      moreInfoVisible = false;
+      hideProjectDetailsButton();
+      projectDetailsVisible = false;
     }
 
-    // Update project menu top offset
-    setProjectMenuOffset();
-
+    setMenuBarOffsetTop();
   }, false);
 }
 
-// Show more project info content
-function showMoreInfo() {
-  projectMoreInfo.classList.add('visible');
-  projectMoreButton.classList.add('active');
+/**
+ * Window scroll
+ * Set fixed menu bar position when window is scrolled
+ */
+function onScroll() {
+  windowScrollY = window.pageYOffset;
+  requestAnimationFrame(menuBarFixPosition);
 }
+window.addEventListener('scroll', onScroll, false);
 
-// Hide more project info content
-function hideMoreInfo() {
-  projectMoreInfo.classList.remove('visible');
-  projectMoreButton.classList.remove('active');
+/**
+ * Window resize
+ * Set fixed menu bar position when window is resized
+ */
+function resizeUpdate() {
+  onScroll();
 }
-
-// Set the project menu top offset
-function setProjectMenuOffset() {
-  projectMenuOffset = projectMenu.offsetTop;
-}
-
-// Set menu wrapper height to match computed menu height
-// This avoids the scroll jump when the menu position is set to fixed
-function setProjectMenuHeight() {
-  let projectMenuHeight = window.getComputedStyle(projectMenu).getPropertyValue('height');
-  projectMenuWrapper.style.height = projectMenuHeight;
-}
-
-// Fix position of project menu
-function projectMenuFixPos() {
-  if (projectMenuOffset < lastScrollY) {
-    projectMenu.classList.add('fixed');
-  } else {
-    projectMenu.classList.remove('fixed');
-  }
-}
+window.onresize = resizeUpdate;
