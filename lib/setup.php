@@ -62,9 +62,6 @@ define( 'DISTDIR', THEMEDIR . '/dist' );
  */
 function blujay_register_assets() {
 
-    // Polyfills
-    wp_enqueue_script( 'polyfill', 'https://cdn.polyfill.io/v2/polyfill.min.js', '', '', true );
-
     // Scripts
     wp_enqueue_script( 'common-scripts', DISTDIR . '/scripts/common.bundle.js', '', '', true );
 

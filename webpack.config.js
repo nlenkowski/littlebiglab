@@ -12,12 +12,10 @@ const buildPath = path.join(__dirname, 'dist');
 module.exports = {
   entry: {
     home: [
-      'svgxuse',
       path.resolve(sourcePath, 'scripts/home.js'),
       path.resolve(sourcePath, 'styles/main.scss'),
     ],
     project: [
-      'svgxuse',
       path.resolve(sourcePath, 'scripts/project.js'),
       path.resolve(sourcePath, 'styles/main.scss'),
     ],
@@ -50,7 +48,11 @@ module.exports = {
         loader: 'babel-loader',
         options: {
           presets: [
-            ['env'],
+            ['env', {
+              targets: {
+                browsers: ['last 2 versions'],
+              },
+            }],
           ],
         },
       },
