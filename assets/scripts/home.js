@@ -1,5 +1,4 @@
 import './modules/polyfills';
-import './modules/utilities';
 import Logo from './modules/logo';
 
 /**

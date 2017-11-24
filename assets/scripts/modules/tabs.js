@@ -1,4 +1,4 @@
-import { getCssProp, setDocumentScrollTop } from './utilities';
+import * as Utils from './utilities';
 
 /**
  * Tabs
@@ -114,8 +114,8 @@ export default class Tabs {
     const newScrollPos = (contentYPos + window.pageYOffset) - menuHeight;
 
     // Scroll project content area to top if menu is fixed
-    if (getCssProp(tabsContainer, 'position') === 'fixed') {
-      setDocumentScrollTop(newScrollPos);
+    if (Utils.getCssProp(tabsContainer, 'position') === 'fixed') {
+      Utils.setDocumentScrollTop(newScrollPos);
     }
   }
 
