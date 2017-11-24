@@ -50,8 +50,7 @@
     "webpack-merge": "^4.1.1"
   },
   "dependencies": {
-    "babel-polyfill": "^6.26.0",
-    "normalize-scss": "^7.0.0",
+    "normalize.css": "^7.0.0",
     "snapsvg-cjs": "0.0.6",
     "svgxuse": "^1.2.6"
   }
