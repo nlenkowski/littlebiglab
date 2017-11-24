@@ -35,7 +35,7 @@ Template Name: Project
 
         <?php if ( have_rows('features') || get_field('technologies') ) : ?>
             <a href="#" class="project-more-button button">
-                <svg class="icon"><use xlink:href="<?php echo DISTDIR; ?>/svg/symbols.svg#icon-chevron-circle-right"></use></svg><span>Project Details</span>
+                <svg class="icon"><use xlink:href="<?php echo DISTDIR; ?>/icons/symbols.svg#icon-chevron-circle-right"></use></svg><span>Project Details</span>
             </a>
         <?php endif; ?>
 
@@ -43,7 +43,7 @@ Template Name: Project
         $url = get_field('url');
         if ( !empty( $url ) ): ?>
             <a href="<?php echo $url; ?>" class="project-visit-button button">
-                <svg class="icon"><use xlink:href="<?php echo DISTDIR; ?>/svg/symbols.svg#icon-external-link"></use></svg><span>Visit Website</span>
+                <svg class="icon"><use xlink:href="<?php echo DISTDIR; ?>/icons/symbols.svg#icon-external-link"></use></svg><span>Visit Website</span>
             </a>
         <?php endif; ?>
 
@@ -102,21 +102,21 @@ if (!$default_tab) {
 
         <?php if ( have_rows('desktop_screenshots') ): ?>
             <a href="#" class="tab button-dark button-vertical <?php if ($default_tab == 'desktop') : echo 'active'; endif; ?>" data-tab="desktop-screenshots">
-                <svg class="icon icon-image"><use xlink:href="<?php echo DISTDIR; ?>/svg/symbols.svg#icon-desktop"></use></svg>
+                <svg class="icon icon-image"><use xlink:href="<?php echo DISTDIR; ?>/icons/symbols.svg#icon-desktop"></use></svg>
                 <span>Desktop</span>
             </a>
         <?php endif; ?>
 
         <?php if ( have_rows('mobile_screenshots') ): ?>
             <a href="#" class="tab button-dark button-vertical <?php if ($default_tab == 'mobile') : echo 'active'; endif; ?>" data-tab="mobile-screenshots">
-                <svg class="icon icon-image"><use xlink:href="<?php echo DISTDIR; ?>/svg/symbols.svg#icon-mobile"></use></svg>
+                <svg class="icon icon-image"><use xlink:href="<?php echo DISTDIR; ?>/icons/symbols.svg#icon-mobile"></use></svg>
                 <span>Mobile</span>
             </a>
         <?php endif; ?>
 
         <?php if ( have_rows('code_samples') ): ?>
             <a href="#" class="tab button-dark button-vertical <?php if ($default_tab == 'code') : echo 'active'; endif; ?>" data-tab="code-samples">
-                <svg class="icon icon-code"><use xlink:href="<?php echo DISTDIR; ?>/svg/symbols.svg#icon-embed"></use></svg>
+                <svg class="icon icon-code"><use xlink:href="<?php echo DISTDIR; ?>/icons/symbols.svg#icon-embed"></use></svg>
                 <span>Code</span>
             </a>
         <?php endif; ?>

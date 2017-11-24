@@ -22,7 +22,7 @@
                 </h2>
 
                 <a class="button" href="mailto:nathan@littlebiglab.com">
-                    <svg class="icon"><use xlink:href="<?php echo DISTDIR; ?>/svg/symbols.svg#icon-comments"></use></svg><span>Lets Talk</span>
+                    <svg class="icon"><use xlink:href="<?php echo DISTDIR; ?>/icons/symbols.svg#icon-comments"></use></svg><span>Lets Talk</span>
                 </a>
             </div>
 
