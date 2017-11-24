@@ -56,29 +56,28 @@ add_action( 'after_setup_theme', 'blujay_theme_utilities' );
 define( 'THEMEDIR', get_template_directory_uri() );
 define( 'ASSETDIR', THEMEDIR . '/assets' );
 define( 'DISTDIR', THEMEDIR . '/dist' );
-define( 'WEBPACKDISTDIR', THEMEDIR . '/dist-webpack' );
-
 
 /**
  * Register assets
  */
 function blujay_register_assets() {
 
-    // Scripts
-    //wp_enqueue_script( 'polyfill', 'https://cdn.polyfill.io/v2/polyfill.min.js', '', '', true );
+    // Polyfills
+    wp_enqueue_script( 'polyfill', 'https://cdn.polyfill.io/v2/polyfill.min.js', '', '', true );
 
-    wp_enqueue_script( 'commons', WEBPACKDISTDIR . '/scripts/common.min.js', '', '', true );
+    // Scripts
+    wp_enqueue_script( 'common-scripts', DISTDIR . '/scripts/common.bundle.js', '', '', true );
 
     if ( is_page( 'home' ) ) {
-        wp_enqueue_script( 'home', WEBPACKDISTDIR . '/scripts/home.min.js', '', '', true );
+        wp_enqueue_script( 'home-scripts', DISTDIR . '/scripts/home.bundle.js', '', '', true );
     }
 
     if ( get_post_type( $post ) == 'project') {
-        wp_enqueue_script( 'project', WEBPACKDISTDIR . '/scripts/project.min.js', '', '', true );
+        wp_enqueue_script( 'project-scripts', DISTDIR . '/scripts/project.bundle.js', '', '', true );
     }
 
     // Styles
-    wp_enqueue_style( 'main-styles', DISTDIR . '/styles/main.min.css', false );
+    wp_enqueue_style( 'common-styles', DISTDIR . '/styles/common.bundle.css', false );
 }
 add_action( 'wp_enqueue_scripts', 'blujay_register_assets' );
 
