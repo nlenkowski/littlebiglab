@@ -10,6 +10,7 @@ const buildPath = path.join(__dirname, 'dist');
 
 // Common
 module.exports = {
+  devtool: 'source-map',
   entry: {
     home: [
       path.resolve(sourcePath, 'scripts/home.js'),
@@ -62,6 +63,7 @@ module.exports = {
         use: ExtractTextPlugin.extract({
           use: [
             { loader: 'css-loader', options: { sourceMap: true } },
+            { loader: 'postcss-loader', options: { sourceMap: true } },
             { loader: 'sass-loader', options: { sourceMap: true } },
           ],
         }),
