@@ -3,6 +3,7 @@ const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
+const StyleLintPlugin = require('stylelint-webpack-plugin');
 
 // Paths
 const sourcePath = path.join(__dirname, 'assets');
@@ -42,16 +43,21 @@ module.exports = {
   module: {
     rules: [
       {
-        // Scripts
+        enforce: 'pre',
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'eslint-loader',
+      },
+      {
         test: /\.js$/,
         include: sourcePath,
         exclude: /node_modules/,
         loader: 'babel-loader',
       },
       {
-        // Styles
         test: /\.scss$/,
         use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
           use: [
             { loader: 'css-loader', options: { sourceMap: true } },
             { loader: 'postcss-loader', options: { sourceMap: true } },
@@ -73,6 +79,9 @@ module.exports = {
     new ExtractTextPlugin({
       filename: 'styles/[name].bundle.css',
     }),
+
+    // Lint styles with Stylelint
+    new StyleLintPlugin(),
 
     // BrowserSync runs on watch only
     new BrowserSyncPlugin(
