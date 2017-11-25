@@ -1,11 +1,17 @@
 {
   "name": "littlebiglab",
+  "version": "1.0.0",
+  "author": "Nathan Lenkowski <nathan@littlebiglab.com>",
   "homepage": "http://littlebiglab.com",
-  "authors": [
-    "Nathan Lenkowski <nathan@littlebiglab.com>"
-  ],
-  "license": "MIT",
   "private": true,
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nlenkowski/littlebiglab"
+  },
+  "bugs": {
+    "url": "https://github.com/nlenkowski/littlebiglab/issues"
+  },
   "browserslist": [
     "last 2 versions",
     "android 4"
