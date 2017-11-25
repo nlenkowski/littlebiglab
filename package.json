@@ -71,20 +71,19 @@
     }
   },
   "scripts": {
-    "clean": "rimraf dist/{scripts/*,styles/*,fonts/*,images/*,icons/*}",
-    "build:fonts": "copyfiles -f assets/fonts/*.woff assets/fonts/*.woff2 dist/fonts",
-    "build:images": "imagemin --plugin=pngquant --plugin=mozjpeg assets/images/* -o dist/images",
-    "build:icons": "svgstore assets/icons/*.svg -o dist/icons/symbols.svg -p icon-",
-    "build:webpack:dev": "webpack --config webpack.config.js",
-    "build:webpack:prod": "webpack -p --config webpack.config.js",
-    "build:webpack:watch": "webpack --watch --config webpack.config.js",
-    "build:static": "run-p build:fonts build:icons build:images",
-    "build:dev": "npm run clean && run-p build:static build:webpack:dev",
-    "build:prod": "npm run clean && run-p build:static build:webpack:prod",
+    "clean": "rimraf dist/{fonts/*,icons/*,images/*,scripts/*,styles/*}",
+    "fonts": "copyfiles -f assets/fonts/*.woff assets/fonts/*.woff2 dist/fonts",
+    "icons": "svgstore assets/icons/*.svg -o dist/icons/symbols.svg -p icon-",
+    "images": "imagemin --plugin=pngquant --plugin=mozjpeg assets/images/* -o dist/images",
+    "build": "npm run clean && run-p fonts icons images webpack",
+    "build:prod": "npm run clean && run-p fonts icons images webpack:prod",
     "lint": "run-p lint:scripts lint:styles",
     "lint:scripts": "eslint assets/scripts || true",
     "lint:styles": "stylelint assets/styles/**/*.scss --syntax scss || true",
-    "watch": "npm run clean && run-p build:static build:webpack:watch"
+    "webpack": "webpack --config webpack.config.js --progress",
+    "webpack:prod": "webpack -p --config webpack.config.js --progress",
+    "webpack:watch": "webpack --watch --config webpack.config.js --progress",
+    "watch": "npm run clean && run-p fonts icons images webpack:watch"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.6",
