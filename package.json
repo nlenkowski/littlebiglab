@@ -6,6 +6,64 @@
   ],
   "license": "MIT",
   "private": true,
+  "browserslist": [
+    "last 2 versions",
+    "android 4"
+  ],
+  "babel": {
+    "presets": [
+      "env"
+    ]
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "eslintConfig": {
+    "root": true,
+    "extends": "airbnb-base",
+    "env": {
+      "browser": true,
+      "es6": true
+    },
+    "parserOptions": {
+      "sourceType": "module"
+    },
+    "rules": {},
+    "globals": {
+      "Snap": true,
+      "mina": true
+    }
+  },
+  "stylelint": {
+    "extends": "stylelint-config-standard",
+    "rules": {
+      "no-empty-source": null,
+      "at-rule-no-unknown": [
+        true,
+        {
+          "ignoreAtRules": [
+            "extend",
+            "at-root",
+            "debug",
+            "warn",
+            "error",
+            "if",
+            "else",
+            "for",
+            "each",
+            "while",
+            "mixin",
+            "include",
+            "content",
+            "return",
+            "function"
+          ]
+        }
+      ]
+    }
+  },
   "scripts": {
     "clean": "rimraf dist/{scripts/*,styles/*,fonts/*,images/*,icons/*}",
     "build:fonts": "copyfiles -f assets/fonts/*.woff assets/fonts/*.woff2 dist/fonts",
@@ -41,6 +99,7 @@
     "imagemin-pngquant": "^5.0.1",
     "node-sass": "^4.6.1",
     "npm-run-all": "^4.1.2",
+    "postcss-load-config": "^1.2.0",
     "postcss-loader": "^2.0.9",
     "rimraf": "^2.6.2",
     "sass-loader": "^6.0.6",

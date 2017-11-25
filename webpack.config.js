@@ -47,15 +47,6 @@ module.exports = {
         include: sourcePath,
         exclude: /node_modules/,
         loader: 'babel-loader',
-        options: {
-          presets: [
-            ['env', {
-              targets: {
-                browsers: ['last 2 versions'],
-              },
-            }],
-          ],
-        },
       },
       {
         // Styles
