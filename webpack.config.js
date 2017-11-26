@@ -31,7 +31,10 @@ module.exports = function webpack(env) {
       filename: 'scripts/[name].bundle.js',
     },
     stats: {
-      // Cleanup stats, errors are handled by FriendlyErrorsWebpackPlugin
+      // Stats and errors handled by FriendlyErrorsWebpackPlugin
+      hash: false,
+      version: false,
+      timings: false,
       errors: false,
       errorDetails: false,
       warnings: false,
