@@ -116,12 +116,9 @@ module.exports = function webpack(env) {
           proxy: 'https://logan.local',
           files: [
             '**/*.php',
-            'dist/styles/*.css',
-            'dist/scripts/*.js',
+            path.resolve(buildPath, 'scripts/*.js'),
+            path.resolve(buildPath, 'styles/*.css'),
           ],
-          wachOptions: {
-            ignored: '/wp-admin/**',
-          },
           ghostMode: {
             clicks: true,
             forms: false,
