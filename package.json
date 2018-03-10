@@ -36,7 +36,10 @@
     "parserOptions": {
       "sourceType": "module"
     },
-    "rules": {},
+    "rules": {
+      "no-unused-vars": 0,
+      "no-mixed-operators": 0
+    },
     "globals": {
       "Snap": true,
       "mina": true
@@ -46,6 +49,7 @@
     "extends": "stylelint-config-standard",
     "rules": {
       "no-empty-source": null,
+      "no-descending-specificity": null,
       "at-rule-no-unknown": [
         true,
         {
