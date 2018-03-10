@@ -58,7 +58,7 @@ module.exports = function webpack(env) {
           loader: 'babel-loader',
         },
         {
-          // Autoprefix styles with postcss and compile sass
+          // Autoprefix styles with postcss and compile scss
           test: /\.scss$/,
           include: sourcePath,
           use: ExtractTextPlugin.extract({
@@ -94,7 +94,6 @@ module.exports = function webpack(env) {
       ],
     },
     plugins: [
-
       // Split common code into a separate file
       new CommonsChunkPlugin({
         name: 'common',
@@ -113,7 +112,7 @@ module.exports = function webpack(env) {
       // Watch with browsersync
       new BrowserSyncPlugin(
         {
-          proxy: 'https://logan.local',
+          proxy: 'https://littlebiglab.test',
           files: [
             '**/*.php',
             path.resolve(buildPath, 'scripts/*.js'),
@@ -121,8 +120,8 @@ module.exports = function webpack(env) {
           ],
           ghostMode: {
             clicks: true,
-            forms: false,
-            scroll: false,
+            forms: true,
+            scroll: true,
           },
           open: false,
           notify: false,
