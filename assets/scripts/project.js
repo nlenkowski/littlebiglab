@@ -6,8 +6,23 @@ import Tabs from './modules/tabs';
  * Logo
  * Initialize logo animations
  */
-const desktopLogo = new Logo('logo-desktop', -1100, -185, 10, '/wp-content/themes/littlebiglab/dist/images/elfuerte-logo.jpg', 'project'); // eslint-disable-line no-unused-vars
-const mobileLogo = new Logo('logo-mobile', -1425, -240, 0, '/wp-content/themes/littlebiglab/dist/images/elfuerte-logo.jpg', 'project'); // eslint-disable-line no-unused-vars
+const desktopLogo = new Logo(
+  'logo-desktop',
+  -1100,
+  -185,
+  10,
+  '/wp-content/themes/littlebiglab/dist/images/elfuerte-logo.jpg',
+  'project',
+);
+
+const mobileLogo = new Logo(
+  'logo-mobile',
+  -1425,
+  -240,
+  0,
+  '/wp-content/themes/littlebiglab/dist/images/elfuerte-logo.jpg',
+  'project',
+);
 
 /**
  * Menu bar and tabs
@@ -68,19 +83,23 @@ function hideProjectDetailsButton() {
 
 // Enable project details button
 if (projectDetailsButton) {
-  projectDetailsButton.addEventListener('click', (e) => {
-    e.preventDefault();
+  projectDetailsButton.addEventListener(
+    'click',
+    (e) => {
+      e.preventDefault();
 
-    if (projectDetailsVisible === false) {
-      showProjectDetailsButton();
-      projectDetailsVisible = true;
-    } else {
-      hideProjectDetailsButton();
-      projectDetailsVisible = false;
-    }
+      if (projectDetailsVisible === false) {
+        showProjectDetailsButton();
+        projectDetailsVisible = true;
+      } else {
+        hideProjectDetailsButton();
+        projectDetailsVisible = false;
+      }
 
-    setMenuBarOffsetTop();
-  }, false);
+      setMenuBarOffsetTop();
+    },
+    false,
+  );
 }
 
 /**

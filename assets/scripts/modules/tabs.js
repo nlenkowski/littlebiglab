@@ -14,7 +14,13 @@ export default class Tabs {
    * @param {string} contentClass - Tabs content class
    * @param {string} contentContainer - Tabs content container
    */
-  constructor(tabsAttribute = 'data-tab', tabsClass = 'tab', tabsContainer = 'tabs-container', contentClass = 'content', contentContainer = 'content-container') {
+  constructor(
+    tabsAttribute = 'data-tab',
+    tabsClass = 'tab',
+    tabsContainer = 'tabs-container',
+    contentClass = 'content',
+    contentContainer = 'content-container',
+  ) {
     this.tabsAttribute = tabsAttribute;
     this.tabsClass = tabsClass;
     this.tabsContainer = tabsContainer;
@@ -37,8 +43,7 @@ export default class Tabs {
     // Bind tab events
     this.tabs.forEach((tab) => {
       const tabsAttribute = tab.getAttribute(this.tabsAttribute);
-      tab.addEventListener('click', e =>
-        this.toggleTabs(e, tabsAttribute));
+      tab.addEventListener('click', e => this.toggleTabs(e, tabsAttribute));
     });
   }
 
@@ -109,7 +114,10 @@ export default class Tabs {
     const contentContainer = document.querySelector(`.${this.contentContainer}`);
 
     // Calculate new scroll position
-    const menuHeight = parseInt(window.getComputedStyle(tabsContainer).getPropertyValue('height'), 10);
+    const menuHeight = parseInt(
+      window.getComputedStyle(tabsContainer).getPropertyValue('height'),
+      10,
+    );
     const contentYPos = contentContainer.getBoundingClientRect().top;
     const newScrollPos = (contentYPos + window.pageYOffset) - menuHeight;
 

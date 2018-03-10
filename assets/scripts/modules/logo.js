@@ -46,26 +46,14 @@ export default class Logo {
   bindEvents() {
     // Events for the home page
     if (this.page === 'home') {
-      this.logo.addEventListener(
-        'click',
-        e => this.showBackground(e),
-      );
-
-      this.background.addEventListener(
-        'click',
-        e => this.hideBackground(e),
-      );
+      this.logo.addEventListener('click', e => this.showBackground(e));
+      this.background.addEventListener('click', e => this.hideBackground(e));
 
       // Scroll events
-      window.addEventListener(
-        'scroll',
-        e => this.hideBackground(e),
-      );
-    } else { // Events for other pages
-      this.logo.addEventListener(
-        'click',
-        e => this.goHome(e),
-      );
+      window.addEventListener('scroll', e => this.hideBackground(e));
+    } else {
+      // Events for other pages
+      this.logo.addEventListener('click', e => this.goHome(e));
     }
   }
 
@@ -82,20 +70,27 @@ export default class Logo {
    * Animate pattern image
    */
   animatePattern() {
-    this.pattern.animate({
-      x: this.xPos,
-      y: this.yPos,
-    }, this.duration, mina.easeinout);
+    this.pattern.animate(
+      {
+        x: this.xPos,
+        y: this.yPos,
+      },
+      this.duration,
+      mina.easeinout,
+    );
   }
 
   /**
    * Reset pattern image
    */
   resetPattern() {
-    this.pattern.animate({
-      x: this.patternInitXPos,
-      y: this.patternInitYPos,
-    }, 0);
+    this.pattern.animate(
+      {
+        x: this.patternInitXPos,
+        y: this.patternInitYPos,
+      },
+      0,
+    );
   }
 
   /**
