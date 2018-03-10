@@ -7,6 +7,16 @@
 <head>
     <meta charset="<?php bloginfo( 'charset' ); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="<?php bloginfo( 'description' ); ?>">
+    <?php if ( is_front_page() ) { ?>
+        <title><?php bloginfo( 'description' ); ?> | <?php bloginfo( 'name' ); ?></title>
+    <?php } else if ( is_singular( 'project' ) ) { ?>
+        <title><?php the_title(); ?> Project | <?php bloginfo( 'name' ); ?></title>
+    <?php } else if ( is_404() ){ ?>
+        <title>404. Dang. | <?php bloginfo( 'name' ); ?></title>
+    <?php } else { ?>
+        <title><?php the_title(); ?> | <?php bloginfo( 'name' ); ?></title>
+    <?php } ?>
     <?php wp_head(); ?>
 </head>
 
