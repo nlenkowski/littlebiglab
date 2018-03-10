@@ -101,6 +101,22 @@ li {
   }
 }
 
+.site-title,
+.section-title {
+  text-align: center;
+}
+
+.site-title {
+  font-size: $f3;
+  line-height: 1.4em;
+
+  @include md {
+    font-size: 2.9rem;
+    font-weight: 600;
+    line-height: 1.375em;
+  }
+}
+
 .section-title {
   display: inline-block;
   margin-bottom: 15px;
