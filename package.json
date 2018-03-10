@@ -12,14 +12,9 @@
   "bugs": {
     "url": "https://github.com/nlenkowski/littlebiglab/issues"
   },
-  "browserslist": [
-    "last 2 versions",
-    "android 4"
-  ],
+  "browserslist": ["last 2 versions", "android 4"],
   "babel": {
-    "presets": [
-      "env"
-    ]
+    "presets": ["env"]
   },
   "postcss": {
     "plugins": {
@@ -37,8 +32,7 @@
       "sourceType": "module"
     },
     "rules": {
-      "no-unused-vars": 0,
-      "no-mixed-operators": 0
+      "no-unused-vars": ["error", { "varsIgnorePattern": "Logo" }]
     },
     "globals": {
       "Snap": true,
