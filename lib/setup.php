@@ -63,18 +63,19 @@ define( 'DISTDIR', THEMEDIR . '/dist' );
 function blujay_register_assets() {
 
     // Scripts
-    wp_enqueue_script( 'common-scripts', DISTDIR . '/scripts/common.bundle.js', '', '', true );
+    wp_enqueue_script( 'manifest', DISTDIR . '/scripts/manifest.js', '', '', true );
+    wp_enqueue_script( 'vendor', DISTDIR . '/scripts/vendor.js', '', '', true );
 
     if ( is_page( 'home' ) ) {
-        wp_enqueue_script( 'home-scripts', DISTDIR . '/scripts/home.bundle.js', '', '', true );
+        wp_enqueue_script( 'home', DISTDIR . '/scripts/home.js', '', '', true );
     }
 
     if ( get_post_type( $post ) == 'project') {
-        wp_enqueue_script( 'project-scripts', DISTDIR . '/scripts/project.bundle.js', '', '', true );
+        wp_enqueue_script( 'project', DISTDIR . '/scripts/project.js', '', '', true );
     }
 
     // Styles
-    wp_enqueue_style( 'common-styles', DISTDIR . '/styles/common.bundle.css', false );
+    wp_enqueue_style( 'common-styles', DISTDIR . '/styles/main.css', false );
 }
 add_action( 'wp_enqueue_scripts', 'blujay_register_assets' );
 
