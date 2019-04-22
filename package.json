@@ -1,10 +1,8 @@
 {
   "name": "littlebiglab",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": "Nathan Lenkowski <nathan@littlebiglab.com>",
-  "homepage": "http://littlebiglab.com",
-  "private": true,
-  "license": "MIT",
+  "homepage": "https://littlebiglab.com",
   "repository": {
     "type": "git",
     "url": "https://github.com/nlenkowski/littlebiglab"
@@ -12,113 +10,39 @@
   "bugs": {
     "url": "https://github.com/nlenkowski/littlebiglab/issues"
   },
-  "browserslist": ["last 2 versions", "android 4"],
-  "babel": {
-    "presets": ["env"]
-  },
-  "postcss": {
-    "plugins": {
-      "autoprefixer": {}
-    }
-  },
-  "eslintConfig": {
-    "root": true,
-    "extends": "airbnb-base",
-    "env": {
-      "browser": true,
-      "es6": true
-    },
-    "parserOptions": {
-      "sourceType": "module"
-    },
-    "rules": {
-      "no-unused-vars": ["error", { "varsIgnorePattern": "Logo" }]
-    },
-    "globals": {
-      "Snap": true,
-      "mina": true
-    }
-  },
-  "stylelint": {
-    "extends": "stylelint-config-standard",
-    "rules": {
-      "no-empty-source": null,
-      "no-descending-specificity": null,
-      "at-rule-no-unknown": [
-        true,
-        {
-          "ignoreAtRules": [
-            "extend",
-            "at-root",
-            "debug",
-            "warn",
-            "error",
-            "if",
-            "else",
-            "for",
-            "each",
-            "while",
-            "mixin",
-            "include",
-            "content",
-            "return",
-            "function"
-          ]
-        }
-      ]
-    }
-  },
+  "license": "MIT",
+  "browserslist": [
+    ">0.25%"
+  ],
   "scripts": {
-    "clean": "rimraf dist/{fonts/*,icons/*,images/*,scripts/*,styles/*}",
-    "fonts": "copyfiles -f assets/fonts/*.woff assets/fonts/*.woff2 dist/fonts",
-    "icons": "svgstore assets/icons/*.svg -o dist/icons/symbols.svg -p icon-",
-    "images": "imagemin --plugin=pngquant --plugin=mozjpeg assets/images/* -o dist/images",
-    "build": "npm run clean && run-p fonts icons images webpack",
-    "build:prod": "npm run clean && run-p fonts icons images webpack:prod",
-    "lint": "run-p lint:scripts lint:styles",
-    "lint:scripts": "eslint assets/scripts || true",
-    "lint:styles": "stylelint assets/styles/**/*.scss --syntax scss || true",
-    "webpack": "webpack --config webpack.config.js --env.dev --progress",
-    "webpack:prod": "webpack -p --config webpack.config.js --env.prod --progress",
-    "webpack:watch": "webpack --watch --config webpack.config.js --env.dev --progress",
-    "watch": "npm run clean && run-p fonts icons images webpack:watch"
+    "clean": "rimraf dist",
+    "dev": "npm run development",
+    "development": "npm run clean && cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "prod": "npm run production",
+    "production": "npm run clean && cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch": "npm run development -- --watch"
   },
   "devDependencies": {
-    "autoprefixer": "^7.1.6",
-    "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.2",
-    "babel-preset-env": "^1.6.1",
-    "browser-sync": "^2.18.13",
-    "browser-sync-webpack-plugin": "^1.2.0",
-    "copyfiles": "^1.2.0",
-    "css-loader": "^0.28.7",
-    "eslint": "^4.11.0",
-    "eslint-config-airbnb-base": "^12.1.0",
-    "eslint-loader": "^1.9.0",
-    "eslint-plugin-import": "^2.8.0",
-    "extract-text-webpack-plugin": "^3.0.2",
-    "file-loader": "^1.1.5",
-    "friendly-errors-webpack-plugin": "^1.6.1",
-    "imagemin-cli": "^3.0.0",
-    "imagemin-mozjpeg": "^6.0.0",
-    "imagemin-pngquant": "^5.0.1",
-    "node-sass": "^4.6.1",
-    "npm-run-all": "^4.1.2",
-    "postcss-load-config": "^1.2.0",
-    "postcss-loader": "^2.0.9",
-    "rimraf": "^2.6.2",
-    "sass-loader": "^6.0.6",
-    "style-loader": "^0.19.0",
-    "stylelint": "^8.2.0",
-    "stylelint-config-standard": "^17.0.0",
-    "stylelint-webpack-plugin": "^0.9.0",
-    "svgstore-cli": "^1.3.1",
-    "url-loader": "^0.6.2",
-    "webpack": "^3.8.1"
+    "@ayctor/laravel-mix-svg-sprite": "^1.0.0",
+    "browser-sync": "^2.26.3",
+    "browser-sync-webpack-plugin": "^2.2.2",
+    "cross-env": "^5.2.0",
+    "eslint": "^5.14.1",
+    "laravel-mix": "^4.0.14",
+    "laravel-mix-svg-sprite": "^1.0.0",
+    "resolve-url-loader": "^3.1.0",
+    "rimraf": "^2.6.3",
+    "sass": "^1.17.0",
+    "sass-loader": "7.*",
+    "stylelint": "^10.0.1",
+    "stylelint-config-recommended-scss": "^3.2.0",
+    "stylelint-scss": "^3.5.3",
+    "svg-spritemap-webpack-plugin": "^3.3.0",
+    "vue-template-compiler": "^2.6.10"
   },
   "dependencies": {
     "nodelist-foreach-polyfill": "^1.2.0",
-    "normalize.css": "^7.0.0",
+    "normalize.css": "^8.0.1",
     "snapsvg-cjs": "0.0.6",
     "svgxuse": "^1.2.6"
   }

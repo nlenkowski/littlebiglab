@@ -3,4 +3,5 @@
 dist
 node_modules
 npm-debug.log
+mix-manifest.json
 .vscode
