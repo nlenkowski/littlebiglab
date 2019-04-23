@@ -22,8 +22,14 @@ $color-border: #ccc;
 $color-accent: #e91e63;
 
 // Font stack
-@include fontface("Museo Sans", "/wp-content/themes/littlebiglab/dist/fonts/MuseoSans-500");
-@include fontface("Museo Sans Lite", "/wp-content/themes/littlebiglab/dist/fonts/MuseoSans-300");
+@include fontface(
+  "Museo Sans",
+  "/wp-content/themes/littlebiglab/dist/fonts/MuseoSans-500"
+);
+@include fontface(
+  "Museo Sans Lite",
+  "/wp-content/themes/littlebiglab/dist/fonts/MuseoSans-300"
+);
 
 // Font familys
 $font-family-museo: "Museo Sans", sans-serif;

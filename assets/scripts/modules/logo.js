@@ -1,4 +1,4 @@
-import 'snapsvg-cjs';
+import "snapsvg-cjs";
 
 /**
  * Logo
@@ -35,9 +35,9 @@ export default class Logo {
   cacheDom() {
     this.logo = document.querySelector(`${this.svgId}-container`);
     this.pattern = Snap.select(`${this.svgId} .logo-pattern-image`);
-    this.patternInitXPos = this.pattern.attr('x');
-    this.patternInitYPos = this.pattern.attr('y');
-    this.background = document.querySelector('.logo-background-image');
+    this.patternInitXPos = this.pattern.attr("x");
+    this.patternInitYPos = this.pattern.attr("y");
+    this.background = document.querySelector(".logo-background-image");
   }
 
   /**
@@ -45,15 +45,15 @@ export default class Logo {
    */
   bindEvents() {
     // Events for the home page
-    if (this.page === 'home') {
-      this.logo.addEventListener('click', e => this.showBackground(e));
-      this.background.addEventListener('click', e => this.hideBackground(e));
+    if (this.page === "home") {
+      this.logo.addEventListener("click", e => this.showBackground(e));
+      this.background.addEventListener("click", e => this.hideBackground(e));
 
       // Scroll events
-      window.addEventListener('scroll', e => this.hideBackground(e));
+      window.addEventListener("scroll", e => this.hideBackground(e));
     } else {
       // Events for other pages
-      this.logo.addEventListener('click', e => this.goHome(e));
+      this.logo.addEventListener("click", e => this.goHome(e));
     }
   }
 
@@ -73,10 +73,10 @@ export default class Logo {
     this.pattern.animate(
       {
         x: this.xPos,
-        y: this.yPos,
+        y: this.yPos
       },
       this.duration,
-      mina.easeinout,
+      mina.easeinout
     );
   }
 
@@ -87,9 +87,9 @@ export default class Logo {
     this.pattern.animate(
       {
         x: this.patternInitXPos,
-        y: this.patternInitYPos,
+        y: this.patternInitYPos
       },
-      0,
+      0
     );
   }
 
@@ -97,23 +97,23 @@ export default class Logo {
    * Show background image
    */
   showBackground() {
-    this.background.classList.add('visible');
-    this.logo.classList.add('overlay');
+    this.background.classList.add("visible");
+    this.logo.classList.add("overlay");
   }
 
   /**
    * Hide background image
    */
   hideBackground() {
-    this.background.classList.remove('visible');
-    this.logo.classList.remove('overlay');
+    this.background.classList.remove("visible");
+    this.logo.classList.remove("overlay");
   }
 
   /**
    * Load home page
    */
   goHome() {
-    this.homePath = '/';
+    this.homePath = "/";
     window.location = this.homePath;
   }
 }
