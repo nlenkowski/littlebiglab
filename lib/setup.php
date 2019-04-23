@@ -7,86 +7,90 @@
 /**
  * Theme setup
  */
-function blujay_setup() {
+function blujay_setup()
+{
 
     // Make theme available for translation
-    load_theme_textdomain( 'blujay', get_template_directory() . '/lang' );
+    load_theme_textdomain('blujay', get_template_directory() . '/lang');
 
     // Add default posts and comments RSS feed links to head
-	add_theme_support( 'automatic-feed-links' );
+    add_theme_support('automatic-feed-links');
 
     // Enable support for Post Thumbnails on posts and pages
-    add_theme_support( 'post-thumbnails' );
+    add_theme_support('post-thumbnails');
 
     // Enable plugins to manage the document title
-    add_theme_support( 'title-tag' );
+    add_theme_support('title-tag');
 
     // Enable support for HTML5 markup
-    add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption' ) );
+    add_theme_support('html5', array( 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption' ));
 }
-add_action( 'after_setup_theme', 'blujay_setup' );
+add_action('after_setup_theme', 'blujay_setup');
 
 /**
  * Enable theme utilities
  */
-function blujay_theme_utilities() {
+function blujay_theme_utilities()
+{
 
     // Cleanup header
-    add_action( 'init', 'blujay_head_cleanup' );
-    add_action( 'init', 'blujay_disable_rest_and_oembed' );
-    add_action( 'init', 'blujay_disable_emoji_styles_scripts' );
+    add_action('init', 'blujay_head_cleanup');
+    add_action('init', 'blujay_disable_rest_and_oembed');
+    add_action('init', 'blujay_disable_emoji_styles_scripts');
 
     // Move scripts to footer
-    add_action( 'wp_enqueue_scripts', 'blujay_js_to_footer' );
+    add_action('wp_enqueue_scripts', 'blujay_js_to_footer');
 
     // Add page and post slugs to body class
-    add_filter( 'body_class', 'blujay_add_page_slug' );
+    add_filter('body_class', 'blujay_add_page_slug');
 
     // Add custom image sizes to media library
-    add_filter( 'image_size_names_choose', 'blujay_custom_image_sizes' );
+    add_filter('image_size_names_choose', 'blujay_custom_image_sizes');
 
     // Enable execution of shortcodes in widgets
-    add_filter( 'widget_text', 'do_shortcode' );
+    add_filter('widget_text', 'do_shortcode');
 }
-add_action( 'after_setup_theme', 'blujay_theme_utilities' );
+add_action('after_setup_theme', 'blujay_theme_utilities');
 
 /**
  * Register constants
  */
-define( 'THEMEDIR', get_template_directory_uri() );
-define( 'ASSETDIR', THEMEDIR . '/assets' );
-define( 'DISTDIR', THEMEDIR . '/dist' );
+define('THEMEDIR', get_template_directory_uri());
+define('ASSETDIR', THEMEDIR . '/assets');
+define('DISTDIR', THEMEDIR . '/dist');
 
 /**
  * Register assets
  */
-function blujay_register_assets() {
+function blujay_register_assets()
+{
 
     // Scripts
-    wp_enqueue_script( 'manifest', DISTDIR . '/scripts/manifest.js', '', '', true );
-    wp_enqueue_script( 'vendor', DISTDIR . '/scripts/vendor.js', '', '', true );
+    wp_enqueue_script('manifest', DISTDIR . '/scripts/manifest.js', '', '', true);
+    wp_enqueue_script('vendor', DISTDIR . '/scripts/vendor.js', '', '', true);
 
-    if ( is_page( 'home' ) ) {
-        wp_enqueue_script( 'home', DISTDIR . '/scripts/home.js', '', '', true );
+    if (is_page('home')) {
+        wp_enqueue_script('home', DISTDIR . '/scripts/home.js', '', '', true);
     }
 
-    if ( get_post_type( $post ) == 'project') {
-        wp_enqueue_script( 'project', DISTDIR . '/scripts/project.js', '', '', true );
+    if (get_post_type($post) == 'project') {
+        wp_enqueue_script('project', DISTDIR . '/scripts/project.js', '', '', true);
     }
 
     // Styles
-    wp_enqueue_style( 'common-styles', DISTDIR . '/styles/main.css', false );
+    wp_enqueue_style('common-styles', DISTDIR . '/styles/main.css', false);
 }
-add_action( 'wp_enqueue_scripts', 'blujay_register_assets' );
+add_action('wp_enqueue_scripts', 'blujay_register_assets');
 
 /**
  * Defer loading of the these scripts
  */
-function add_async_attribute($tag, $handle) {
-    if ( 'svgxuse' !== $handle ) {
+function add_async_attribute($tag, $handle)
+{
+    if ('svgxuse' !== $handle) {
         return $tag;
     } else {
-        return str_replace( ' src', ' defer src', $tag );
+        return str_replace(' src', ' defer src', $tag);
     }
 }
 add_filter('script_loader_tag', 'add_async_attribute', 10, 2);
@@ -95,23 +99,23 @@ add_filter('script_loader_tag', 'add_async_attribute', 10, 2);
  * Register menus
  */
 register_nav_menus(array(
-    'primary' => __( 'Primary Menu', 'blujay' ),
+    'primary' => __('Primary Menu', 'blujay'),
 ));
 
 /**
  * Register custom image sizes
  */
-function blujay_add_image_sizes() {
-    add_image_size( 'project-logo', '9999', '95', false );
-    add_image_size( 'project-logo-retina', '9999', '190', false );
+function blujay_add_image_sizes()
+{
+    add_image_size('project-logo', '9999', '95', false);
+    add_image_size('project-logo-retina', '9999', '190', false);
 }
-add_action( 'init', 'blujay_add_image_sizes' );
+add_action('init', 'blujay_add_image_sizes');
 
 /**
  * Register sidebar and widget areas
  */
-function blujay_widgets_init() {
+function blujay_widgets_init()
+{
 }
-add_action( 'widgets_init', 'blujay_widgets_init' );
-
-?>
+add_action('widgets_init', 'blujay_widgets_init');

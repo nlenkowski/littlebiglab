@@ -7,7 +7,7 @@
 <article id="post-<?php the_ID(); ?>" class="post content content-excerpt">
 
     <section class="post-featured-image">
-        <?php the_post_thumbnail( 'thumbnail' ); ?>
+        <?php the_post_thumbnail('thumbnail'); ?>
     </section>
 
     <section class="post-content">

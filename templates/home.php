@@ -25,17 +25,20 @@ Template Name: Home
 
             <?php
             $projects = get_field('projects');
-            if ( $projects ) : ?>
+            if ($projects) :
+                ?>
 
                 <?php
-                foreach ( $projects as $post ) :
-                    setup_postdata( $post ); ?>
+                foreach ($projects as $post) :
+                    setup_postdata($post);
+                    ?>
 
                     <div class="project">
 
                         <?php
                         $image = get_field('logo');
-                        if ( !empty($image) ): ?>
+                        if (! empty($image)) :
+                            ?>
                                 <img class="project-image" src="<?php echo $image['sizes']['project-logo']; ?>" srcset="<?php echo $image['sizes']['project-logo']; ?>, <?php echo $image['sizes']['project-logo-retina']; ?> 2x" alt="<?php the_title(); ?>">
                         <?php endif; ?>
 
@@ -52,7 +55,7 @@ Template Name: Home
                         </a>
                     </div>
 
-                <?php
+                    <?php
                 endforeach;
                 wp_reset_postdata();
                 ?>
@@ -62,18 +65,22 @@ Template Name: Home
         </div>
     </section>
 
-    <?php while ( have_posts() ) : the_post(); ?>
+    <?php
+    while (have_posts()) :
+        the_post();
+        ?>
 
-        <?php if ( have_rows('sections') ): ?>
-
-        	<?php while ( have_rows('sections') ): the_row();
+        <?php if (have_rows('sections')) : ?>
+            <?php
+            while (have_rows('sections')) :
+                the_row();
                 $name       = get_sub_field('name');
                 $heading    = get_sub_field('heading');
                 $subheading = get_sub_field('subheading');
                 $content    = get_sub_field('content');
-        		?>
+                ?>
 
-        		<section class="<?php echo strtolower($name); ?> section-content container">
+                <section class="<?php echo strtolower($name); ?> section-content container">
 
                     <h2 class="section-title">
                         <?php echo $heading; ?>
@@ -89,9 +96,9 @@ Template Name: Home
                         <?php echo $content; ?>
                     </div>
 
-        		</section>
+                </section>
 
-        	<?php endwhile; ?>
+            <?php endwhile; ?>
         <?php endif; ?>
 
     <?php endwhile; // end of the loop ?>
