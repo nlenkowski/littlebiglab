@@ -9,37 +9,91 @@ Template Name: Home
 <main class="main">
 
     <h1 class="site-title container">
-        <?php the_field('main_heading', 8); ?>
+        <?php the_field('header_title', 8); ?>
     </h1>
 
-    <section class="projects">
+    <!-- Services -->
+
+    <section class="services section-content container">
+        <?php
+        $title = get_field('services_title');
+        $subtitle = get_field('services_subtitle');
+        $content = get_field('additional_services');
+        ?>
 
         <h2 class="section-title">
-            <?php the_field('projects_heading'); ?>
-            <span class="section-subtitle">
-                <?php the_field('projects_subheading'); ?>
-            </span>
+            <?php echo $title ?>
+
+            <?php if ($subtitle) : ?>
+                <span class="section-subtitle">
+                    <?php echo $subtitle; ?>
+                </span>
+            <?php endif; ?>
+        </h2>
+
+        <?php if (have_rows('services')) : ?>
+            <div class="services-grid">
+                <?php while (have_rows('services')) :
+                    the_row();
+
+                    $image = get_sub_field('image');
+                    $title = get_sub_field('title');
+                    $description = get_sub_field('description');
+                    ?>
+
+                    <div class="service">
+                        <img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt'] ?>" />
+                        <h3><?php echo $title; ?></h3>
+                        <p><?php echo $description; ?></p>
+                    </div>
+                <?php endwhile; ?>
+            </div>
+        <?php endif; ?>
+
+        <div class="section-body">
+            <?php echo $content; ?>
+        </div>
+    </section>
+
+    <!-- Projects -->
+
+    <section class="projects section-content">
+        <?php
+        $title = get_field('projects_title');
+        $subtitle = get_field('projects_subtitle');
+        $projects = get_field('projects');
+        ?>
+
+        <h2 class="section-title">
+            <?php echo $title ?>
+
+            <?php if ($subtitle) : ?>
+                <span class="section-subtitle">
+                    <?php echo $subtitle; ?>
+                </span>
+            <?php endif; ?>
         </h2>
 
         <div class="projects-grid">
 
             <?php
-            $projects = get_field('projects');
             if ($projects) :
-                ?>
-
-                <?php
                 foreach ($projects as $post) :
                     setup_postdata($post);
                     ?>
 
                     <div class="project">
-
                         <?php
                         $image = get_field('logo');
                         if (! empty($image)) :
                             ?>
-                                <img class="project-image" src="<?php echo $image['sizes']['project-logo']; ?>" srcset="<?php echo $image['sizes']['project-logo']; ?>, <?php echo $image['sizes']['project-logo-retina']; ?> 2x" alt="<?php the_title(); ?>">
+                            <img
+                                class="project-image"
+                                src="<?php echo $image['sizes']['project-logo']; ?>"
+                                srcset="<?php echo $image['sizes']['project-logo']; ?>,
+                                        <?php echo $image['sizes']['project-logo-retina']; ?> 2x"
+                                alt="<?php the_title(); ?>"
+                            >
                         <?php endif; ?>
 
                         <h4 class="project-title">
@@ -51,57 +105,50 @@ Template Name: Home
                         </h6>
 
                         <a class="project-button button" href="<?php the_permalink(); ?>">
-                            <svg class="icon"><use xlink:href="<?php echo DISTDIR; ?>/icons/symbols.svg#icon-chevron-circle-right"></use></svg><span>View Project</span>
+                            <svg class="icon">
+                                <?php // phpcs:ignore ?>
+                                <use xlink:href="<?php echo DISTDIR; ?>/icons/symbols.svg#icon-chevron-circle-right"></use>
+                            </svg>
+                            <span>View Project</span>
                         </a>
                     </div>
 
                     <?php
                 endforeach;
                 wp_reset_postdata();
-                ?>
-
-            <?php endif; ?>
+            endif; ?>
 
         </div>
     </section>
 
-    <?php
-    while (have_posts()) :
-        the_post();
+    <!-- Experience -->
+
+    <section class="services section-content container">
+        <?php
+        $title = get_field('experience_title');
+        $subtitle = get_field('experience_subtitle');
+        $image = get_field('experience_image');
+        $content = get_field('experience_content');
         ?>
 
-        <?php if (have_rows('sections')) : ?>
-            <?php
-            while (have_rows('sections')) :
-                the_row();
-                $name       = get_sub_field('name');
-                $heading    = get_sub_field('heading');
-                $subheading = get_sub_field('subheading');
-                $content    = get_sub_field('content');
-                ?>
+        <h2 class="section-title">
+            <?php echo $title; ?>
 
-                <section class="<?php echo strtolower($name); ?> section-content container">
+            <?php if ($subtitle) : ?>
+                <span class="section-subtitle">
+                    <?php echo $subtitle; ?>
+                </span>
+            <?php endif; ?>
+        </h2>
 
-                    <h2 class="section-title">
-                        <?php echo $heading; ?>
+        <div class="section-image">
+            <?php echo $image; ?>
+        </div>
 
-                        <?php if ($subheading) : ?>
-                            <span class="section-subtitle">
-                                <?php echo $subheading; ?>
-                            </span>
-                        <?php endif; ?>
-                    </h2>
-
-                    <div class="section-body">
-                        <?php echo $content; ?>
-                    </div>
-
-                </section>
-
-            <?php endwhile; ?>
-        <?php endif; ?>
-
-    <?php endwhile; // end of the loop ?>
+        <div class="section-body">
+            <?php echo $content; ?>
+        </div>
+    </section>
 
 </main>
 
