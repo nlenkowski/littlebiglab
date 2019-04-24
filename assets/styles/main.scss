@@ -4,11 +4,11 @@
 
 // Vendor
 @import "~normalize.css/normalize.css";
+@import "~include-media/dist/_include-media";
 
 // Common
 @import "common/utilities";
 @import "common/variables";
-@import "common/breakpoints";
 @import "common/global";
 
 // Components

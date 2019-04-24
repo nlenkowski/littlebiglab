@@ -109,11 +109,16 @@ li {
 .site-title {
   font-size: $f3;
   line-height: 1.4em;
+  @include media("<large") {
+    font-size: 2.75rem;
+    line-height: 1.25;
+    margin-top: 3rem;
+  }
 
-  @include md {
-    font-size: 2.9rem;
-    font-weight: 600;
+  @include media(">=large") {
+    font-size: 3.25rem;
     line-height: 1.375em;
+    margin-top: 4rem;
   }
 }
 
@@ -130,6 +135,13 @@ li {
   @include md {
     font-size: 2.375rem;
     line-height: 1.1em;
+
+  @include media("<large") {
+    font-size: 2.5rem;
+  }
+
+  @include media(">=large") {
+    font-size: 3rem;
   }
 }
 
@@ -160,7 +172,7 @@ li {
   padding-right: 20px;
   padding-left: 20px;
 
-  @include xl {
+  @include media(">=wide") {
     padding: 0;
   }
 }

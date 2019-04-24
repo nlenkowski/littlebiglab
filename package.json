@@ -41,6 +41,7 @@
     "vue-template-compiler": "^2.6.10"
   },
   "dependencies": {
+    "include-media": "^1.4.9",
     "nodelist-foreach-polyfill": "^1.2.0",
     "normalize.css": "^8.0.1",
     "snapsvg-cjs": "0.0.6",

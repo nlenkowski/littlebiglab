@@ -3,14 +3,17 @@
  */
 
 .project-heading {
-  margin-top: 10px;
+  font-family: $font-family-museo-lite;
+  font-weight: normal;
   text-align: center;
   text-transform: uppercase;
-  font-weight: normal;
-  font-size: $f4;
-  font-family: $font-family-museo-lite;
 
-  @include md {
+  @include media("<medium") {
+    margin-top: 10px;
+    font-size: $f4;
+  }
+
+  @include media(">=medium") {
     margin-top: 0;
     font-size: $f3;
   }
@@ -19,26 +22,28 @@
 // Info
 
 .project-info {
-  max-width: 768px;
-  text-align: center;
-  margin-top: 25px;
-  margin-bottom: 50px;
-  border-top: 1px solid $color-border;
   display: flex;
-  flex-direction: column;
+  text-align: center;
 
-  @include md {
+  @include media("<medium") {
+    max-width: 768px;
+    margin-top: 25px;
+    margin-bottom: 50px;
+    flex-direction: column;
+    border-top: 1px solid $color-border;
+  }
+
+  @include media(">=medium") {
     max-width: 1000px;
     margin-top: 45px;
     margin-bottom: 55px;
-    border-top: 0;
-    align-items: flex-start;
     flex-direction: row;
+    align-items: flex-start;
   }
 }
 
 .project-info-column-name {
-  @include md {
+  @include media(">=medium") {
     border-right: 1px solid #ccc;
     padding-right: 35px;
     text-align: right;
@@ -63,7 +68,7 @@
 }
 
 .project-info-column-summary {
-  @include md {
+  @include media(">=medium") {
     text-align: left;
     padding-left: 35px;
     flex-basis: 60%;
@@ -125,10 +130,13 @@
 
 .project-more-button {
   margin-top: 10px;
-  margin-bottom: 15px;
   margin-left: 0;
 
-  @include sm {
+  @include media("<medium") {
+    margin-bottom: 15px;
+  }
+
+  @include media(">=medium") {
     margin-bottom: 0;
   }
 
@@ -149,15 +157,15 @@
     column-count: 2;
     column-gap: 50px;
 
-    @include sm {
+    @include media("<medium") {
       column-count: 3;
     }
 
-    @include md {
+    @include media(">=medium", "<large") {
       column-count: 2;
     }
 
-    @include lg {
+    @include media(">=large") {
       column-count: 3;
     }
   }
@@ -258,7 +266,7 @@
 }
 
 .desktop-screenshot {
-  @include sm {
+  @include media("<wide") {
     padding-left: 20px;
     padding-right: 20px;
   }
@@ -275,7 +283,7 @@
     padding: 0;
   }
 
-  @include md {
+  @include media(">=medium") {
     display: inline-block;
     margin-right: 15px;
     margin-left: 15px;

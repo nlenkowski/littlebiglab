@@ -10,13 +10,16 @@
 .logo {
   margin: 0 auto;
   max-width: 1140px;
-  width: 85%;
 
-  @include md {
+  @include media("<large") {
+    width: 85%;
+  }
+
+  @include media(">=large", "<wide") {
     width: 95%;
   }
 
-  @include xl {
+  @include media(">=wide") {
     width: 100%;
   }
 }
@@ -60,7 +63,7 @@
 #logo-mobile {
   margin-top: 15px;
 
-  @include md {
+  @include media(">=large") {
     display: none;
   }
 }
@@ -69,7 +72,7 @@
   display: none;
   margin-top: 60px;
 
-  @include md {
+  @include media(">=large") {
     display: block;
   }
 }

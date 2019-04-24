@@ -8,7 +8,7 @@
   margin-top: 35px;
   margin-bottom: 40px;
 
-  @include md {
+  @include media(">=medium") {
     margin-top: 50px;
     margin-bottom: 40px;
   }
@@ -24,7 +24,7 @@
   flex-flow: row wrap;
   justify-content: space-around;
 
-  @include md {
+  @include media(">=medium") {
     max-width: 1200px;
     margin: 0 auto;
   }
@@ -36,11 +36,11 @@
   padding-right: 15px;
   flex-basis: 100%;
 
-  @include sm {
+  @include media("<medium") {
     flex-basis: 50%;
   }
 
-  @include md {
+  @include media(">=medium") {
     flex-basis: 30%;
   }
 }

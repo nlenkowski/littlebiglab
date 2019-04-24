@@ -77,11 +77,14 @@
   span {
     display: block;
     margin-top: 5px;
-    font-size: 12px;
     font-weight: 200;
     line-height: 1.4em;
 
-    @include sm {
+    @include media("<medium") {
+      font-size: 12px;
+    }
+
+    @include media(">=medium") {
       font-size: 14px;
     }
   }
