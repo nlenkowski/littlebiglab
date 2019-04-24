@@ -23,13 +23,13 @@ Template Name: Home
 
         <h2 class="section-title">
             <?php echo $title ?>
-
-            <?php if ($subtitle) : ?>
-                <span class="section-subtitle">
-                    <?php echo $subtitle; ?>
-                </span>
-            <?php endif; ?>
         </h2>
+
+        <?php if ($subtitle) : ?>
+            <h3 class="section-subtitle">
+                <?php echo $subtitle; ?>
+            </h3>
+        <?php endif; ?>
 
         <?php if (have_rows('services')) : ?>
             <div class="services-grid">
@@ -66,13 +66,13 @@ Template Name: Home
 
         <h2 class="section-title">
             <?php echo $title ?>
-
-            <?php if ($subtitle) : ?>
-                <span class="section-subtitle">
-                    <?php echo $subtitle; ?>
-                </span>
-            <?php endif; ?>
         </h2>
+
+        <?php if ($subtitle) : ?>
+            <h3 class="section-subtitle">
+                <?php echo $subtitle; ?>
+            </h3>
+        <?php endif; ?>
 
         <div class="projects-grid">
 
@@ -133,13 +133,13 @@ Template Name: Home
 
         <h2 class="section-title">
             <?php echo $title; ?>
-
-            <?php if ($subtitle) : ?>
-                <span class="section-subtitle">
-                    <?php echo $subtitle; ?>
-                </span>
-            <?php endif; ?>
         </h2>
+
+        <?php if ($subtitle) : ?>
+            <h3 class="section-subtitle">
+                <?php echo $subtitle; ?>
+            </h3>
+        <?php endif; ?>
 
         <div class="section-image">
             <?php echo $image; ?>
