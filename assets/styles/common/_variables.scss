@@ -6,37 +6,43 @@
  *  - Grid
  */
 
-// Base colors
-$color-body: #fff;
-$color-text: #3e3e3e;
-$color-heading: #000;
-$color-link: #000;
-$color-link-hover: lighten($color-link, 20%);
-
 // Custom colors
-$color-success: #5cb85c;
-$color-info: #5bc0de;
-$color-warning: #f0ad4e;
-$color-danger: #d9534f;
-$color-border: #ccc;
 $color-accent: #e91e63;
+$color-ebony: #0f0b1c;
+
+// Base colors
+$color-body: #f2f2f2;
+$color-text: #333333;
+$color-heading: #000000;
+$color-link: #000000;
+$color-link-hover: lighten($color-link, 20%);
+$color-border: #cccccc;
 
 // Font stack
 @include fontface(
-  "Museo Sans",
+  "Museo Sans Regular",
   "/wp-content/themes/littlebiglab/dist/fonts/MuseoSans-500"
 );
+
+@include fontface(
+  "Museo Sans Bold",
+  "/wp-content/themes/littlebiglab/dist/fonts/MuseoSans-700",
+  "600"
+);
+
 @include fontface(
   "Museo Sans Lite",
-  "/wp-content/themes/littlebiglab/dist/fonts/MuseoSans-300"
+  "/wp-content/themes/littlebiglab/dist/fonts/MuseoSans-300",
+  "300"
 );
 
 // Font familys
-$font-family-museo: "Museo Sans", sans-serif;
+$font-family-museo-regular: "Museo Sans Regular", sans-serif;
+$font-family-museo-bold: "Museo Sans Bold", sans-serif;
 $font-family-museo-lite: "Museo Sans Lite", sans-serif;
 $font-family-helvetica: "Helvetica Neue", Helvetica, Arial, sans-serif;
 $font-family-base: $font-family-helvetica;
-$font-family-headings: $font-family-museo;
+$font-family-headings: $font-family-museo-regular;
 
 // Base typography
 $font-size-base: 1rem;
@@ -50,6 +56,7 @@ $f3: 1.75rem; // 28px
 $f4: 1.5rem; // 24px
 $f5: 1.25rem; // 20px
 $f6: 1.125rem; // 18px
+
 // Breakpoints
 $breakpoints: (
   small: 576px,

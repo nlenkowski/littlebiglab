@@ -102,13 +102,16 @@ li {
 }
 
 .site-title,
-.section-title {
+.section-title,
+.section-subtitle {
   text-align: center;
+  padding-right: 1rem;
+  padding-left: 1rem;
 }
 
 .site-title {
-  font-size: $f3;
-  line-height: 1.4em;
+  font-family: $font-family-museo-bold;
+
   @include media("<large") {
     font-size: 2.75rem;
     line-height: 1.25;
@@ -123,18 +126,9 @@ li {
 }
 
 .section-title {
-  display: inline-block;
-  margin-bottom: 15px;
-  padding-right: 30px;
-  padding-bottom: 20px;
-  padding-left: 30px;
-  border-bottom: 1px solid $color-border;
-  font-size: 1.625rem;
-  line-height: 1.2em;
-
-  @include md {
-    font-size: 2.375rem;
-    line-height: 1.1em;
+  font-family: $font-family-museo-regular;
+  margin-bottom: 1rem;
+  font-weight: 500;
 
   @include media("<large") {
     font-size: 2.5rem;
@@ -146,11 +140,11 @@ li {
 }
 
 .section-subtitle {
-  display: block;
-  margin-top: 8px;
   font-family: $font-family-museo-lite;
-  font-size: 1.5rem;
+  margin-top: 0;
+  font-size: 1.75rem;
   line-height: 1.4em;
+  font-weight: 300;
 }
 
 .section-body {

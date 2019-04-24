@@ -3,13 +3,13 @@
  */
 
 // Fontface
-@mixin fontface($family, $src, $style: normal, $weight: normal) {
+@mixin fontface($family, $src, $weight: normal, $style: normal) {
   @font-face {
     font-family: $family;
     src: url("#{$src}.woff2") format("woff2"),
       url("#{$src}.woff") format("woff");
-    font-style: $style;
     font-weight: $weight;
+    font-style: $style;
   }
 }
 
