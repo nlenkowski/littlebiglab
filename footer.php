@@ -10,7 +10,7 @@
 
         <div class="footer-background">
             <div class="footer-gradient"></div>
-            <img class="footer-image" src="<?php echo DISTDIR; ?>/images/footer-background.jpg'); ?>" alt="El Fuerte">
+            <img class="footer-image" src="<?php echo DISTDIR; ?>/images/footer-background.jpg" alt="El Fuerte">
         </div>
 
         <div class="container">

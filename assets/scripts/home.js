@@ -10,7 +10,7 @@ const desktopLogo = new Logo(
   -1100,
   -185,
   3500,
-  "/wp-content/themes/littlebiglab/dist/images/elfuerte-logo.jpg",
+  "/wp-content/themes/littlebiglab/dist/images/logo-background.jpg",
   "home"
 );
 
@@ -19,6 +19,6 @@ const mobileLogo = new Logo(
   -1425,
   -240,
   3500,
-  "/wp-content/themes/littlebiglab/dist/images/elfuerte-logo.jpg",
+  "/wp-content/themes/littlebiglab/dist/images/logo-background.jpg",
   "home"
 );
