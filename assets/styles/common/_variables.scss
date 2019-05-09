@@ -1,24 +1,18 @@
-/*
- * Variables
- *  - Colors
- *  - Typography
- *  - Breakpoints
- *  - Grid
- */
-
-// Custom colors
-$color-accent: #e91e63;
+// Custom Colors
 $color-ebony: #0f0b1c;
+$color-eminence: #6c2b90;
 
-// Base colors
+// Colors
 $color-body: #f2f2f2;
 $color-text: #333333;
 $color-heading: #000000;
 $color-link: #000000;
 $color-link-hover: lighten($color-link, 20%);
 $color-border: #cccccc;
+$color-accent: $color-eminence;
+$color-box: $color-ebony;
 
-// Font stack
+// Font
 @include fontface(
   "Museo Sans Regular",
   "/wp-content/themes/littlebiglab/dist/fonts/MuseoSans-500"
@@ -26,41 +20,47 @@ $color-border: #cccccc;
 
 @include fontface(
   "Museo Sans Bold",
-  "/wp-content/themes/littlebiglab/dist/fonts/MuseoSans-700",
-  "600"
+  "/wp-content/themes/littlebiglab/dist/fonts/MuseoSans-700"
 );
 
 @include fontface(
   "Museo Sans Lite",
-  "/wp-content/themes/littlebiglab/dist/fonts/MuseoSans-300",
-  "300"
+  "/wp-content/themes/littlebiglab/dist/fonts/MuseoSans-300"
 );
 
-// Font familys
 $font-family-museo-regular: "Museo Sans Regular", sans-serif;
 $font-family-museo-bold: "Museo Sans Bold", sans-serif;
 $font-family-museo-lite: "Museo Sans Lite", sans-serif;
 $font-family-helvetica: "Helvetica Neue", Helvetica, Arial, sans-serif;
 $font-family-base: $font-family-helvetica;
-$font-family-headings: $font-family-museo-regular;
+$font-family-heading: $font-family-museo-regular;
 
-// Base typography
+// Typography
 $font-size-base: 1rem;
-$line-height-base: 1.625em; // 26px
-$line-height-headings: 1.125em; // 18px
+$font-weight-base: normal;
+$font-weight-heading: normal;
+$line-height-base: 1.6;
+$line-height-heading: 1.25;
+$link-decoration: none;
 
 // Headings
-$f1: 2.5rem; // 40px
-$f2: 2rem; // 32px
-$f3: 1.75rem; // 28px
-$f4: 1.5rem; // 24px
-$f5: 1.25rem; // 20px
-$f6: 1.125rem; // 18px
+$h1: 2.5rem; // 40px
+$h2: 2rem; // 32px
+$h3: 1.75rem; // 28px
+$h4: 1.5rem; // 24px
+$h5: 1.25rem; // 20px
+$h6: 1.15rem; // 18px
+
+// Decoration
+$default-border-radius: 15px;
+$default-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.15);
+$default-transition-duration: 0.2s;
 
 // Breakpoints
 $breakpoints: (
   small: 576px,
   medium: 768px,
   large: 992px,
-  wide: 1200px
+  wide: 1200px,
+  xtra: 1400px
 );

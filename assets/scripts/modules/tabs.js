@@ -129,7 +129,7 @@ export default class Tabs {
 
     // Scroll project content area to top if menu is fixed
     if (Utils.getCssProp(tabsContainer, "position") === "fixed") {
-      Utils.setDocumentScrollTop(newScrollPos);
+      Utils.setDocumentScrollTop(newScrollPos + 1);
     }
   }
 

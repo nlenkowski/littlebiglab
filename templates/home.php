@@ -41,23 +41,23 @@ Template Name: Home
                     $description = get_sub_field('description');
                     ?>
 
-                    <div class="service">
+                    <div class="service-item">
                         <img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt'] ?>" />
-                        <h3><?php echo $title; ?></h3>
-                        <p><?php echo $description; ?></p>
+                        <h3 class="item-title"><?php echo $title; ?></h3>
+                        <p class="item-description"><?php echo $description; ?></p>
                     </div>
                 <?php endwhile; ?>
             </div>
         <?php endif; ?>
 
-        <div class="section-body">
+        <div class="section-body additional-services">
             <?php echo $content; ?>
         </div>
     </section>
 
     <!-- Projects -->
 
-    <section class="projects section-content">
+    <section class="projects section-content container">
         <?php
         $title = get_field('projects_title');
         $subtitle = get_field('projects_subtitle');
@@ -82,35 +82,37 @@ Template Name: Home
                     setup_postdata($post);
                     ?>
 
-                    <div class="project">
+                    <div class="project-item">
+                        <a class="project-link" href="<?php the_permalink(); ?>"></a>
                         <?php
                         $image = get_field('logo');
                         if (! empty($image)) :
                             ?>
-                            <img
-                                class="project-image"
-                                src="<?php echo $image['sizes']['project-logo']; ?>"
-                                srcset="<?php echo $image['sizes']['project-logo']; ?>,
-                                        <?php echo $image['sizes']['project-logo-retina']; ?> 2x"
-                                alt="<?php the_title(); ?>"
-                            >
+                            <div class="project-image-logo">
+                                <img
+                                    src="<?php echo $image['sizes']['project-logo']; ?>"
+                                    srcset="<?php echo $image['sizes']['project-logo']; ?>,
+                                            <?php echo $image['sizes']['project-logo-retina']; ?> 2x"
+                                    width="<?php echo $image['sizes']['project-logo-width']; ?>"
+                                    height="<?php echo $image['sizes']['project-logo-height']; ?>"
+                                    alt="<?php the_title(); ?>"
+                                >
+                            </div>
                         <?php endif; ?>
 
-                        <h4 class="project-title">
-                            <?php the_title(); ?>
-                        </h4>
+                        <div class="project-content">
+                            <h3 class="item-title project-title">
+                                <?php the_title(); ?>
+                            </h3>
 
-                        <h6 class="project-short-description">
-                            <?php the_field('short_description'); ?>
-                        </h6>
+                            <p class="item-description project-description">
+                                <?php the_field('short_description'); ?>
+                            </p>
 
-                        <a class="project-button button" href="<?php the_permalink(); ?>">
-                            <svg class="icon">
-                                <?php // phpcs:ignore ?>
-                                <use xlink:href="<?php echo DISTDIR; ?>/icons/symbols.svg#icon-chevron-circle-right"></use>
-                            </svg>
-                            <span>View Project</span>
-                        </a>
+                            <a class="button project-button" href="<?php the_permalink(); ?>">
+                                <span>View</span>
+                            </a>
+                        </div>
                     </div>
 
                     <?php
@@ -121,14 +123,14 @@ Template Name: Home
         </div>
     </section>
 
-    <!-- Experience -->
+    <!-- About -->
 
-    <section class="services section-content container">
+    <section class="about section-content container">
         <?php
-        $title = get_field('experience_title');
-        $subtitle = get_field('experience_subtitle');
-        $image = get_field('experience_image');
-        $content = get_field('experience_content');
+        $title = get_field('about_title');
+        $subtitle = get_field('about_subtitle');
+        $avatar = get_field('about_avatar');
+        $content = get_field('about_content');
         ?>
 
         <h2 class="section-title">
@@ -141,8 +143,8 @@ Template Name: Home
             </h3>
         <?php endif; ?>
 
-        <div class="section-image">
-            <?php echo $image; ?>
+        <div class="section-image about-avatar">
+            <img src="<?php echo $avatar['url']; ?>" alt="Nathan & June">
         </div>
 
         <div class="section-body">

@@ -3,85 +3,90 @@
  */
 
 .site-footer {
-  margin-top: 85px;
+  position: relative;
+  z-index: 5;
   text-align: center;
 
   .container {
     position: relative;
-    z-index: 250;
+    z-index: 20;
   }
 }
 
 .footer-background {
   position: absolute;
-  z-index: 200;
+  z-index: 15;
+}
 
-  .footer-gradient {
-    position: absolute;
-    z-index: 220;
-    background: linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 1) 0,
-      rgba(255, 255, 255, 0) 100%
-    );
+.page-home .footer-background {
+  @include media("<medium") {
+    margin-top: 50px;
   }
 
-  .footer-image {
-    position: absolute;
-    z-index: 210;
-    background-repeat: no-repeat;
-    background-position: bottom center;
-    background-size: cover;
+  @include media(">=wide") {
+    margin-top: -200px;
   }
 }
 
 .footer-background,
-.footer-gradient,
 .footer-image {
   width: 100%;
-  height: 775px;
-}
 
-.footer-content {
-  .section-title {
-    margin-top: 0;
-    margin-bottom: 0;
-    padding-top: 25px;
-    padding-bottom: 0;
-    border-top: 1px solid $color-border;
-    border-bottom: 0;
+  @include media("<medium") {
+    height: 550px;
   }
 
-  .button {
-    display: table;
-    margin: 25px auto 0;
+  @include media(">=medium", "<wide") {
+    height: 750px;
+  }
 
-    .icon {
-      width: 22px;
-      height: 22px;
-    }
-
-    span {
-      margin-left: 7px;
-    }
+  @include media(">=wide") {
+    height: 950px;
   }
 }
 
-.single-project .footer-content .section-title {
-  padding-top: 0;
-  border-top: 0;
-}
-
-.built-with-blujay {
-  margin-top: 100px;
-
-  a {
-    display: block;
-    border-bottom: 0;
+.single-project .footer-background,
+.single-project .footer-image {
+  @include media("<medium") {
+    padding-top: 2rem;
+    height: 550px;
   }
 
-  p {
-    margin-top: 5px;
-    font-size: 14px;
+  @include media(">=medium") {
+    height: 650px;
+  }
+}
+
+.footer-gradient {
+  position: absolute;
+  width: 100%;
+  height: 200px;
+  z-index: 10;
+  background: linear-gradient(
+    180deg,
+    rgba(242, 242, 242, 1) 0,
+    rgba(242, 242, 242, 0) 50%
+  );
+}
+
+.footer-image {
+  position: absolute;
+  left: 0;
+  object-fit: cover;
+  object-position: 100% 0;
+  z-index: 5;
+}
+
+.footer-cta {
+  margin-top: 5rem;
+  font-size: 2.25rem;
+}
+
+.footer-button {
+  margin: 1.25rem auto 0 auto;
+  transition: all $default-transition-duration;
+
+  &:hover {
+    transform: scale(1.025);
   }
 }

@@ -3,13 +3,13 @@
  */
 
 .site-header {
-  margin-top: 15px;
+  margin-top: 1rem;
   text-align: center;
 }
 
 .logo {
   margin: 0 auto;
-  max-width: 1140px;
+  max-width: 1200px;
 
   @include media("<large") {
     width: 85%;
@@ -61,7 +61,7 @@
 }
 
 #logo-mobile {
-  margin-top: 15px;
+  margin-top: 1rem;
 
   @include media(">=large") {
     display: none;
@@ -69,8 +69,11 @@
 }
 
 #logo-desktop {
-  display: none;
   margin-top: 60px;
+
+  @include media("<large") {
+    display: none;
+  }
 
   @include media(">=large") {
     display: block;

@@ -23,9 +23,9 @@ Template Name: Project
             <?php the_title(); ?>
         </h2>
 
-        <h5 class="project-short-description">
+        <p class="project-short-description">
             <?php the_field('short_description'); ?>
-        </h5>
+        </p>
     </div>
 
     <div class="project-info-column-summary">
@@ -35,8 +35,8 @@ Template Name: Project
         </section>
 
         <?php if (have_rows('features') || get_field('technologies')) : ?>
-            <a href="#" class="project-more-button button">
-                <svg class="icon"><use xlink:href="<?php echo DISTDIR; ?>/icons/symbols.svg#icon-chevron-circle-right"></use></svg><span>Project Details</span>
+            <a href="#" class="project-more-button button button-medium">
+                <svg class="icon"><use xlink:href="<?php echo DISTDIR; ?>/icons/symbols.svg#icon-chevron-circle-right"></use></svg><span>View Details</span>
             </a>
         <?php endif; ?>
 
@@ -44,8 +44,8 @@ Template Name: Project
         $url = get_field('url');
         if (! empty($url)) :
             ?>
-            <a href="<?php echo $url; ?>" class="project-visit-button button">
-                <svg class="icon"><use xlink:href="<?php echo DISTDIR; ?>/icons/symbols.svg#icon-external-link"></use></svg><span>Visit Website</span>
+            <a href="<?php echo $url; ?>" class="project-visit-button button button-medium">
+                <svg class="icon"><use xlink:href="<?php echo DISTDIR; ?>/icons/symbols.svg#icon-external-link"></use></svg><span>Visit Site</span>
             </a>
         <?php endif; ?>
 

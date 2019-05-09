@@ -10,23 +10,20 @@
 
         <div class="footer-background">
             <div class="footer-gradient"></div>
-            <div class="footer-image" style="background-image: url('<?php echo DISTDIR; ?>/images/elfuerte-background.jpg');"></div>
+            <img class="footer-image" src="<?php echo DISTDIR; ?>/images/footer-background.jpg'); ?>" alt="El Fuerte">
         </div>
 
         <div class="container">
-
             <div class="footer-content">
-
-                <h2 class="section-title">
+                <h2 class="footer-cta">
                     <?php the_field('footer', 8); ?>
                 </h2>
-
-                <a class="button" href="mailto:nathan@littlebiglab.com">
-                    <svg class="icon"><use xlink:href="<?php echo DISTDIR; ?>/icons/symbols.svg#icon-comments"></use></svg><span>Lets Talk</span>
+                <a class="button button-large footer-button" href="mailto:nathan@littlebiglab.com">
+                    <span>Get In Touch</span>
                 </a>
             </div>
-
         </div>
+
     </footer>
 
     <?php wp_footer(); ?>

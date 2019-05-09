@@ -9,13 +9,13 @@
   text-transform: uppercase;
 
   @include media("<medium") {
-    margin-top: 10px;
-    font-size: $f4;
+    margin-top: 1rem;
+    font-size: $h4;
   }
 
   @include media(">=medium") {
     margin-top: 0;
-    font-size: $f3;
+    font-size: $h3;
   }
 }
 
@@ -25,31 +25,31 @@
   display: flex;
   text-align: center;
 
-  @include media("<medium") {
+  @include media("<large") {
     max-width: 768px;
-    margin-top: 25px;
-    margin-bottom: 50px;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
     flex-direction: column;
     border-top: 1px solid $color-border;
   }
 
-  @include media(">=medium") {
-    max-width: 1000px;
-    margin-top: 45px;
-    margin-bottom: 55px;
+  @include media(">=large") {
+    max-width: 1100px;
+    margin-top: 4rem;
+    margin-bottom: 5rem;
     flex-direction: row;
     align-items: flex-start;
   }
 }
 
 .project-info-column-name {
-  @include media(">=medium") {
+  @include media(">=large") {
     border-right: 1px solid #ccc;
-    padding-right: 35px;
+    padding-right: 3rem;
     text-align: right;
     display: flex;
     flex-direction: column;
-    flex-basis: 40%;
+    flex-basis: 35%;
 
     .project-title {
       order: 1;
@@ -60,44 +60,47 @@
     }
 
     .project-logo {
-      margin-top: 20px;
-      padding-bottom: 15px;
+      margin-top: 1rem;
+      padding-bottom: 1rem;
       order: 3;
     }
   }
 }
 
 .project-info-column-summary {
-  @include media(">=medium") {
-    text-align: left;
-    padding-left: 35px;
-    flex-basis: 60%;
+  @include media("<large") {
+    max-width: 740px;
+    margin: 0 auto;
   }
 
-  .project-description {
-    margin-top: 0;
+  @include media(">=large") {
+    text-align: left;
+    padding-left: 3rem;
+    flex-basis: 60%;
   }
 }
 
 .project-logo {
-  margin-top: 50px;
-}
-
-.project-title {
-  margin-top: 15px;
+  margin-top: 3rem;
 }
 
 .project-short-description {
   margin-top: 0;
-  color: #666;
+  color: #333;
+  font-size: 1.35rem;
   font-weight: 200;
-  font-size: $f5;
-  font-family: $font-family-helvetica;
 }
 
 .project-description {
-  margin-top: 35px;
-  font-size: $f6;
+  font-size: $h6;
+
+  @include media("<large") {
+    margin-top: 0.5rem;
+  }
+
+  @include media(">=large") {
+    margin-top: 0.25rem;
+  }
 
   p {
     text-align: left;
@@ -110,9 +113,31 @@
   height: 0;
   transition: opacity 0.6s;
 
+  h4 {
+    @include media("<large") {
+      text-align: left;
+    }
+  }
+
   ul {
-    padding-left: 20px;
+    margin-top: 1rem;
+    list-style: none;
     text-align: left;
+  }
+
+  li {
+    line-height: 1.85rem;
+
+    &:before {
+      content: "\2022";
+      display: inline-block;
+      width: 1.75rem;
+      margin-left: -1.75rem;
+      font-size: 2rem;
+      font-weight: bold;
+      vertical-align: -0.3rem;
+      color: $color-accent;
+    }
   }
 }
 
@@ -121,19 +146,12 @@
   height: auto;
 }
 
-.project-visit-button {
-  .icon {
-    margin-right: 3px;
-    vertical-align: -4px;
-  }
-}
-
 .project-more-button {
-  margin-top: 10px;
+  margin-top: 1rem;
   margin-left: 0;
 
   @include media("<medium") {
-    margin-bottom: 15px;
+    margin-bottom: 1rem;
   }
 
   @include media(">=medium") {
@@ -151,21 +169,22 @@
   }
 }
 
+.project-visit-button {
+  .icon {
+    vertical-align: -4px;
+  }
+}
+
 .project-technologies {
   ul {
-    margin-left: -15px;
-    column-count: 2;
-    column-gap: 50px;
+    margin-left: -1rem;
+    column-gap: 3rem;
 
-    @include media("<medium") {
-      column-count: 3;
-    }
-
-    @include media(">=medium", "<large") {
+    @include media("<small") {
       column-count: 2;
     }
 
-    @include media(">=large") {
+    @include media(">=small") {
       column-count: 3;
     }
   }
@@ -185,13 +204,18 @@
 
 .project-details-menu {
   position: static;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  background: #000;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  background: $color-ebony;
   text-align: center;
-  border-bottom: 1px solid #333;
+  transition: all 1s;
+
+  .button-vertical {
+    width: 90px;
+  }
 
   .icon {
+    margin-right: 0;
     width: 22px;
     height: 22px;
     color: #fff;
@@ -201,8 +225,14 @@
 .project-details-menu.fixed {
   position: fixed;
   top: 0;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
   width: 100%;
   z-index: 1000;
+
+  .button-vertical {
+    width: auto;
+  }
 
   span {
     display: none;
@@ -210,14 +240,15 @@
 }
 
 .project-details {
+  margin-top: -2rem;
   padding-left: 10px;
   padding-right: 10px;
   padding-bottom: 25px;
-  background: lighten(#000, 7%);
+  background: $color-ebony;
   text-align: center;
 }
 
-// Content
+// Screenshots
 
 .desktop-screenshots,
 .mobile-screenshots,

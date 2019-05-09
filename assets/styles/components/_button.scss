@@ -6,34 +6,51 @@
 
 .button {
   display: inline-block;
-  margin-bottom: 5px;
   margin-right: 3px;
   margin-left: 3px;
-  padding: 8px 12px;
-  border: 1px solid #ccc;
+  padding: 6px 12px;
   border-radius: 5px;
-  background: #fdfdfd;
-  transition: border-color 0.25s;
+  color: #ffffff;
+  text-transform: uppercase;
+  background-color: $color-accent;
+  transition: all $default-transition-duration;
+
+  &:hover {
+    background-color: lighten($color-accent, 15%);
+  }
 
   .icon {
     display: inline-block;
     width: 20px;
     height: 20px;
+    margin-right: 8px;
     vertical-align: -4px;
-    fill: $color-accent;
+    fill: #fff;
     transition: transform 0.25s;
   }
 
   span {
-    margin-left: 5px;
-    color: #000;
-    font-size: $f6;
-    font-weight: 500;
+    color: #ffffff;
+    font-size: 1rem;
     font-family: $font-family-museo-regular;
   }
+}
 
-  &:hover {
-    border-color: $color-accent;
+// Medium button
+.button-medium {
+  padding: 9px 16px;
+
+  span {
+    font-size: 1rem;
+  }
+}
+
+// Large button
+.button-large {
+  padding: 12px 24px;
+
+  span {
+    font-size: 1.2rem;
   }
 }
 
@@ -41,21 +58,21 @@
 
 .button-dark {
   @extend .button;
-
-  background: #000;
-  border-color: #000;
+  background-color: $color-ebony;
+  border: 1px solid $color-ebony;
   color: #fff;
 
+  &:hover {
+    border-color: lighten($color-ebony, 25%);
+    background-color: lighten($color-ebony, 15%);
+  }
+
   .icon {
+    margin-top: 5px;
     fill: #fff;
   }
 
   span {
-    color: #fff;
-  }
-
-  &:hover {
-    border-color: lighten(#000, 15%);
     color: #fff;
   }
 }
@@ -64,7 +81,6 @@
   background: #fff;
 
   .icon {
-    margin-top: 3px;
     fill: #000;
   }
 
