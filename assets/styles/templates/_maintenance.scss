@@ -19,7 +19,7 @@
 }
 
 .maintenance-services {
-  max-width: 600px;
+  max-width: 525px;
   margin: 0 auto;
   padding-top: 1rem;
   padding-right: 0.5rem;
@@ -29,7 +29,7 @@
   background-color: $color-box;
 
   @include media(">=medium") {
-    padding: 1rem 2rem;
+    padding: 2rem 3rem;
   }
 }
 
@@ -91,7 +91,7 @@
 }
 
 .maintenance-plan-notes {
-  max-width: 600px;
+  max-width: 525px;
   margin: 3rem auto 0 auto;
   padding: 1.5rem 2rem;
   border-radius: $default-border-radius;
