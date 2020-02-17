@@ -16,8 +16,8 @@
         <div class="container">
             <div class="footer-content">
                 <h2 class="footer-cta">
-                    <?php if ($post->ID === 1317) {
-                        the_field('footer_title', 1317);
+                    <?php if ($post->ID === 1378) { // WordPress Maintenance page
+                        the_field('footer_title', 1378);
                     } else {
                         the_field('footer_title', 8);
                     }
