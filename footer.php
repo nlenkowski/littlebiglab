@@ -16,7 +16,12 @@
         <div class="container">
             <div class="footer-content">
                 <h2 class="footer-cta">
-                    <?php the_field('footer', 8); ?>
+                    <?php if ($post->ID === 1317) {
+                        the_field('footer_title', 1317);
+                    } else {
+                        the_field('footer_title', 8);
+                    }
+                    ?>
                 </h2>
                 <a class="button button-large footer-button" href="mailto:nathan@littlebiglab.com">
                     <span>Get In Touch</span>

@@ -1,4 +1,6 @@
-/* Home */
+/**
+ * Home
+ */
 
 .page-home {
   .site-content {
@@ -57,8 +59,10 @@
 }
 
 .additional-services {
-  max-width: 590px;
+  display: inline-block;
   margin-top: 3rem;
+  margin-left: auto;
+  margin-right: auto;
   text-align: center;
 
   ul {
@@ -68,7 +72,8 @@
   }
 
   li {
-    line-height: 2.75rem;
+    line-height: 2rem;
+    margin-bottom: 0.5rem;
 
     &:before {
       content: "\2022";

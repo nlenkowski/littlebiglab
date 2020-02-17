@@ -85,6 +85,7 @@ img {
 // Typography
 
 .site-title,
+.page-title,
 .section-title,
 .section-subtitle {
   text-align: center;
@@ -92,7 +93,7 @@ img {
   padding-left: 1rem;
 }
 
-.site-title {
+.site-title, .page-title {
   font-family: $font-family-museo-bold;
 
   @include media("<medium") {
@@ -141,7 +142,11 @@ img {
   color: #333333;
 }
 
-.section-body {
+.page-header {
+  margin-bottom: 1rem;
+}
+
+.section-body, .page-content {
   max-width: 920px;
   margin: 0 auto;
   text-align: left;

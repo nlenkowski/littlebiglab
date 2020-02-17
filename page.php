@@ -6,7 +6,7 @@
 
 <?php get_header(); ?>
 
-<main class="main">
+<main class="main container">
 
     <?php while (have_posts()) :
         the_post(); ?>

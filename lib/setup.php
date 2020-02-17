@@ -71,10 +71,10 @@ function blujay_register_assets()
 
     if (is_page('home')) {
         wp_enqueue_script('home', DISTDIR . '/scripts/home.js', '', '', true);
-    }
-
-    if (get_post_type($post) == 'project') {
+    } elseif (get_post_type($post) == 'project') {
         wp_enqueue_script('project', DISTDIR . '/scripts/project.js', '', '', true);
+    } else {
+        wp_enqueue_script('page', DISTDIR . '/scripts/page.js', '', '', true);
     }
 
     // Styles

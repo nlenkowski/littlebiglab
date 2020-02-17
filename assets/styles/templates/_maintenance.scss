@@ -1,0 +1,100 @@
+/**
+ * WordPress Maintenance Plan
+ */
+
+.page-wordpress-maintenance-plans .page-title {
+  @include media(">=large") {
+    margin-bottom: 1.5rem;
+  }
+}
+
+.maintenance-description {
+  max-width: 900px;
+  margin: 0 auto 3rem auto;
+  text-align: left;
+
+  @include media(">=medium") {
+    text-align: center;
+  }
+}
+
+.maintenance-services {
+  max-width: 600px;
+  margin: 0 auto;
+  padding-top: 1rem;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+  padding-bottom: 1rem;
+  border-radius: $default-border-radius;
+  background-color: $color-box;
+
+  @include media(">=medium") {
+    padding: 1rem 2rem;
+  }
+}
+
+.maintenance-services-title {
+  margin-top: 0;
+  color: #fff;
+}
+
+.maintenance-services-list {
+  list-style: none;
+
+  li {
+    margin-bottom: 0.25rem;
+    line-height: 2rem;
+
+    &:before {
+      content: "\2022";
+      display: inline-block;
+      width: 1.75rem;
+      margin-left: -1.75rem;
+      font-size: 2.5rem;
+      font-weight: bold;
+      vertical-align: -0.4rem;
+      color: #7C43BA;
+    }
+  }
+}
+
+.maintenance-plans {
+  margin-top: 3rem;
+}
+
+.maintenance-plans-heading {
+  margin-top: 2rem;
+}
+
+.maintenance-plans-subheading {
+  margin-bottom: 2.5rem;
+}
+
+.maintenance-plan {
+  max-width: 425px;
+  margin: 3rem auto 0 auto;
+}
+
+.maintenance-plan-heading .plus {
+  margin-left: 3px;
+  background-color: $color-accent;
+  color: #fff;
+  padding: 4px 7px;
+  border-radius: 5px;
+  font-size: 20px;
+  vertical-align: 1px;
+}
+
+.maintenance-plan-subheading {
+  margin-top: 0.75rem;
+  font-size: 18px;
+}
+
+.maintenance-plan-notes {
+  max-width: 600px;
+  margin: 3rem auto 0 auto;
+  padding: 1.5rem 2rem;
+  border-radius: $default-border-radius;
+  background-color: #e7e7e7;
+  font-size: 18px;
+}
