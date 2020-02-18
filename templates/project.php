@@ -36,7 +36,7 @@ Template Name: Project
 
         <?php if (have_rows('features') || get_field('technologies')) : ?>
             <a href="#" class="project-more-button button button-medium">
-                <svg class="icon"><use xlink:href="<?php echo DISTDIR; ?>/icons/symbols.svg#icon-chevron-circle-right"></use></svg><span>View Details</span>
+                <svg class="icon"><use xlink:href="<?php echo DISTDIR; ?>/icons/symbols.svg#icon-chevron-circle-right"></use></svg><span>View Features</span>
             </a>
         <?php endif; ?>
 

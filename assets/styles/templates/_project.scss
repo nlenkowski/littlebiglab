@@ -176,6 +176,8 @@
 }
 
 .project-technologies {
+  display: none;
+
   ul {
     margin-left: -1rem;
     column-gap: 3rem;
@@ -296,7 +298,13 @@
   }
 }
 
-.desktop-screenshot {
+// Decresase padding on mobile viewports for this project only
+.project-ymca-fresh-page {
+  @include media("<medium") {
+    .desktop-screenshot img {
+      padding: 10px !important;
+    }
+  }
 }
 
 .mobile-screenshot {
