@@ -28,17 +28,16 @@
   display: block;
   position: relative;
   z-index: 100;
+  cursor: pointer;
+}
+
+.home .logo-container {
   cursor: zoom-in;
 
   &.overlay {
     cursor: zoom-out;
     pointer-events: none;
   }
-}
-
-.single-project .logo-container,
-.page-wordpress-maintenance .logo-container {
-  cursor: pointer;
 }
 
 .logo-background-image {
