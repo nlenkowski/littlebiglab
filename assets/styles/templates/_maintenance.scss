@@ -8,6 +8,10 @@
   }
 }
 
+.page-wordpress-maintenance .page-content {
+  max-width: inherit;
+}
+
 .maintenance-description {
   max-width: 900px;
   margin: 0 auto 3rem auto;
@@ -27,6 +31,7 @@
   padding-bottom: 1rem;
   border-radius: $default-border-radius;
   background-color: $color-box;
+  box-shadow: $default-box-shadow;
 
   @include media(">=medium") {
     padding: 2rem 3rem;
@@ -59,30 +64,68 @@
 }
 
 .maintenance-plans {
-  margin-top: 3rem;
+  max-width: 1300px;
+  margin: 3rem auto 0 auto;
+}
+
+.maintenance-plans > div {
+  @media (min-width: 1130px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    grid-column-gap: 2.5rem;
+    grid-template-areas:
+    "heading heading heading"
+    "subheading subheading subheading"
+    "plan plan plan"
+    "notes notes notes";
+  }
 }
 
 .maintenance-plans-heading {
-  margin-top: 2rem;
+  grid-area: heading;
+  margin-top: 0;
 }
 
 .maintenance-plans-subheading {
+  grid-area: subheading;
   margin-bottom: 2.5rem;
 }
 
 .maintenance-plan {
-  max-width: 425px;
-  margin: 3rem auto 0 auto;
+    max-width: 480px;
+    margin: 2rem auto 0 auto;
+    padding: 0.5rem 2rem;
+    background-color: #e7e7e7;
+    border-radius: $default-border-radius;
+    box-shadow: $default-box-shadow;
+
+    @media (min-width: 1130px) {
+      width: 100%;
+      max-width: inherit;
+      margin-top: 0;
+      background-color: #e7e7e7;
+      border-radius: $default-border-radius;
+      box-shadow: $default-box-shadow;
+    }
 }
 
-.maintenance-plan-heading .plus {
+.maintenance-plan-heading .plus,
+.maintenance-plan-heading .pro {
   margin-left: 3px;
-  background-color: $color-accent;
   color: #fff;
   padding: 4px 7px;
   border-radius: 5px;
   font-size: 20px;
   vertical-align: 1px;
+}
+
+.maintenance-plan-heading .plus {
+  background-color: #DB50A1;
+}
+
+.maintenance-plan-heading .pro {
+  background-color: #BA2E84;
 }
 
 .maintenance-plan-subheading {
@@ -91,10 +134,10 @@
 }
 
 .maintenance-plan-notes {
+  grid-area: notes;
   max-width: 525px;
   margin: 3rem auto 0 auto;
-  padding: 1.5rem 2rem;
-  border-radius: $default-border-radius;
-  background-color: #e7e7e7;
-  font-size: 18px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-size: 17px;
 }
