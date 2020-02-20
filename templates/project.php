@@ -171,23 +171,23 @@ if (! $default_tab) {
                 $padding = get_field('desktop_screenshot_padding');
                 $color   = get_field('screenshot_padding_color');
 
-
                 if (! empty($image)) :
                     ?>
                     <div class="desktop-screenshot">
                         <h5><?php echo $title; ?></h5>
-                        <img src="<?php echo $image['url']; ?>" alt="<?php echo $title; ?>" style="
-                                             <?php
-                                                if ($padding) :
-                                                    echo 'padding: ' . $padding . ';';
-                                                endif;
-                                                ?>
-                         <?php
-                            if ($color) :
+                        <img
+                            src="<?php echo $image['url']; ?>"
+                            alt="<?php echo $title; ?>"
+                            style="
+                            <?php
+                            if ($padding) {
+                                echo 'padding: ' . $padding . ';';
+                            }
+                            if ($color) {
                                 echo 'background-color: ' . $color . ';';
-                            endif;
+                            }
                             ?>
- ">
+                        ">
                     </div>
                 <?php endif; ?>
 
@@ -219,24 +219,19 @@ if (! $default_tab) {
                     ?>
                     <div class="mobile-screenshot">
                         <h5><?php echo $title; ?></h5>
-                        <!-- <img src="<?php echo $image['url']; ?>" alt="<?php echo $title; ?>"
-                                                  <?php
-                                                    if ($padding) :
-                                                        ?>
-                             style="padding: <?php echo $padding; ?>;"<?php
-                                                    endif; ?>> -->
-                        <img src="<?php echo $image['url']; ?>" alt="<?php echo $title; ?>" style="
-                                             <?php
-                                                if ($padding) :
-                                                    echo 'padding: ' . $padding . ';';
-                                                endif;
-                                                ?>
-                         <?php
-                            if ($color) :
+                        <img
+                            src="<?php echo $image['url']; ?>"
+                            alt="<?php echo $title; ?>"
+                            style="
+                            <?php
+                            if ($padding) {
+                                echo 'padding: ' . $padding . ';';
+                            }
+                            if ($color) {
                                 echo 'background-color: ' . $color . ';';
-                            endif;
+                            }
                             ?>
- ">
+                        ">
                     </div>
                 <?php endif; ?>
 
