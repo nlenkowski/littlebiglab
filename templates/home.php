@@ -83,7 +83,7 @@ Template Name: Home
                     ?>
 
                     <div class="project-item">
-                        <a class="project-link" href="<?php the_permalink(); ?>"></a>
+                        <a class="project-link" href="<?php the_permalink(); ?>" rel="nofollow"></a>
                         <?php
                         $image = get_field('logo');
                         if (! empty($image)) :
