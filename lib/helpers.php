@@ -1,37 +1,34 @@
 <?php
-/**
- * Helpers and utility function
- */
+
+namespace Blujay\Helpers;
 
 /**
  * Cleanup header
- * Based on http://wpengineer.com/1438/wordpress-header and https://github.com/roots/soil
  */
-function blujay_head_cleanup()
+function cleanup_header()
 {
-
-    // General cleanup
+    // Remove extraneous links and the WordPress version number
     remove_action('wp_head', 'feed_links_extra', 3);
     remove_action('wp_head', 'rsd_link');
     remove_action('wp_head', 'wlwmanifest_link');
-    remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);
+    remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10);
     remove_action('wp_head', 'wp_generator');
-    remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0);
+    remove_action('wp_head', 'wp_shortlink_wp_head', 10);
 
     // Remove the WordPress version from RSS feeds
     add_filter('the_generator', '__return_false');
 }
 
 // Disable REST API and oEmbed discovery links
-function blujay_disable_rest_and_oembed()
+function disable_rest_and_oembed()
 {
-    remove_action('wp_head', 'rest_output_link_wp_head', 10, 0);
+    remove_action('wp_head', 'rest_output_link_wp_head', 10);
     remove_action('wp_head', 'wp_oembed_add_discovery_links');
     remove_action('wp_head', 'wp_oembed_add_host_js');
 }
 
 // Disable emoji inline styles and scripts
-function blujay_disable_emoji_styles_scripts()
+function disable_emoji()
 {
     remove_action('wp_head', 'print_emoji_detection_script', 7);
     remove_action('admin_print_scripts', 'print_emoji_detection_script');
@@ -43,9 +40,9 @@ function blujay_disable_emoji_styles_scripts()
 }
 
 /**
- * Moves scripts to footer
+ * Move scripts to footer
  */
-function blujay_js_to_footer()
+function move_js_to_footer()
 {
     remove_action('wp_head', 'wp_print_scripts');
     remove_action('wp_head', 'wp_print_head_scripts', 9);
@@ -53,19 +50,19 @@ function blujay_js_to_footer()
 }
 
 /**
- * Adds some useful classes to the body
+ * Add page and post slugs to body class
  */
-function blujay_add_page_slug($classes)
+function add_classes_to_body($classes)
 {
     global $post;
 
-    // Adds page and post slugs
+    // Add page and post slugs
     if (isset($post)) {
         $classes[] = $post->post_type . '-' . $post->post_name;
     }
 
-    // Add is-blog class if blog related page
-    if (((is_archive()) || (is_author()) || (is_category()) || (is_home()) || (is_single()) || (is_search()) || (is_tag()) ) == true) {
+    // Add "is-blog" class if blog related page
+    if (((is_archive()) || (is_author()) || (is_category()) || (is_home()) || (is_single()) || (is_search()) || (is_tag())) == true) {
         $classes[] = "is-blog";
     }
 
@@ -73,11 +70,10 @@ function blujay_add_page_slug($classes)
 }
 
 /**
- * Adds custom image sizes to media library
+ * Add custom image sizes to media library
  */
-function blujay_custom_image_sizes($image_sizes)
+function add_custom_image_sizes_to_media_library($image_sizes)
 {
-
     // Get the custom image sizes
     global $_wp_additional_image_sizes;
 
@@ -94,4 +90,12 @@ function blujay_custom_image_sizes($image_sizes)
     }
 
     return $image_sizes;
+}
+
+/**
+ * Enable shortcodes in Custom HTML widget
+ */
+function enable_shortcodes_in_html_widget()
+{
+    add_filter('widget_text', 'do_shortcode');
 }
