@@ -23,7 +23,7 @@
     "watch": "npm run development -- --watch"
   },
   "devDependencies": {
-    "@ayctor/laravel-mix-svg-sprite": "^1.0.0",
+    "@ayctor/laravel-mix-svg-sprite": "github:ayctor/laravel-mix-svg-sprite#next",
     "browser-sync": "^2.26.7",
     "browser-sync-webpack-plugin": "^2.2.2",
     "cross-env": "^7.0.0",
@@ -36,7 +36,7 @@
     "stylelint": "^13.2.0",
     "stylelint-config-recommended-scss": "^4.2.0",
     "stylelint-scss": "^3.14.2",
-    "svg-spritemap-webpack-plugin": "^3.5.3",
+    "svg-spritemap-webpack-plugin": "^3.5.5",
     "vue-template-compiler": "^2.6.11"
   },
   "dependencies": {
