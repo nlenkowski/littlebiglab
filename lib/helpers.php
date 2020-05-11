@@ -50,6 +50,34 @@ function move_js_to_footer()
 }
 
 /**
+ * Enable versioning for enqueued scripts
+ */
+function version_enqueue_script($handle, $src, $deps, $in_footer)
+{
+    wp_enqueue_script(
+        $handle,
+        get_template_directory_uri() . $src,
+        $deps,
+        filemtime(get_template_directory() . $src),
+        $in_footer
+    );
+}
+
+ /**
+ * Enable versioning for enqueued styles
+ */
+function version_enqueue_style($handle, $src, $deps, $media)
+{
+    wp_enqueue_style(
+        $handle,
+        get_template_directory_uri() . $src,
+        $deps,
+        filemtime(get_template_directory() . $src),
+        $media
+    );
+}
+
+/**
  * Add page and post slugs to body class
  */
 function add_classes_to_body($classes)
@@ -93,7 +121,7 @@ function add_custom_image_sizes_to_media_library($image_sizes)
 }
 
 /**
- * Enable shortcodes in Custom HTML widget
+ * Enable shortcodes in HTML widget
  */
 function enable_shortcodes_in_html_widget()
 {

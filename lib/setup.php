@@ -2,6 +2,9 @@
 
 namespace Blujay\Setup;
 
+use function Blujay\Helpers\version_enqueue_script;
+use function Blujay\Helpers\version_enqueue_style;
+
 /**
  * Register some useful constants
  */
@@ -32,7 +35,7 @@ function theme_setup()
     // Enable support for HTML5 markup
     add_theme_support('html5', array('search-form', 'comment-form', 'comment-list', 'gallery', 'caption'));
 }
-add_action('after_setup_theme', __NAMESPACE__ . '\\theme_setup');
+add_action('after_setup_theme', 'Blujay\Setup\theme_setup');
 
 /**
  * Enable and/or disable theme helpers
@@ -56,7 +59,7 @@ function enable_theme_helpers()
     // Enable execution of shortcodes in widgets
     add_action('init', '\Blujay\Helpers\enable_shortcodes_in_html_widget');
 }
-add_action('after_setup_theme', __NAMESPACE__ . '\\enable_theme_helpers');
+add_action('after_setup_theme', 'Blujay\Setup\enable_theme_helpers');
 
 /**
  * Register assets
@@ -66,21 +69,22 @@ function register_assets()
     global $post;
 
     // Scripts
-    wp_enqueue_script('manifest', DISTDIR . '/scripts/manifest.js', '', '', true);
-    wp_enqueue_script('vendor', DISTDIR . '/scripts/vendor.js', '', '', true);
+    version_enqueue_script('manifest', '/dist/scripts/manifest.js', '', true);
+
+    version_enqueue_script('vendor', '/dist/scripts/vendor.js', '', true);
 
     if (is_page('home')) {
-        wp_enqueue_script('home', DISTDIR . '/scripts/home.js', '', '', true);
+        version_enqueue_script('home', '/dist/scripts/home.js', '', true);
     } elseif (get_post_type($post) == 'project') {
-        wp_enqueue_script('project', DISTDIR . '/scripts/project.js', '', '', true);
+        version_enqueue_script('project', '/dist/scripts/project.js', '', true);
     } else {
-        wp_enqueue_script('page', DISTDIR . '/scripts/page.js', '', '', true);
+        version_enqueue_script('page', '/dist/scripts/page.js', '', true);
     }
 
     // Styles
-    wp_enqueue_style('common-styles', DISTDIR . '/styles/main.css', false);
+    version_enqueue_style('main-styles', '/dist/styles/main.css', '', '');
 }
-add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\register_assets');
+add_action('wp_enqueue_scripts', '\Blujay\Setup\register_assets');
 
 /**
  * Defer loading of the these scripts
@@ -93,7 +97,7 @@ function add_async_attribute($tag, $handle)
         return str_replace(' src', ' defer src', $tag);
     }
 }
-add_filter('script_loader_tag', __NAMESPACE__ . '\\add_async_attribute', 10, 2);
+add_filter('script_loader_tag', '\Blujay\Setup\add_async_attribute', 10, 2);
 
 /**
  * Register menus
@@ -110,7 +114,7 @@ function add_image_sizes()
     add_image_size('project-logo', '9999', '95', false);
     add_image_size('project-logo-retina', '9999', '190', false);
 }
-add_action('init', __NAMESPACE__ . '\\add_image_sizes');
+add_action('init', '\Blujay\Setup\add_image_sizes');
 
 /**
  * Register sidebar and widget areas
@@ -118,4 +122,4 @@ add_action('init', __NAMESPACE__ . '\\add_image_sizes');
 function widgets_init()
 {
 }
-add_action('widgets_init', __NAMESPACE__ . '\\widgets_init');
+add_action('widgets_init', '\Blujay\Setup\widgets_init');
