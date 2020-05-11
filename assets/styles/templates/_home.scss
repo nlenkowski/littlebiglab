@@ -37,7 +37,7 @@
 
   @include media(">=large") {
     grid-template-columns: 1fr 1fr 1fr;
-    grid-column-gap: 4%;
+    grid-column-gap: 3%;
   }
 }
 
@@ -90,6 +90,10 @@
 
 /* Projects */
 
+.projects {
+  overflow: hidden;
+}
+
 .projects-grid {
   display: flex;
   flex-flow: row wrap;
@@ -101,9 +105,8 @@
   }
 
   @include media(">=medium") {
-    margin-left: -2%;
-    margin-right: -2%;
-    margin-bottom: -4%;
+    margin-left: -1.5%;
+    margin-right: -1.5%;
   }
 }
 
@@ -129,26 +132,26 @@
   }
 
   @include media("<medium") {
-    flex-basis: 100vw;
+    flex-basis: 100%;
     margin-bottom: 3rem;
   }
 
   @include media(">=medium") {
-    margin-left: 2%;
-    margin-right: 2%;
-    margin-bottom: 4%;
+    margin-left: 1.5%;
+    margin-right: 1.5%;
+    margin-bottom: 3%;
   }
 
   @include media(">=medium", "<large") {
-    flex-basis: 45%;
+    flex-basis: 47%;
   }
 
   @include media(">=large", "<xtra") {
-    flex-basis: 29%;
+    flex-basis: 30%;
   }
 
   @include media(">=xtra") {
-    flex-basis: 21%;
+    flex-basis: 22%;
   }
 
   .project-link {

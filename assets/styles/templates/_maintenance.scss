@@ -58,7 +58,7 @@
       font-size: 2.5rem;
       font-weight: bold;
       vertical-align: -0.4rem;
-      color: #7C43BA;
+      color: #7c43ba;
     }
   }
 }
@@ -75,10 +75,10 @@
     grid-template-rows: auto;
     grid-column-gap: 2.5rem;
     grid-template-areas:
-    "heading heading heading"
-    "subheading subheading subheading"
-    "plan plan plan"
-    "notes notes notes";
+      "heading heading heading"
+      "subheading subheading subheading"
+      "plan plan plan"
+      "notes notes notes";
   }
 }
 
@@ -93,21 +93,21 @@
 }
 
 .maintenance-plan {
-    max-width: 480px;
-    margin: 2rem auto 0 auto;
-    padding: 0.5rem 2rem;
+  max-width: 480px;
+  margin: 2rem auto 0 auto;
+  padding: 0.5rem 2rem;
+  background-color: #e7e7e7;
+  border-radius: $default-border-radius;
+  box-shadow: $default-box-shadow;
+
+  @media (min-width: 1130px) {
+    width: 100%;
+    max-width: inherit;
+    margin-top: 0;
     background-color: #e7e7e7;
     border-radius: $default-border-radius;
     box-shadow: $default-box-shadow;
-
-    @media (min-width: 1130px) {
-      width: 100%;
-      max-width: inherit;
-      margin-top: 0;
-      background-color: #e7e7e7;
-      border-radius: $default-border-radius;
-      box-shadow: $default-box-shadow;
-    }
+  }
 }
 
 .maintenance-plan-heading .plus,
@@ -121,11 +121,11 @@
 }
 
 .maintenance-plan-heading .plus {
-  background-color: #DB50A1;
+  background-color: #db50a1;
 }
 
 .maintenance-plan-heading .pro {
-  background-color: #BA2E84;
+  background-color: #ba2e84;
 }
 
 .maintenance-plan-subheading {

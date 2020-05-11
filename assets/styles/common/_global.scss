@@ -93,7 +93,8 @@ img {
   padding-left: 1rem;
 }
 
-.site-title, .page-title {
+.site-title,
+.page-title {
   font-family: $font-family-museo-bold;
 
   @include media("<medium") {
@@ -146,8 +147,9 @@ img {
   margin-bottom: 1rem;
 }
 
-.section-body, .page-content {
-  max-width: 920px;
+.section-body,
+.page-content {
+  max-width: 760px;
   margin: 0 auto;
   text-align: left;
 
