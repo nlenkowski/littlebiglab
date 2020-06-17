@@ -43,3 +43,21 @@ function lbl_init_acf_block_types()
     }
 }
 add_action('acf/init', 'lbl_init_acf_block_types');
+
+/**
+ * Activate ACF Pro license after database migrations
+ */
+function lbl_acf_pro_license_option($pre)
+{
+    if (! defined('ACF_PRO_LICENSE') || empty(ACF_PRO_LICENSE)) {
+        return $pre;
+    }
+
+    $data = array(
+        'key' => ACF_PRO_LICENSE,
+        'url' => home_url(),
+    );
+
+    return base64_encode(serialize($data));
+}
+add_filter('pre_option_acf_pro_license', 'lbl_acf_pro_license_option');
