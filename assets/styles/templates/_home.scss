@@ -213,6 +213,10 @@
 .about .section-body {
   font-size: rem(20px);
   line-height: 1.65;
+
+  @include media(">=large") {
+    padding-left: 1rem;
+  }
 }
 
 .about-avatar {
