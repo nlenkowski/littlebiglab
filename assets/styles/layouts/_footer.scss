@@ -84,9 +84,4 @@
 
 .footer-button {
   margin: 1.25rem auto 0 auto;
-  transition: all $default-transition-duration;
-
-  &:hover {
-    transform: scale(1.025);
-  }
 }

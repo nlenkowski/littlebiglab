@@ -1,6 +1,8 @@
 // Custom Colors
 $color-ebony: #0f0b1c;
+$color-ebony-light: #1d1732;
 $color-eminence: #6c2b90;
+$color-eminence-light: #7c43ba;
 
 // Colors
 $color-body: #f2f2f2;
@@ -10,7 +12,10 @@ $color-link: #000000;
 $color-link-hover: lighten($color-link, 20%);
 $color-border: #cccccc;
 $color-accent: $color-eminence;
+$color-accent-light: $color-eminence-light;
 $color-box: $color-ebony;
+$color-box-light: $color-ebony-light;
+
 // Fonts
 @include fontface(
   "Museo Sans Litest",

@@ -132,8 +132,8 @@
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 
     .project-button {
-      background-color: lighten($color-accent, 15%);
-      transform: scale(1.05);
+      border-color: $color-accent-light;
+      background-color: $color-accent-light;
     }
   }
 

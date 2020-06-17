@@ -9,13 +9,15 @@
   margin-right: 3px;
   margin-left: 3px;
   padding: 6px 12px;
-  border-radius: 5px;
-  color: #ffffff;
-  text-transform: uppercase;
+  color: #fff;
   background-color: $color-accent;
+  border-radius: 5px;
+  text-transform: uppercase;
+  text-decoration: none;
   transition: all $default-transition-duration;
 
   &:hover {
+    color: #fff;
     background-color: lighten($color-accent, 15%);
   }
 
@@ -31,8 +33,19 @@
 
   span {
     color: #ffffff;
-    font-size: 1rem;
+    font-size: $font-family-base;
     font-family: $font-family-museo-regular;
+  }
+}
+
+/* Button with an outline only */
+.button-outline-only {
+  border: 1px solid $color-accent-light;
+  background-color: $color-ebony-light;
+
+  &:hover {
+    border-color: $color-accent-light;
+    background-color: $color-accent-light;
   }
 }
 
@@ -41,16 +54,16 @@
   padding: 9px 16px;
 
   span {
-    font-size: 1rem;
+    font-size: $font-family-base;
   }
 }
 
 // Large button
 .button-large {
-  padding: 12px 24px;
+  padding: 16px 24px;
 
   span {
-    font-size: 1.2rem;
+    font-size: rem(19px);
   }
 }
 
@@ -63,8 +76,8 @@
   color: #fff;
 
   &:hover {
-    border-color: lighten($color-ebony, 25%);
-    background-color: lighten($color-ebony, 15%);
+    border-color: $color-accent-light;
+    background-color: $color-ebony-light;
   }
 
   .icon {
@@ -97,11 +110,11 @@
     line-height: 1.4em;
 
     @include media("<medium") {
-      font-size: 12px;
+      font-size: rem(12px);
     }
 
     @include media(">=medium") {
-      font-size: 14px;
+      font-size: rem(14px);
     }
   }
 }
