@@ -46,7 +46,9 @@
 }
 
 .single-project .footer-background,
-.single-project .footer-image {
+.single-project .footer-image,
+.page-wordpress-maintenance .footer-background,
+.page-wordpress-maintenance .footer-image {
   @include media("<medium") {
     padding-top: 2rem;
     height: 550px;

@@ -2,66 +2,77 @@
  * WordPress Maintenance Plan
  */
 
+.page-wordpress-maintenance .page-content {
+  max-width: inherit;
+  text-align: center;
+}
+
+/* Header */
+
 .page-wordpress-maintenance .page-title {
   @include media(">=large") {
     margin-bottom: 1.5rem;
   }
 }
 
-.page-wordpress-maintenance .page-content {
-  max-width: inherit;
-}
-
 .maintenance-description {
-  max-width: 900px;
+  @extend .section-subtitle;
+  max-width: 860px;
   margin: 0 auto 3rem auto;
-  text-align: left;
-
-  @include media(">=medium") {
-    text-align: center;
-  }
 }
+
+/* Services */
 
 .maintenance-services {
-  max-width: 525px;
+  display: inline-block;
   margin: 0 auto;
-  padding-top: 1rem;
-  padding-right: 0.5rem;
-  padding-left: 0.5rem;
-  padding-bottom: 1rem;
+  padding: 0.25rem 1.5rem 1rem 1.5rem;
   border-radius: $default-border-radius;
   background-color: $color-box;
   box-shadow: $default-box-shadow;
+  text-align: left;
 
   @include media(">=medium") {
-    padding: 2rem 3rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding: 0.5rem 4rem 1.75rem 4rem;
   }
 }
 
-.maintenance-services-title {
-  margin-top: 0;
+.maintenance-services-heading {
+  @extend .section-title;
+  font-family: $font-family-museo-litest;
   color: #fff;
 }
 
 .maintenance-services-list {
   list-style: none;
+  margin-top: 1.5rem;
+  padding-left: 1.5rem;
 
   li {
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.5rem;
     line-height: 2rem;
+    font-weight: 300;
 
     &:before {
       content: "\2022";
       display: inline-block;
       width: 1.75rem;
       margin-left: -1.75rem;
-      font-size: 2.5rem;
+      font-size: rem(40px);
       font-weight: bold;
       vertical-align: -0.4rem;
-      color: #7c43ba;
+      color: lighten($color-accent-light, 5%);
     }
   }
+
+  @include media(">=medium") {
+    font-size: rem(20px);
+  }
 }
+
+/* Plans */
 
 .maintenance-plans {
   max-width: 1300px;
@@ -69,7 +80,10 @@
 }
 
 .maintenance-plans > div {
-  @media (min-width: 1130px) {
+  @include media(">=large") {
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: auto;
@@ -83,26 +97,31 @@
 }
 
 .maintenance-plans-heading {
+  @extend .section-title;
   grid-area: heading;
   margin-top: 0;
 }
 
 .maintenance-plans-subheading {
+  @extend .section-subtitle;
   grid-area: subheading;
   margin-bottom: 2.5rem;
 }
 
 .maintenance-plan {
+  display: flex;
+  flex-flow: column nowrap;
+  flex-grow: 1;
   max-width: 480px;
   margin: 2rem auto 0 auto;
-  padding: 0.5rem 2rem;
-  background-color: #e7e7e7;
+  padding-top: 0;
+  background-color: $color-ebony;
   border-radius: $default-border-radius;
   box-shadow: $default-box-shadow;
+  overflow: hidden;
 
-  @media (min-width: 1130px) {
+  @include media(">=large") {
     width: 100%;
-    max-width: inherit;
     margin-top: 0;
     background-color: #e7e7e7;
     border-radius: $default-border-radius;
@@ -110,34 +129,98 @@
   }
 }
 
-.maintenance-plan-heading .plus,
-.maintenance-plan-heading .pro {
-  margin-left: 3px;
-  color: #fff;
-  padding: 4px 7px;
-  border-radius: 5px;
-  font-size: 20px;
-  vertical-align: 1px;
+.maintenance-plan-top {
+  padding-top: 1rem;
+  padding-bottom: 0.35rem;
+  background-color: #fff;
 }
 
-.maintenance-plan-heading .plus {
-  background-color: #db50a1;
+.maintenance-plan-middle {
+  height: 100%;
+  padding: 1.5rem 1.5rem 1.75rem 1rem;
+  background: $color-ebony;
 }
 
-.maintenance-plan-heading .pro {
-  background-color: #ba2e84;
+.maintenance-plan-bottom {
+  padding-bottom: 2rem;
+  background: $color-ebony;
 }
 
-.maintenance-plan-subheading {
-  margin-top: 0.75rem;
-  font-size: 18px;
+.maintenance-plan-name {
+  margin: 0;
+  font-family: $font-family-museo-lite;
+  font-size: rem(20px);
+  text-transform: uppercase;
+  color: #000;
 }
+
+.maintenance-plan-price {
+  margin-bottom: 0;
+  font-weight: 300;
+  font-size: rem(26px);
+  color: #444;
+
+  .price {
+    margin-bottom: 0;
+    margin-left: 0.25rem;
+    margin-right: 0.25rem;
+    vertical-align: -2px;
+    font-family: $font-family-museo-regular;
+    font-size: rem(48px);
+    color: #000;
+  }
+}
+
+.maintenance-plan-services {
+  margin: 0;
+  list-style: none;
+  text-align: left;
+
+  li {
+    margin-bottom: 1rem;
+    padding-left: 0.25rem;
+    font-size: rem(18px);
+    font-weight: 300;
+    color: #ccc;
+
+    &:before {
+      content: "";
+      display: inline-block;
+      background-image: url("../../dist/images/check-circle.svg");
+      background-repeat: no-repeat;
+      width: 25px;
+      height: 20px;
+      margin-left: -30px;
+      vertical-align: -4px;
+    }
+  }
+}
+
+.maintenance-plan-button {
+  font-size: rem(16px);
+  letter-spacing: 0.5px;
+}
+
+/* Specific Plans */
+
+.maintenance-plan-pro,
+.maintenance-plan-basic {
+  .button {
+    @extend .button-outline-only;
+  }
+}
+
+.maintenance-plan-plus {
+  border: 2px solid $color-accent-light;
+}
+
+/* Footer */
 
 .maintenance-plan-notes {
   grid-area: notes;
-  max-width: 525px;
+  max-width: 600px;
   margin: 3rem auto 0 auto;
   padding-left: 1rem;
   padding-right: 1rem;
-  font-size: 17px;
+  font-size: rem(17px);
 }
