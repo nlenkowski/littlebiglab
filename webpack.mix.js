@@ -4,7 +4,6 @@ require("@ayctor/laravel-mix-svg-sprite");
 
 mix
   .setPublicPath(path.resolve("./"))
-  .options({ processCssUrls: false })
   .js("./assets/scripts/home.js", "./dist/scripts")
   .js("./assets/scripts/page.js", "./dist/scripts")
   .js("./assets/scripts/project.js", "./dist/scripts")
@@ -17,6 +16,12 @@ mix
     },
     sprite: {
       prefix: "icon-"
+    }
+  })
+  .options({
+    processCssUrls: false,
+    terser: {
+      extractComments: false
     }
   })
   .extract();
