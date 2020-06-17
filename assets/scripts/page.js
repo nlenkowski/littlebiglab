@@ -9,7 +9,7 @@ const desktopLogo = new Logo(
   "logo-desktop",
   -1100,
   -185,
-  10,
+  3500,
   "/wp-content/themes/littlebiglab/dist/images/logo-background.jpg",
   "page"
 );
@@ -18,7 +18,7 @@ const mobileLogo = new Logo(
   "logo-mobile",
   -1425,
   -240,
-  0,
+  3500,
   "/wp-content/themes/littlebiglab/dist/images/logo-background.jpg",
   "page"
 );
