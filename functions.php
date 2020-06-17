@@ -12,3 +12,14 @@ array_map(function ($file) {
     }
     require_once $filepath;
 }, ['helpers', 'setup']);
+
+/**
+ * Add noindex meta tag to single project pages
+ */
+function lbl_add_noindex_meta_for_projects()
+{
+    if (is_singular('project')) {
+        echo '<meta name="robots" content="noindex" />';
+    }
+}
+add_action('wp_head', 'lbl_add_noindex_meta_for_projects');
