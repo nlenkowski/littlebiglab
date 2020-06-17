@@ -8,12 +8,15 @@
   text-align: center;
   text-transform: uppercase;
 
-  @include media("<medium") {
-    margin-top: 1rem;
+  @include media("<large") {
+    margin-top: 1.5rem;
+    margin-bottom: 0;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #999;
     font-size: $h4;
   }
 
-  @include media(">=medium") {
+  @include media(">=large") {
     margin-top: 0;
     font-size: $h3;
   }
@@ -27,10 +30,8 @@
 
   @include media("<large") {
     max-width: 768px;
-    margin-top: 2rem;
     margin-bottom: 3rem;
     flex-direction: column;
-    border-top: 1px solid $color-border;
   }
 
   @include media(">=large") {
@@ -85,10 +86,10 @@
 }
 
 .project-short-description {
+  @extend .item-description;
   margin-top: 0;
   color: #333;
-  font-size: 1.35rem;
-  font-weight: 200;
+  font-weight: 300;
 }
 
 .project-description {
@@ -121,6 +122,7 @@
 
   ul {
     margin-top: 1rem;
+    margin-left: -0.65rem;
     list-style: none;
     text-align: left;
   }
@@ -133,7 +135,7 @@
       display: inline-block;
       width: 1.75rem;
       margin-left: -1.75rem;
-      font-size: 2rem;
+      font-size: rem(32px);
       font-weight: bold;
       vertical-align: -0.3rem;
       color: $color-accent;

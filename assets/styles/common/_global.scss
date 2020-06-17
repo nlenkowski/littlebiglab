@@ -98,19 +98,19 @@ img {
   font-family: $font-family-museo-bold;
 
   @include media("<medium") {
-    font-size: 3rem;
     margin-top: 3rem;
+    font-size: rem(48px);
   }
 
   @include media(">=medium", "<large") {
     margin-top: 3rem;
-    font-size: 3.5rem;
+    font-size: rem(56px);
   }
 
   @include media(">=large") {
-    margin-top: 4rem;
+    margin-top: 5rem;
     margin-bottom: 5rem;
-    font-size: 3.5rem;
+    font-size: rem(56px);
   }
 
   br {
@@ -127,20 +127,21 @@ img {
   margin-bottom: 0.25rem;
 
   @include media("<medium") {
-    font-size: 2.5rem;
+    font-size: rem(40px);
   }
 
   @include media(">=medium") {
-    font-size: 3rem;
+    font-size: rem(46px);
   }
 }
 
 .section-subtitle {
   margin-top: 0;
-  font-family: $font-family-museo-lite;
-  font-size: 1.75rem;
-  line-height: 1.4em;
-  color: #333333;
+  font-family: $font-family-base;
+  font-size: rem(26px);
+  font-weight: 300;
+  line-height: 1.5;
+  color: #444;
 }
 
 .page-header {
@@ -154,27 +155,23 @@ img {
   text-align: left;
 
   @include media("<medium") {
-    font-size: 1.25rem;
+    font-size: rem(20px);
   }
 
   @include media(">=medium") {
-    font-size: 1.35rem;
-  }
-
-  a {
-    @extend .underline;
+    font-size: rem(22px);
   }
 }
 
 .item-title {
   font-family: $font-family-museo-lite;
-  font-size: 1.75rem;
+  font-size: rem(28px);
   color: #ffffff;
 }
 
 .item-description {
-  font-size: 1.35rem;
-  font-weight: 200;
+  font-size: rem(20px);
+  font-weight: 100;
   color: #cccccc;
 }
 
@@ -185,6 +182,10 @@ img {
     color: $color-accent;
     border-color: $color-accent;
   }
+}
+
+.asterisk {
+  color: #fb503b;
 }
 
 // Layout

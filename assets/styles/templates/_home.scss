@@ -12,11 +12,11 @@
     text-align: center;
 
     @include media("<large") {
-      margin-top: 4rem;
+      margin-top: 3rem;
     }
 
     @include media(">=large") {
-      margin-top: 6rem;
+      margin-top: 5rem;
     }
   }
 }
@@ -54,13 +54,14 @@
 
     .item-description {
       margin: 0;
+      font-size: rem(22px);
     }
   }
 }
 
 .additional-services {
   display: inline-block;
-  margin-top: 3rem;
+  margin-top: 2rem;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
@@ -73,6 +74,7 @@
 
   li {
     line-height: 2rem;
+    font-size: rem(20px);
     margin-bottom: 0.5rem;
 
     &:before {
@@ -80,11 +82,15 @@
       display: inline-block;
       width: 1.75rem;
       margin-left: -1.75rem;
-      font-size: 2.5rem;
+      font-size: rem(40px);
       font-weight: bold;
       vertical-align: -0.4rem;
       color: $color-accent;
     }
+  }
+
+  a {
+    @extend .underline;
   }
 }
 
@@ -190,9 +196,9 @@
   }
 
   .project-description {
+    @extend .item-description;
     margin-top: 0.5rem;
     margin-bottom: 2rem;
-    font-family: $font-family-helvetica;
   }
 
   .project-button {
@@ -205,6 +211,7 @@
 /* About */
 
 .about .section-body {
+  font-size: rem(20px);
   line-height: 1.65;
 }
 

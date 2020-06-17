@@ -36,7 +36,7 @@ Template Name: Project
 
         <?php if (have_rows('features') || get_field('technologies')) : ?>
             <a href="#" class="project-more-button button button-medium">
-                <svg class="icon"><use xlink:href="<?php echo DISTDIR; ?>/icons/symbols.svg#icon-chevron-circle-right"></use></svg><span>View Features</span>
+                <svg class="icon"><use xlink:href="<?php echo DISTDIR; ?>/icons/symbols.svg#icon-chevron-circle-right"></use></svg><span>View Details</span>
             </a>
         <?php endif; ?>
 
@@ -53,7 +53,7 @@ Template Name: Project
 
             <?php if (have_rows('features')) : ?>
                 <section class="project-features">
-                    <h4>Features</h4>
+                    <h4>Details</h4>
                     <ul>
                         <?php
                         while (have_rows('features')) :

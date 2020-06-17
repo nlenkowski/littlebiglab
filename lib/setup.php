@@ -83,6 +83,12 @@ function register_assets()
 
     // Styles
     version_enqueue_style('main-styles', '/dist/styles/main.css', '', '');
+
+    // Fonts
+    wp_enqueue_style(
+        'google-fonts',
+        'https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap'
+    );
 }
 add_action('wp_enqueue_scripts', '\Blujay\Setup\register_assets');
 

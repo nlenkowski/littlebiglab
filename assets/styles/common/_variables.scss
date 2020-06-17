@@ -11,8 +11,17 @@ $color-link-hover: lighten($color-link, 20%);
 $color-border: #cccccc;
 $color-accent: $color-eminence;
 $color-box: $color-ebony;
+// Fonts
+@include fontface(
+  "Museo Sans Litest",
+  "/wp-content/themes/littlebiglab/dist/fonts/MuseoSans-100"
+);
 
-// Font
+@include fontface(
+  "Museo Sans Lite",
+  "/wp-content/themes/littlebiglab/dist/fonts/MuseoSans-300"
+);
+
 @include fontface(
   "Museo Sans Regular",
   "/wp-content/themes/littlebiglab/dist/fonts/MuseoSans-500"
@@ -23,16 +32,12 @@ $color-box: $color-ebony;
   "/wp-content/themes/littlebiglab/dist/fonts/MuseoSans-700"
 );
 
-@include fontface(
-  "Museo Sans Lite",
-  "/wp-content/themes/littlebiglab/dist/fonts/MuseoSans-300"
-);
-
+$font-family-museo-litest: "Museo Sans Litest", sans-serif;
+$font-family-museo-lite: "Museo Sans Lite", sans-serif;
 $font-family-museo-regular: "Museo Sans Regular", sans-serif;
 $font-family-museo-bold: "Museo Sans Bold", sans-serif;
-$font-family-museo-lite: "Museo Sans Lite", sans-serif;
-$font-family-helvetica: "Helvetica Neue", Helvetica, Arial, sans-serif;
-$font-family-base: $font-family-helvetica;
+$font-family-roboto: "Roboto", sans-serif;
+$font-family-base: $font-family-roboto;
 $font-family-heading: $font-family-museo-regular;
 
 // Typography
@@ -44,12 +49,12 @@ $line-height-heading: 1.25;
 $link-decoration: none;
 
 // Headings
-$h1: 2.5rem; // 40px
-$h2: 2rem; // 32px
-$h3: 1.75rem; // 28px
-$h4: 1.5rem; // 24px
-$h5: 1.25rem; // 20px
-$h6: 1.15rem; // 18px
+$h1: rem(40px);
+$h2: rem(32px);
+$h3: rem(28px);
+$h4: rem(24px);
+$h5: rem(20px);
+$h6: rem(18px);
 
 // Decoration
 $default-border-radius: 15px;

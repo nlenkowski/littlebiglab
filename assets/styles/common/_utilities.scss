@@ -22,3 +22,8 @@
   margin-left: -50vw;
   margin-right: -50vw;
 }
+
+// Convert px to rem
+@function rem($size) {
+  @return $size / 16px * 1rem;
+}
