@@ -30,7 +30,7 @@ add_action('wp_head', 'lbl_add_noindex_meta_for_projects');
 function lbl_init_acf_block_types()
 {
     if (function_exists('acf_register_block_type')) {
-        // Register Maintenence Plan block
+        // Register Maintenance Plan block
         acf_register_block_type(array(
             'name'              => 'maintenance-plan',
             'title'             => __('Maintenance Plan'),

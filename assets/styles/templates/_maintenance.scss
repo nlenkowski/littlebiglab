@@ -11,6 +11,7 @@
 
 .page-wordpress-maintenance .page-title {
   @include media(">=large") {
+    margin-top: 4rem;
     margin-bottom: 1.5rem;
   }
 }
