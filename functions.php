@@ -45,6 +45,27 @@ function lbl_init_acf_block_types()
 add_action('acf/init', 'lbl_init_acf_block_types');
 
 /**
+ * Selectively disable Gutenberg editor
+ */
+function blujay_disable_gutenberg($is_enabled, $post_type)
+{
+    global $post;
+
+    // Disable for "models" post type
+    if ($post_type === 'project') {
+        return false;
+    }
+
+    // Disable for home page
+    if ($post && $post->ID === 8) {
+        return false;
+    }
+
+    return $is_enabled;
+}
+add_filter('use_block_editor_for_post_type', 'blujay_disable_gutenberg', 10, 2);
+
+/**
  * Activate ACF Pro license after database migrations
  */
 function lbl_acf_pro_license_option($pre)
