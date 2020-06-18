@@ -57,6 +57,10 @@
       font-size: rem(22px);
     }
   }
+
+  img {
+    height: 75px;
+  }
 }
 
 .additional-services {
@@ -73,8 +77,8 @@
   }
 
   li {
-    line-height: 2rem;
-    font-size: rem(20px);
+    line-height: 2.25rem;
+    font-size: rem(21px);
     margin-bottom: 0.5rem;
 
     &:before {
