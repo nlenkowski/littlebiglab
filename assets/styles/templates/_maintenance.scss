@@ -49,7 +49,7 @@
 .maintenance-services-list {
   list-style: none;
   margin-top: 1.5rem;
-  padding-left: 1.5rem;
+  padding-left: 1.75rem;
 
   li {
     margin-bottom: 0.5rem;
@@ -69,7 +69,11 @@
   }
 
   @include media(">=medium") {
-    font-size: rem(20px);
+    padding-left: 1.5rem;
+
+    li {
+      font-size: rem(21px);
+    }
   }
 }
 

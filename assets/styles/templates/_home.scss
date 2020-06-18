@@ -72,14 +72,14 @@
 
   ul {
     margin-top: 1rem;
+    margin-left: -0.5rem;
     list-style: none;
     text-align: left;
   }
 
   li {
-    line-height: 2.25rem;
-    font-size: rem(21px);
     margin-bottom: 0.5rem;
+    line-height: 2.25rem;
 
     &:before {
       content: "\2022";
@@ -95,6 +95,16 @@
 
   a {
     @extend .underline;
+  }
+
+  @include media(">=medium") {
+    ul {
+      margin-left: 0;
+    }
+
+    li {
+      font-size: rem(21px);
+    }
   }
 }
 
