@@ -64,21 +64,3 @@ function blujay_disable_gutenberg($is_enabled, $post_type)
     return $is_enabled;
 }
 add_filter('use_block_editor_for_post_type', 'blujay_disable_gutenberg', 10, 2);
-
-/**
- * Activate ACF Pro license after database migrations
- */
-function lbl_acf_pro_license_option($pre)
-{
-    if (! defined('ACF_PRO_LICENSE') || empty(ACF_PRO_LICENSE)) {
-        return $pre;
-    }
-
-    $data = array(
-        'key' => ACF_PRO_LICENSE,
-        'url' => home_url(),
-    );
-
-    return base64_encode(serialize($data));
-}
-add_filter('pre_option_acf_pro_license', 'lbl_acf_pro_license_option');
