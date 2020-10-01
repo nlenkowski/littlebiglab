@@ -1,4 +1,3 @@
-import "./modules/polyfills";
 import Logo from "./modules/logo";
 import Tabs from "./modules/tabs";
 
