@@ -165,9 +165,13 @@
   font-size: rem(26px);
   color: #444;
 
+  .currency-symbol {
+    display: none;
+  }
+
   .price {
     margin-bottom: 0;
-    margin-left: 0.25rem;
+    margin-left: -0.1rem;
     margin-right: 0.25rem;
     vertical-align: -2px;
     font-family: $font-family-museo-regular;

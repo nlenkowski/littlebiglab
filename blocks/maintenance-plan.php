@@ -33,7 +33,10 @@ $price = get_field('price') ?: 'Plan Price';
 
     <div class="maintenance-plan-top">
         <div class="maintenance-plan-name"><?php echo $name; ?></div>
-        <div class="maintenance-plan-price">$<span class="price"><?php echo $price; ?></span>/mo</div>
+        <div class="maintenance-plan-price">
+            <span class="currency-symbol">$</span>
+            <span class="price"><?php echo $price; ?></span>/mo
+        </div>
     </div>
 
     <div class="maintenance-plan-middle">
