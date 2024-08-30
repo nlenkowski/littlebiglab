@@ -27,7 +27,7 @@ const mobileLogo = new Logo(
  * Enable multiple currency support
  */
 
-if (document.querySelector(".page-wordpress-maintenance")) {
+if (document.querySelector(".page-wordpress-maintenance-plans")) {
   // Get the page currency
   const urlParams = new URLSearchParams(window.location.search);
   const pageCurrency = urlParams.get("currency");
@@ -36,12 +36,12 @@ if (document.querySelector(".page-wordpress-maintenance")) {
   const currencySymbols = document.querySelectorAll(".currency-symbol");
 
   // Set the correct currency symbol for each element
-  currencySymbols.forEach(currencySymbol => {
+  currencySymbols.forEach((currencySymbol) => {
     if (pageCurrency === "EUR") {
       currencySymbol.innerHTML = "€";
     } else {
       currencySymbol.innerHTML = "$";
     }
-    currencySymbol.style.display = "initial";
+    currencySymbol.style.display = "inline";
   });
 }
