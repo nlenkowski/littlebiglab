@@ -1,10 +1,15 @@
 # Changelog
 
+## [1.4.2] - 2024-08-30
+
+- Update currency symbol detection for maintenance page
+- Improve Home and WordPress Maintenance page styles
+- Update Laravel Mix config to support most recent release
+
 ## [1.4.1] - 2020-10-01
 
 - Add support for multiple currencies to the maintenance page
 - Remove support for IE11
-- Update dependencies
 
 ## [1.4.0] - 2020-05-11
 
