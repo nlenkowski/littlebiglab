@@ -25,7 +25,8 @@
 /* Services */
 
 .maintenance-services {
-  display: inline-block;
+  max-width: 530px;
+  display: block;
   margin: 0 auto;
   padding: 0.25rem 1.5rem 1rem 1.5rem;
   border-radius: $default-border-radius;
@@ -116,13 +117,13 @@
 .maintenance-plan {
   display: flex;
   flex-flow: column nowrap;
-  flex-grow: 1;
   max-width: 480px;
   margin: 2rem auto 0 auto;
   padding-top: 0;
   background-color: $color-ebony;
   border-radius: $default-border-radius;
   box-shadow: $default-box-shadow;
+  text-align: center;
   overflow: hidden;
 
   @include media(">=large") {

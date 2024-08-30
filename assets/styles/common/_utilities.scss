@@ -25,5 +25,5 @@
 
 // Convert px to rem
 @function rem($size) {
-  @return $size / 16px * 1rem;
+  @return calc($size / 16px * 1rem);
 }

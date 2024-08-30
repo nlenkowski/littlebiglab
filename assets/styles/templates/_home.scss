@@ -16,50 +16,64 @@
     }
 
     @include media(">=large") {
-      margin-top: 5rem;
+      margin-top: 6rem;
     }
   }
 }
 
 /* Services */
 
+.services .section-title {
+  margin-bottom: 0;
+}
+
 .services-grid {
   display: grid;
-  margin-top: 2rem;
+  margin-left: auto;
+  margin-right: auto;
 
   @include media("<large") {
     grid-template-columns: 1fr;
+    margin-top: 1.75rem;
     padding-top: 2rem;
     padding-bottom: 2rem;
     border-radius: $default-border-radius;
     background-color: $color-box;
+    max-width: 960px;
   }
 
   @include media(">=large") {
+    margin-top: 2rem;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-column-gap: 3%;
+    grid-column-gap: 4%;
+    max-width: 1400px;
   }
 }
 
 .service-item {
   @include media("<large") {
     padding: 3rem 2rem 0.5rem 2rem;
+
+    img {
+      height: 75px;
+    }
   }
 
   @include media(">=large") {
-    padding: 3rem 2rem;
+    padding: 4rem 2rem;
     border-radius: 15px;
     background-color: $color-box;
     box-shadow: $default-box-shadow;
 
     .item-description {
-      margin: 0;
+      margin-top: 1rem;
+      margin-bottom: 0;
       font-size: rem(22px);
     }
-  }
 
-  img {
-    height: 75px;
+    img {
+      height: 90px;
+    }
   }
 }
 
@@ -110,24 +124,12 @@
 
 /* Projects */
 
-.projects {
-  overflow: hidden;
-}
-
 .projects-grid {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
   margin-top: 2.5rem;
-
-  @include media("<medium") {
-    margin-bottom: -3rem;
-  }
-
-  @include media(">=medium") {
-    margin-left: -1.5%;
-    margin-right: -1.5%;
-  }
+  gap: 3rem;
 }
 
 .project-item {
@@ -153,13 +155,6 @@
 
   @include media("<medium") {
     flex-basis: 100%;
-    margin-bottom: 3rem;
-  }
-
-  @include media(">=medium") {
-    margin-left: 1.5%;
-    margin-right: 1.5%;
-    margin-bottom: 3%;
   }
 
   @include media(">=medium", "<large") {
@@ -230,6 +225,15 @@
 
   @include media(">=large") {
     padding-left: 1rem;
+  }
+
+  .signature {
+    margin-top: 2.5rem;
+    margin-bottom: 7rem;
+
+    small {
+      font-size: rem(16px);
+    }
   }
 }
 
