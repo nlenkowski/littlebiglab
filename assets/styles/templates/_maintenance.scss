@@ -2,14 +2,14 @@
  * WordPress Maintenance Plan
  */
 
-.page-wordpress-maintenance .page-content {
+.page-wordpress-maintenance-plans .page-content {
   max-width: inherit;
   text-align: center;
 }
 
 /* Header */
 
-.page-wordpress-maintenance .page-title {
+.page-wordpress-maintenance-plans .page-title {
   @include media(">=large") {
     margin-top: 4rem;
     margin-bottom: 1.5rem;
@@ -49,7 +49,7 @@
 
 .maintenance-services-list {
   list-style: none;
-  margin-top: 1.5rem;
+  margin-top: 2rem;
   padding-left: 1.75rem;
 
   li {
@@ -82,7 +82,7 @@
 
 .maintenance-plans {
   max-width: 1300px;
-  margin: 3rem auto 0 auto;
+  margin: 4rem auto 0 auto;
 }
 
 .maintenance-plans > div {
@@ -229,7 +229,7 @@
 .maintenance-plan-notes {
   grid-area: notes;
   max-width: 600px;
-  margin: 3rem auto 0 auto;
+  margin: 3rem auto 2rem auto;
   padding-left: 1rem;
   padding-right: 1rem;
   font-size: rem(17px);
