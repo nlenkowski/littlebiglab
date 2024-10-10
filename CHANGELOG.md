@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.4.3] - 2024-10-10
+
+- Update font paths to point to imagekit CDN
+- Increase spacing between service items on desktop
+- Improve maintenance page title and section styles
+
 ## [1.4.2] - 2024-08-30
 
 - Update currency symbol detection for maintenance page
