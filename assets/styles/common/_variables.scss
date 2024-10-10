@@ -19,22 +19,22 @@ $color-box-light: $color-ebony-light;
 // Fonts
 @include fontface(
   "Museo Sans Litest",
-  "/wp-content/themes/littlebiglab/dist/fonts/MuseoSans-100"
+  "https://ik.imagekit.io/th3defsdel/wp-content/themes/littlebiglab/dist/fonts/MuseoSans-100"
 );
 
 @include fontface(
   "Museo Sans Lite",
-  "/wp-content/themes/littlebiglab/dist/fonts/MuseoSans-300"
+  "https://ik.imagekit.io/th3defsdel/wp-content/themes/littlebiglab/dist/fonts/MuseoSans-300"
 );
 
 @include fontface(
   "Museo Sans Regular",
-  "/wp-content/themes/littlebiglab/dist/fonts/MuseoSans-500"
+  "https://ik.imagekit.io/th3defsdel/wp-content/themes/littlebiglab/dist/fonts/MuseoSans-500"
 );
 
 @include fontface(
   "Museo Sans Bold",
-  "/wp-content/themes/littlebiglab/dist/fonts/MuseoSans-700"
+  "https://ik.imagekit.io/th3defsdel/wp-content/themes/littlebiglab/dist/fonts/MuseoSans-700"
 );
 
 $font-family-museo-litest: "Museo Sans Litest", sans-serif;
@@ -72,5 +72,5 @@ $breakpoints: (
   medium: 768px,
   large: 992px,
   wide: 1200px,
-  xtra: 1400px
+  xtra: 1400px,
 );
