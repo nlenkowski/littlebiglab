@@ -11,7 +11,7 @@ array_map(function ($file) {
         trigger_error(sprintf(__('Error locating <code>%s</code> for inclusion.', 'blujay'), $file), E_USER_ERROR);
     }
     require_once $filepath;
-}, ['helpers', 'setup']);
+}, ['helpers', 'setup', 'custom']);
 
 /**
  * Add noindex meta tag to single project pages
@@ -38,7 +38,7 @@ function lbl_init_acf_block_types()
             'render_template'   => 'blocks/maintenance-plan.php',
             'category'          => 'formatting',
             'icon'              => 'admin-comments',
-            'keywords'          => array( 'maintenance-plan', 'plan' ),
+            'keywords'          => array('maintenance-plan', 'plan'),
         ));
     }
 }
